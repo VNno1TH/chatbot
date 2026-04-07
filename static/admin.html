@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — HaUI Chatbot</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <!-- Login Overlay -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+            <h2>🔐 Admin Panel</h2>
+            <p class="subtitle">Đăng nhập để quản lý dữ liệu chatbot</p>
+            <div class="form-group">
+                <label>Tên đăng nhập</label>
+                <input type="text" class="form-input" id="loginUsername" placeholder="admin" autocomplete="username">
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                <input type="password" class="form-input" id="loginPassword" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()">
+            </div>
+            <button class="login-btn" onclick="doLogin()">Đăng nhập</button>
+            <p class="login-error" id="loginError"></p>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard -->
+    <div class="admin-container" id="adminDashboard" style="display:none;">
+        <div class="admin-header">
+            <h1>🎓 HaUI Chatbot — Admin Panel</h1>
+            <div class="admin-actions">
+                <a href="/" class="btn btn-outline">💬 Chat</a>
+                <button class="btn btn-primary" onclick="doReindex()">🔄 Re-index</button>
+                <button class="btn btn-outline" onclick="doLogout()">Đăng xuất</button>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="value" id="statChunks">—</div>
+                <div class="label">Tổng Chunks</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="statChroma">—</div>
+                <div class="label">ChromaDB Docs</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="statFiles">—</div>
+                <div class="label">Data Files</div>
+            </div>
+        </div>
+
+        <!-- File Management -->
+        <div class="data-panel">
+            <h3>📂 Quản lý dữ liệu</h3>
+            <ul class="file-list" id="fileList"></ul>
+
+            <!-- Upload Zone -->
+            <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+                <div class="upload-icon">📁</div>
+                <p>Kéo thả hoặc click để upload file .json / .md</p>
+                <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">File sẽ được tự động index sau khi upload</p>
+            </div>
+            <input type="file" id="fileInput" accept=".json,.md" style="display:none" onchange="uploadFile(this.files[0])">
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/admin.js"></script>
+</body>
+</html>

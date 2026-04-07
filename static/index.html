@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trợ lý Tuyển sinh HaUI — Chatbot Tư vấn</title>
+    <meta name="description"
+        content="Chatbot tư vấn tuyển sinh Đại học Công nghiệp Hà Nội (HaUI). Tra cứu điểm chuẩn, tính điểm xét tuyển, gợi ý ngành học.">
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div class="chat-container">
+        <!-- Header -->
+        <div class="chat-header">
+            <div class="header-left">
+                <img src="/favicon.png" alt="HaUI Logo" class="header-logo">
+                <div class="header-info">
+                    <h1>Trợ lý Tuyển sinh HaUI</h1>
+                    <p><span class="status-dot"></span> Đang hoạt động</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="/admin" class="header-btn">🔧 Admin</a>
+            </div>
+        </div>
+
+        <!-- Messages Area -->
+        <div class="messages-area" id="messagesArea">
+            <!-- Welcome Screen -->
+            <div class="welcome-screen" id="welcomeScreen">
+                <img src="/favicon.png" alt="HaUI Logo" class="welcome-logo">
+                <h2>Trợ lý Tuyển sinh HaUI</h2>
+                <p>Xin chào! Em có thể giúp anh/chị tra cứu thông tin tuyển sinh ĐH Công nghiệp Hà Nội</p>
+                <div class="suggestions" id="suggestions">
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">📊</span>
+                        Điểm chuẩn CNTT 2025 bao nhiêu?
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">🧮</span>
+                        Tính điểm: Toán 8, Lý 7.5, Anh 7.25, KV2-NT
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">🎓</span>
+                        Gợi ý ngành với 24 điểm A01
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">🏠</span>
+                        Ký túc xá giá bao nhiêu?
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">📋</span>
+                        Lịch tuyển sinh 2026
+                    </button>
+                    <button class="suggestion-chip" onclick="sendSuggestion(this)">
+                        <span class="chip-icon">💰</span>
+                        Học phí K20 đại trà bao nhiêu?
+                    </button>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="typing-indicator" id="typingIndicator">
+                <img src="/favicon.png" alt="Bot" class="message-avatar bot-avatar">
+                <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <div class="input-wrapper">
+                <textarea class="input-field" id="userInput" placeholder="Nhập câu hỏi về tuyển sinh HaUI..." rows="1"
+                    onkeydown="handleKeyDown(event)"></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+flask==3.1.1
+flask-cors==5.0.1
+python-dotenv==1.1.0
+ollama==0.4.8
+chromadb==0.6.3
+rank_bm25==0.2.2
+underthesea==6.8.4
+requests==2.32.3
+python-telegram-bot==21.11
+bcrypt==4.3.0
+PyJWT==2.10.1

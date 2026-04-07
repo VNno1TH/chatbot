@@ -1,0 +1,136 @@
+﻿=== SUMMARY ===
+  total_tests: 72
+  intent_accuracy: 0.9861
+  avg_answer_relevancy: 3.78
+  avg_faithfulness: 3.58
+  avg_completeness: 3.42
+  avg_context_precision: None
+  avg_context_recall: None
+  avg_factual_accuracy: 0.7222
+  ragas_score: 3.61
+  ragas_pct: 0.7225
+  avg_response_time: 16.3
+  total_time_sec: 1360.4
+
+=== LOW SCORING (RAGAS < 3.0) ===
+  A1_09        RAGAS:2.10 I:A1/A1(Y) Fact:0% Faith:3 Comp:2
+    Q: dc cntt 2023 pt3?
+    A: Em ch╞░a t├¼m ─æ╞░ß╗úc th├┤ng tin ch├¡nh x├íc vß╗ü ─æiß╗âm chuß║⌐n ng├ánh C├┤ng nghß╗ç th├┤ng tin n─âm 2023 theo ph╞░╞íng th
+    GT: CNTT 2023 PT3 (thi THPT): 25.19 ─æiß╗âm
+
+  A1_11        RAGAS:2.65 I:A2/A2(Y) Fact:100% Faith:2 Comp:2
+    Q: Ng├ánh n├áo thi To├ín L├╜ Anh?
+    A: Ng├ánh thi tß╗ò hß╗úp m├┤n To├ín - L├╜ - Anh (A00) tß║íi Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi (HaUI) bao gß╗ôm nhiß╗ü
+    GT: Liß╗çt k├¬ tß║Ñt cß║ú ng├ánh c├│ tß╗ò hß╗úp A01 (To├ín-L├╜-Anh)
+
+  A1_13        RAGAS:1.55 I:A1/A1(Y) Fact:0% Faith:2 Comp:1
+    Q: Hiß╗çn tß║íi HaUI c├│ bao nhi├¬u sinh vi├¬n ─æang hß╗ìc?
+    A: Hiß╗çn tß║íi, t├┤i kh├┤ng c├│ th├┤ng tin cß╗Ñ thß╗â vß╗ü sß╗æ l╞░ß╗úng sinh vi├¬n hiß╗çn ─æang theo hß╗ìc tß║íi ─Éß║íi hß╗ìc C├┤ng ng
+    GT: Tß╗òng sß╗æ sinh vi├¬n HaUI ─æang theo hß╗ìc khoß║úng 32.000-34.000 ng╞░ß╗¥i, trong ─æ├│ SV ─ÉH ch├¡nh quy 25.447
+
+  A2_01        RAGAS:2.05 I:A2/A2(Y) Fact:50% Faith:2 Comp:2
+    Q: ─Éiß╗âm chuß║⌐n tß║Ñt cß║ú c├íc ng├ánh CNTT 2025?
+    A: D╞░ß╗¢i ─æ├óy l├á ─æiß╗âm chuß║⌐n n─âm 2025 cho tß║Ñt cß║ú c├íc ng├ánh thuß╗Öc nh├│m C├┤ng nghß╗ç th├┤ng tin (CNTT) tß║íi Tr╞░ß╗¥n
+    GT: Liß╗çt k├¬ bß║úng ─æiß╗âm chuß║⌐n 2025 tß║Ñt cß║ú ng├ánh nh├│m CNTT (CNTT, KTPM, KHMT, HTTT, ATTT, ─ÉPTT, MMT, KTMT)
+
+  A2_02        RAGAS:2.75 I:A2/A2(Y) Fact:50% Faith:2 Comp:2
+    Q: ─Éiß╗âm chuß║⌐n c├íc ng├ánh kinh tß║┐ HaUI 2025?
+    A: Dß╗▒a tr├¬n th├┤ng tin ─æ├ú c├│, ─æiß╗âm chuß║⌐n cho mß╗Öt sß╗æ ng├ánh Kinh tß║┐ tß║íi Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi 
+    GT: Liß╗çt k├¬ bß║úng ─æiß╗âm chuß║⌐n 2025 tß║Ñt cß║ú ng├ánh nh├│m Kinh tß║┐
+
+  B1_02        RAGAS:2.50 I:B1/B1(Y) Fact:0% Faith:2 Comp:2
+    Q: Tß╗òng 22 ─æiß╗âm, KV1, t├¡nh ─æiß╗âm x├⌐t tuyß╗ân?
+    A: ─Éß╗â t├¡nh ─æiß╗âm x├⌐t tuyß╗ân cho th├¡ sinh vß╗¢i tß╗òng ─æiß╗âm 3 m├┤n l├á 22 ─æiß╗âm v├á khu vß╗▒c ╞░u ti├¬n KV1 (+0.75), e
+    GT: Tß╗òng 22.0 < 22.5 n├¬n cß╗Öng thß║│ng: ─ÉXT = 22.0 + 0.75 = 22.75
+
+  B1_08        RAGAS:2.50 I:B1/B1(Y) Fact:0% Faith:2 Comp:2
+    Q: ─Éiß╗âm hß╗ìc bß║í trung b├¼nh m├┤n To├ín 9.2 th├¼ quy ─æß╗òi thang 10 bß║▒ng bao nhi├¬
+    A: Theo bß║úng quy ─æß╗òi ─æiß╗âm ─ÉKQHT (─É├ính gi├í kß║┐t quß║ú hß╗ìc tß║¡p tß╗½ hß╗ìc bß║í), ─æiß╗âm trung b├¼nh m├┤n To├ín cß╗ºa bß║ín 
+    GT: TB hß╗ìc bß║í m├┤n To├ín 9.20-9.29 quy ─æß╗òi = 8.25 (tra bß║úng KQHB)
+
+  B1_09        RAGAS:1.80 I:B1/B1(Y) Fact:0% Faith:2 Comp:2
+    Q: PT2: TB To├ín 9.0, TB L├╜ 8.5, TB Anh 8.0, giß║úi Ba HSG To├ín tß╗ënh. T├¡nh ─æ
+    A: ─Éß╗â t├¡nh ─æiß╗âm x├⌐t tuyß╗ân theo ph╞░╞íng thß╗⌐c PT2 (Hß╗ìc sinh giß╗Åi + Chß╗⌐ng chß╗ë quß╗æc tß║┐), ch├║ng ta sß║╜ sß╗¡ dß╗Ñng
+    GT: ─ÉKQHT=(9.0+8.5+8.0)/3=8.5; Giß║úi BaΓåÆ─ÉQ─ÉCC=9.00; ─ÉXT=8.5├ù2+9.00=26.00
+
+  B2_01        RAGAS:2.90 I:B2/B2(Y) Fact:50% Faith:4 Comp:3
+    Q: Em thi A01 ─æ╞░ß╗úc 24.5 ─æiß╗âm, KV3, th├¡ch mß║úng ─æiß╗çn tß╗¡ v├á tß╗▒ ─æß╗Öng h├│a. Gß╗úi
+    A: ``` ≡ƒôè ─Éiß╗âm x├⌐t tuyß╗ân: Tß╗òng: 24.5 | KV3: +0.0 | ─ÉXT = 24.50 (24.5 ΓëÑ 22.5 nh╞░ng ╞░u ti├¬n = 0 n├¬n ─ÉXT = 
+    GT: ─ÉXT=24.50; gß╗úi ├╜ Robot&TTNT (vß╗½a sß╗⌐c), C╞í ─æiß╗çn tß╗¡ ├┤ t├┤ (an to├án), ─Éiß╗çn tß╗¡-VT (an to├án)
+
+  B2_02        RAGAS:2.05 I:B2/B2(Y) Fact:50% Faith:2 Comp:2
+    Q: 23 ─æiß╗âm tß╗ò hß╗úp A00, gß╗úi ├╜ ng├ánh n├áo ─æß╗ù?
+    A: Dß╗▒a tr├¬n th├┤ng tin bß║ín cung cß║Ñp, vß╗¢i tß╗òng ─æiß╗âm tß╗ò hß╗úp A00 l├á 23 ─æiß╗âm, em sß║╜ t├¡nh ─æiß╗âm x├⌐t tuyß╗ân v├á g
+    GT: Gß╗úi ├╜ c├íc ng├ánh c├│ ─ÉC 2025 Γëñ 23 + 2.0 vß╗¢i tß╗ò hß╗úp A00
+
+  C_05         RAGAS:2.80 I:C/C(Y) Fact:50% Faith:1 Comp:2
+    Q: Ph╞░╞íng thß╗⌐c x├⌐t tuyß╗ân HaUI gß╗ôm nhß╗»ng g├¼?
+    A: Dß╗▒a tr├¬n th├┤ng tin tß╗½ n─âm 2025, Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi (HaUI) ├íp dß╗Ñng c├íc ph╞░╞íng thß╗⌐c x├⌐t
+    GT: 5 PT: PT1 (tuyß╗ân thß║│ng), PT2 (HSG+CC quß╗æc tß║┐), PT3 (thi THPT), PT4 (hß╗ìc bß║í+─ÉGNL), PT5 (─ÉGTD BKHN)
+
+  D_01         RAGAS:2.35 I:D/D(Y) Fact:50% Faith:3 Comp:2
+    Q: So s├ính Robot & TTNT v├á CNTT kh├íc nhau g├¼?
+    A: | Ti├¬u ch├¡ | Robot & Tr├¡ tuß╗ç nh├ón tß║ío (75102032) | C├┤ng nghß╗ç th├┤ng tin (7480201) | |---|---|---| | T
+    GT: So s├ính: Robot&TTNT (m├ú 75102032, CK-├öT├┤, AI/phß║ºn cß╗⌐ng) vs CNTT (7480201, CNTT&TT, phß║ºn mß╗üm); ─ÉC, tß╗ò
+
+  D_03         RAGAS:2.35 I:D/D(Y) Fact:50% Faith:3 Comp:2
+    Q: Kß╗╣ thuß║¡t phß║ºn mß╗üm v├á Khoa hß╗ìc m├íy t├¡nh kh├íc nhau nh╞░ thß║┐ n├áo?
+    A: D╞░ß╗¢i ─æ├óy l├á so s├ính giß╗»a ng├ánh Kß╗╣ thuß║¡t phß║ºn mß╗üm (m├ú 7480103) v├á ng├ánh Khoa hß╗ìc m├íy t├¡nh (m├ú 7480101
+    GT: KTPM (7480103, 240 CT, nghi├¬ng ph├ít triß╗ân PM) vs KHMT (7480101, 160 CT, nghi├¬ng l├╜ thuyß║┐t & AI/data)
+
+  F_01         RAGAS:2.50 I:F/F(Y) Fact:50% Faith:3 Comp:4
+    Q: ─Éiß╗âm chuß║⌐n tr╞░ß╗¥ng B├ích khoa H├á Nß╗Öi?
+    A: C├óu hß╗Åi n├áy nß║▒m ngo├ái phß║ím vi t╞░ vß║Ñn tuyß╗ân sinh HaUI cß╗ºa em. Em chß╗ë c├│ thß╗â hß╗ù trß╗ú th├┤ng tin vß╗ü tuyß╗ân
+    GT: Tß╗½ chß╗æi lß╗ïch sß╗▒, chß╗ë t╞░ vß║Ñn th├┤ng tin tuyß╗ân sinh HaUI
+
+  F_02         RAGAS:2.00 I:F/F(Y) Fact:50% Faith:3 Comp:2
+    Q: Dß╗▒ b├ío thß╗¥i tiß║┐t H├á Nß╗Öi ng├áy mai?
+    A: C├óu hß╗Åi n├áy nß║▒m ngo├ái phß║ím vi t╞░ vß║Ñn tuyß╗ân sinh HaUI cß╗ºa em. Em chß╗ë c├│ thß╗â hß╗ù trß╗ú th├┤ng tin vß╗ü tuyß╗ân
+    GT: C├óu hß╗Åi kh├┤ng li├¬n quan tuyß╗ân sinh HaUI, tß╗½ chß╗æi lß╗ïch sß╗▒ v├á h╞░ß╗¢ng vß╗ü chß╗º ─æß╗ü tuyß╗ân sinh
+
+  MAJOR_01     RAGAS:2.92 I:A1/A1(Y) Fact:83% Faith:2 Comp:2
+    Q: Ng├ánh Kß╗╣ thuß║¡t phß║ºn mß╗üm ra tr╞░ß╗¥ng c├│ thß╗â l├ám g├¼?
+    A: Ng├ánh Kß╗╣ thuß║¡t phß║ºn mß╗üm (m├ú 7480103) tß║íi Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi cung cß║Ñp cho sinh vi├¬n nh
+    GT: KTV phß║ºn mß╗üm: Lß║¡p tr├¼nh vi├¬n, Kß╗╣ s╞░ phß║ºn mß╗üm, QA/QC, DevOps, quß║ún l├╜ dß╗▒ ├ín, kiß║┐n tr├║c s╞░ giß║úi ph├íp
+
+  MAJOR_03     RAGAS:2.50 I:A1/C(N) Fact:0% Faith:2 Comp:2
+    Q: Ng├ánh Ng├┤n ngß╗» Nhß║¡t thi tß╗ò hß╗úp g├¼ v├á lß║Ñy bao nhi├¬u chß╗ë ti├¬u?
+    A: Ng├ánh Ng├┤n ngß╗» Nhß║¡t tß║íi Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi (HaUI) x├⌐t tuyß╗ân theo tß╗ò hß╗úp m├┤n A1 (To├ín,
+    GT: Ng├┤n ngß╗» Nhß║¡t (7220209): tß╗ò hß╗úp D01 (To├ín-V─ân-Anh) v├á D06 (To├ín-V─ân-Nhß║¡t); 70 chß╗ë ti├¬u
+
+  EDGE_01      RAGAS:2.80 I:A1/A1(Y) Fact:50% Faith:4 Comp:4
+    Q: ─Éiß╗âm chuß║⌐n CNTT 2026?
+    A: ─Éiß╗âm chuß║⌐n n─âm 2026 ch╞░a ─æ╞░ß╗úc c├┤ng bß╗æ (th╞░ß╗¥ng c├┤ng bß╗æ sau kß╗│ thi THPT quß╗æc gia v├áo th├íng 8). Anh/chß╗ï
+    GT: ─Éiß╗âm chuß║⌐n 2026 ch╞░a c├┤ng bß╗æ, tham khß║úo 2025: 23.09; n├¬n theo d├╡i tuyensinh.haui.edu.vn
+
+  EDGE_02      RAGAS:2.75 I:B1/B1(Y) Fact:50% Faith:2 Comp:2
+    Q: Tß╗òng 31 ─æiß╗âm 3 m├┤n, KV1, t├¡nh ─æiß╗âm?
+    A: ─Éß╗â t├¡nh ─æiß╗âm x├⌐t tuyß╗ân cho bß║ín vß╗¢i tß╗òng 31 ─æiß╗âm tß╗½ 3 m├┤n v├á khu vß╗▒c KV1, ch├║ng ta sß║╜ thß╗▒c hiß╗çn theo 
+    GT: Ph├ít hiß╗çn tß╗òng > 30 ─æiß╗âm (thang 30 tß╗æi ─æa 30), cß║únh b├ío lß╗ùi ─æß║ºu v├áo kh├┤ng hß╗úp lß╗ç
+
+  EDGE_03      RAGAS:2.30 I:A1/A1(Y) Fact:100% Faith:2 Comp:2
+    Q: Ng├ánh h├│a hß╗ìc HaUI c├│ g├¼?
+    A: Ng├ánh C├┤ng nghß╗ç kß╗╣ thuß║¡t h├│a hß╗ìc (m├ú ng├ánh 7510401) tß║íi Tr╞░ß╗¥ng ─Éß║íi hß╗ìc C├┤ng nghiß╗çp H├á Nß╗Öi (HaUI) tß║¡p
+    GT: HaUI c├│ ng├ánh C├┤ng nghß╗ç kß╗╣ thuß║¡t h├│a hß╗ìc (7510401, 210 CT, tß╗ò hß╗úp A00/B00/C02/D07)
+
+  EDGE_08      RAGAS:1.85 I:A1/A1(Y) Fact:0% Faith:3 Comp:1
+    Q: Tß╗╖ lß╗ç sinh vi├¬n HaUI c├│ viß╗çc l├ám sau tß╗æt nghiß╗çp l├á bao nhi├¬u?
+    A: Em ch╞░a t├¼m ─æ╞░ß╗úc th├┤ng tin ch├¡nh x├íc vß╗ü tß╗╖ lß╗ç sinh vi├¬n HaUI c├│ viß╗çc l├ám sau khi tß╗æt nghiß╗çp. Anh/chß╗ï
+    GT: Tß╗╖ lß╗ç SV ch├¡nh quy c├│ viß╗çc l├ám sau 12 th├íng tß╗æt nghiß╗çp: 92.14% (SV ─ÉH CQ: 92.78%)
+
+Total low-scoring: 21/72
+
+=== INTENT ERRORS ===
+  MAJOR_03     Exp:A1 Got:C Q: Ng├ánh Ng├┤n ngß╗» Nhß║¡t thi tß╗ò hß╗úp g├¼ v├á lß║Ñy bao nhi├¬u chß╗ë ti├¬u?
+
+=== MEDIUM SCORING (3.0-3.5) ===
+  B1_05        RAGAS:3.45 Fact:100% Q: T├¡nh hß╗ìc ph├¡ 3 t├¡n chß╗ë l├╜ thuyß║┐t K20 ─æß║íi tr├á?
+  B1_10        RAGAS:3.35 Fact:0% Q: Tß╗òng 25 ─æiß╗âm, ─ÉT01 (th╞░╞íng binh), KV3. T├¡nh ─æiß╗âm x├⌐t tuyß╗ân?
+  C_01         RAGAS:3.35 Fact:50% Q: C├ích ─æ─âng k├╜ x├⌐t tuyß╗ân bß║▒ng ─æiß╗âm ─ÉGTD?
+  C_08         RAGAS:3.00 Fact:100% Q: C├ích t├¡nh hß╗ìc ph├¡ HaUI?
+  C_10         RAGAS:3.35 Fact:50% Q: HaUI c├│ nhß╗»ng loß║íi hß╗ìc bß╗òng n├áo?
+  C_16         RAGAS:3.00 Fact:100% Q: ─Éiß╗üu kiß╗çn ─æß╗â ─æ╞░ß╗úc hß╗ìc bß╗òng HaUI to├án kh├│a hß╗ìc?
+  D_02         RAGAS:3.35 Fact:50% Q: PT3 v├á PT5 kh├íc nhau thß║┐ n├áo?
+  E_02         RAGAS:3.45 Fact:50% Q: Cß║úm ╞ín em nh├⌐
+  MULTI_01     RAGAS:3.00 Fact:100% Q: Em ─æ╞░ß╗úc HSA 95, KV1. T├¡nh ─æiß╗âm rß╗ôi cho em biß║┐t c├│ ─æß╗ù CNTT kh
+Total medium: 9
