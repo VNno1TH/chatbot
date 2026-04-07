@@ -1,4 +1,4 @@
-# 🎓 HaUI RAG Chatbot v2.2
+# 🎓 HaUI RAG Chatbot
 
 Trợ lý ảo Tư vấn Tuyển sinh Đại học Công nghiệp Hà Nội (HaUI). 
 Hệ thống sử dụng kiến trúc **RAG (Retrieval-Augmented Generation)** nâng cao, kết hợp giữa Vector Search và Full-text Search (BM25), được thiết kế đặc biệt để tính toán điểm chuẩn chính xác, tư vấn ngành học, và giải đáp các thắc mắc về thủ tục tuyển sinh hoàn toàn bằng Tiếng Việt.
