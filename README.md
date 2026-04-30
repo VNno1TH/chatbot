@@ -78,7 +78,7 @@ Bật Ollama chạy ngầm, sau đó tải các mô hình tiêu chuẩn được
 ollama pull qwen2.5:14b
 
 # Model Embeddings (để chuyển văn bản thành Vector)
-ollama pull bge-m3
+ollama pull bge-m3:latest
 ```
 
 ### 4. Nạp Dữ liệu (Indexing)
@@ -103,15 +103,33 @@ python app.py
 Đổi / điền thông tin các cấu hình cơ sở trong tệp `.env` tại thư mục root (nếu chưa có thì tự tạo mới):
 
 ```env
+# ── Admin ──
 ADMIN_USERNAME=admin
-ADMIN_PASSWORD=your_secure_password
-SECRET_KEY=your_flask_secret_key
+ADMIN_PASSWORD=haui2026
+SECRET_KEY=haui-chatbot-secret-key-2026-change-me
 
-# Model Settings
-OLLAMA_BASE_URL=http://localhost:11434
+# ── Model Settings ──
+OLLAMA_BASE_URL=http://localhost:11435
 OLLAMA_MODEL=qwen2.5:14b
-OLLAMA_EMBED_MODEL=bge-m3
+OLLAMA_EMBED_MODEL=bge-m3:latest
 
-# Telegram API
+# ── Reranker ──
+RERANKER_URL=http://localhost:8080
+USE_REMOTE_RERANKER=1
+
+# ── Router v3 ──
+ROUTER_MODEL=qwen2.5:14b
+ROUTER_TIMEOUT=20
+
+# ── Retriever v5 ──
+HYDE_ENABLED=1
+QUERY_REWRITE_ENABLED=1
+SELF_REFLECT_ENABLED=1
+RETRIEVER_LLM_TIMEOUT=6
+
+# ── Debug ──
+HAUI_DEBUG=1
+
+# ── Telegram Bot ──
 TELEGRAM_BOT_TOKEN=token_su_dung_trong_telegram_bot_father
 ```
