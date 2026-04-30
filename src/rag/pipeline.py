@@ -322,9 +322,9 @@ def fast_route(query):
             return 'E'
 
     # Guard 1c: A2 — xu hướng/trend điểm chuẩn (TRƯỚC D để tránh A2→D)
-    if re.search(r'(xu hướng|qua\s*\d+\s*năm|từ\s*\d{4}\s*(đến|tới)\s*\d{4})', query_lower) and re.search(r'(điểm chuẩn|dc\b)', query_lower):
+    if re.search(r'(xu hướng|qua\s*\d+\s*năm|từ\s*\d{4}\s*(đến|tới)\s*\d{4}|qua các năm)', query_lower) and re.search(r'(điểm chuẩn|dc\b|ngành)', query_lower):
         return 'A2'
-    if re.search(r'(điểm chuẩn|dc\b).*\d{4}.*(thấp hơn|cao hơn|tăng|giảm).*\d{4}', query_lower):
+    if re.search(r'(điểm chuẩn|dc\b|ngành).*(năm ngoái|năm trước|\d{4}).*(thấp hơn|cao hơn|tăng|giảm|so sánh|thay đổi|biến động)', query_lower):
         return 'A2'
     if re.search(r'(điểm chuẩn|dc\b).*(\d{4}).*(thay đổi|biến động|ổn định|thế nào)', query_lower):
         return 'A2'
@@ -347,6 +347,10 @@ def fast_route(query):
     if re.search(r'(ngành nào|những ngành).*(tăng|giảm|thấp nhất|cao nhất|dễ vào|khó vào|hot|xu hướng)', query_lower):
         if re.search(r'(\d{4}|năm nay|gần đây|hiện tại)', query_lower):
             return 'A2'
+    # Guard A2 override for "nên chọn ngành" with specific score
+    if re.search(r'nên\s*(chọn|đăng ký)\s*(ngành|gì|vào đâu)', query_lower) and re.search(r'\d+(\.\d+)?\s*(điểm|tổng|toán|lý|hóa|anh|văn)', query_lower):
+        return 'A2'
+        
     # Fix 3.2: A2 — "nên chọn ngành gì" + "dự kiến/khoảng X điểm" + KV
     if re.search(r'nên\s*(chọn|đăng ký)\s*(ngành|gì)', query_lower):
         if re.search(r'(dự kiến|khoảng|tầm|chừng)\s*\d+', query_lower):
@@ -378,10 +382,15 @@ def fast_route(query):
                 return 'C'
     # C: "đăng ký PT2 ngành X có được không" (eligibility check)
     if re.search(r'đăng ký.*(pt\d|phương thức).*(có được|được không|có đủ)', query_lower):
-        return 'C'
+        if not re.search(r'\d+(\.\d+)?\s*(toán|lý|hóa|anh|văn|điểm|tổng)', query_lower):
+            return 'C'
     # C: "còn có thể đăng ký" / thời hạn
     if re.search(r'(còn.*đăng ký|hết hạn|quá hạn|còn kịp)', query_lower) and re.search(r'(pt\d|phương thức)', query_lower):
         return 'C'
+        
+    # Guard B1 override: Có điểm cụ thể + tính toán/xét tuyển -> B1
+    if re.search(r'(tính điểm|quy đổi|xét tuyển|tính đxt)', query_lower) and re.search(r'\d+(\.\d+)?\s*(toán|lý|hóa|anh|văn|điểm|tổng|ielts|hsa|tsa)', query_lower):
+        return 'B1'
 
     # Guard 2a: B1 — tính học phí (TRƯỚC A1 để tránh B1→A1 khi có K20+TC)
     if re.search(r'\d+\s*(tc|tín chỉ)', query_lower) and re.search(r'(học phí|hp|bao nhiêu)', query_lower):
@@ -943,8 +952,12 @@ def generate_response(query, context, intent):
         mt = 512
     elif intent == 'C':
         mt = 640
+    elif intent == 'A2':
+        mt = 1200
+    elif intent == 'D':
+        mt = 1024
     else:
-        mt = 896  # B1, A2, B2, D
+        mt = 896  # B1, B2
     temp = 0.01 if intent in ('A1', 'B1') else 0.02
     raw = call_llm(prompt, max_tokens=mt, temperature=temp)
     return sanitize_answer_vietnamese(raw)
@@ -980,6 +993,16 @@ def handle_query(user_query):
         return {'answer': FALLBACK_MESSAGE, 'intent': intent, 'time': time.time() - start}
 
     # 2b. Tính toán / quy đổi chính xác từ JSON (bỏ qua LLM nếu parse được)
+    from src.rag.structured import try_deterministic_kkht, try_deterministic_hb_ntb
+    
+    det_kkht = try_deterministic_kkht(user_query)
+    if det_kkht:
+        return {'answer': det_kkht, 'intent': intent, 'entities': {}, 'context': '[deterministic: chính sách]', 'num_chunks': 0, 'time': round(time.time() - start, 2)}
+        
+    det_ntb = try_deterministic_hb_ntb(user_query)
+    if det_ntb:
+        return {'answer': det_ntb, 'intent': intent, 'entities': {}, 'context': '[deterministic: chính sách]', 'num_chunks': 0, 'time': round(time.time() - start, 2)}
+
     det = try_deterministic_b1_answer(user_query)
     if det:
         return {

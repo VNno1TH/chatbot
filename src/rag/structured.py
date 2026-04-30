@@ -77,6 +77,12 @@ def _has_kv(text: str) -> bool:
 
 def _parse_kv(text: str):
     tl = text.lower()
+    # Deterministic KV3 mapping for Hanoi districts
+    kv3_districts = ['ba đình', 'hoàn kiếm', 'đống đa', 'thanh xuân', 'hai bà trưng', 'hoàng mai', 'cầu giấy', 'tây hồ', 'long biên', 'bắc từ liêm', 'nam từ liêm', 'hà đông']
+    for d in kv3_districts:
+        if d in tl:
+            return 'kv3', 0.0
+
     t = tl.replace(' ', '')
     # Abbreviated: kv2-nt, kv2nt
     if 'kv2-nt' in tl or 'kv2nt' in t:
@@ -169,9 +175,10 @@ _NGANH_MA = {
     'du lịch': ('Du lịch', '7810101'),
     'thực phẩm': ('CN Thực phẩm', '7540101'),
     'điện tử viễn thông': ('CN KT Điện tử - Viễn thông', '7510302'),
-    'robot': ('Robot và trí tuệ nhân tạo', '7520218'),
+    'robot': ('Robot và trí tuệ nhân tạo', '75102032'),
     'dệt may': ('CN Dệt, may', '7540204'),
     'thời trang': ('Thiết kế thời trang', '7210404'),
+    'máy tính': ('Khoa học máy tính', '7480101'),
 }
 
 
@@ -199,21 +206,19 @@ def _compare_diem_chuan(ten_nganh: str, ma_nganh: str, dxt: float) -> str:
         return ""
     if dxt >= dc:
         return (
-            f"\nĐiểm chuẩn **{ten_nganh}** ({ma_nganh}) năm **2025** = **{dc}**. "
-            f"Với ĐXT **{dxt:.2f} ≥ {dc}** → **đủ điều kiện trúng tuyển (tham khảo 2025)**. "
+            f"\n→ ĐXT **{dxt:.2f} ≥ ĐC {dc}** (năm 2025) → **ĐỖ** ngành {ten_nganh} ({ma_nganh}). "
             f"(Điểm chuẩn 2026 chưa công bố.)"
         )
     return (
-        f"\nĐiểm chuẩn **{ten_nganh}** ({ma_nganh}) năm **2025** = **{dc}**. "
-        f"Với ĐXT **{dxt:.2f} < {dc}** → **chưa đủ so với điểm chuẩn 2025**. "
-        f"(Điểm chuẩn 2026 chưa công bố, có thể thay đổi.)"
+        f"\n→ ĐXT **{dxt:.2f} < ĐC {dc}** (năm 2025) → **TRƯỢT** ngành {ten_nganh} (thiếu {dc-dxt:.2f}đ). "
+        f"(Điểm chuẩn 2026 có thể thay đổi.)"
     )
 
 
 def _has_admission_question(text: str) -> bool:
     """Check if text asks about admission chances."""
     tl = text.lower()
-    return bool(re.search(r'đậu|đỗ|trúng tuyển|vào được|liệu.*có|có đủ|dau|do\b|trung tuyen', tl))
+    return bool(re.search(r'đậu|đỗ|trúng tuyển|vào được|liệu.*có|có đủ|dau|do\b|trung tuyen|xem có|có đỗ|có vào|xét được', tl))
 
 
 def _compare_multi_nganh(dxt: float, to_hop: str | None = None) -> str:
@@ -263,6 +268,11 @@ def try_deterministic_b1_answer(query: str) -> str | None:
     """Return a complete Vietnamese answer or None."""
     q = query.strip()
     ql = q.lower()
+
+    # --- Tốt nghiệp trước hạn check cho PT2/4/5 ---
+    if re.search(r'(tốt nghiệp|tn) năm (2024|2023|2022|2021)', ql) or re.search(r'(tốt nghiệp|tn) trước', ql):
+        if re.search(r'pt2|pt4|pt5', ql):
+            return "⚠️ **Theo Quy chế Tuyển sinh 2025**: Thí sinh tốt nghiệp THPT từ năm 2024 trở về trước **TUYỆT ĐỐI KHÔNG ĐƯỢC** xét tuyển bằng Phương thức 2, Phương thức 4 và Phương thức 5. Bạn chỉ có thể dùng PT1 (nếu đủ điều kiện) hoặc PT3 (thi THPT 2025)."
 
     def _fmt(v): return f"{v:,.0f}".replace(',', '.')
 
@@ -363,14 +373,14 @@ def try_deterministic_b1_answer(query: str) -> str | None:
                 coef = 1.5
 
             hp_total = int(n_tc * coef * dg)
-            # Assume 1 kỳ = 5 tháng → HP/tháng
-            hp_per_month = hp_total / 5
+            # Assume 1 kỳ = 4 tháng → HP/tháng
+            hp_per_month = hp_total / 4
             total_month = ktx_cost + hp_per_month
             return (
                 f"📊 **Tính tổng chi phí 1 tháng:**\n"
                 f"- {ktx_label}: **{_fmt(ktx_cost)}** đ/tháng\n"
                 f"- Học phí: {n_tc} TC × {coef} × {_fmt(dg)} = **{_fmt(hp_total)}** đ/kỳ\n"
-                f"  → Chia 5 tháng: **{_fmt(int(hp_per_month))}** đ/tháng\n"
+                f"  → Chia 4 tháng: **{_fmt(int(hp_per_month))}** đ/tháng\n"
                 f"→ **Tổng ≈ {_fmt(int(total_month))} đ/tháng** (KTX + học phí chia đều).\n"
                 f"⚠️ Chưa bao gồm điện, nước, sinh hoạt phí.\n"
                 f"Anh/chị cần tính thêm gì không ạ?"
@@ -602,9 +612,11 @@ def try_deterministic_b1_answer(query: str) -> str | None:
                     ddt = round(((30 - dxt_raw) / 7.5) * bonus, 2)
                     dxt = round(dxt_raw + ddt, 2)
                 ten_nganh, ma_nganh = _find_nganh_in_query(ql)
-                extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt) if ma_nganh else ""
-                if not extra and _has_admission_question(ql) and ma_nganh:
+                extra = ""
+                if ma_nganh:
                     extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
+                elif _has_admission_question(ql):
+                    extra = _compare_multi_nganh(dxt)
                 tail = "Anh/chị cần thêm thông tin gì không ạ?" if extra else "Anh/chị muốn so sánh với điểm chuẩn ngành nào ạ?"
                 kv_line = f"\n- Ưu tiên KV: **+{kv_b:.2f}**" if kv_b > 0 else ""
                 dt_line = f"\n- Ưu tiên ĐT: **+{dt_b:.2f}**" if dt_b > 0 else ""
@@ -647,21 +659,27 @@ def try_deterministic_b1_answer(query: str) -> str | None:
             dxt, body = compute_pt3_admission(total, kv_b, dt_b)
             if dxt is None:
                 return body
+                
+            # Extract tổ hợp
+            th_m = re.search(r'\b(A0[0-2]|B00|C0[1-4]|D0[1467]|D1[45]|DD2|X0[5-7]|X2[57])\b', q, re.IGNORECASE)
+            to_hop = th_m.group(1) if th_m else None
+            
+            ten_nganh, ma_nganh = _find_nganh_in_query(ql)
+            if ma_nganh and to_hop:
+                invalid_msg = _validate_tohop_nganh(to_hop, ma_nganh)
+                if invalid_msg:
+                    return invalid_msg
+                    
             # Multi-major comparison: "đỗ vào các ngành nào" or "ngành nào"
             if re.search(r'(các ngành|ngành nào|những ngành)', ql):
-                # Extract tổ hợp from query
-                th_m = re.search(r'\b(A0[0-2]|B00|C0[1-4]|D0[1467]|D1[45]|DD2|X0[5-7]|X2[57])\b', q, re.IGNORECASE)
-                to_hop = th_m.group(1) if th_m else None
                 extra = _compare_multi_nganh(dxt, to_hop)
             else:
                 ten_nganh, ma_nganh = _find_nganh_in_query(ql)
-                extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt) if ma_nganh else ""
-                # Fix 1.4: luôn so sánh DC khi có admission question
-                if not extra and _has_admission_question(ql):
-                    if ma_nganh:
-                        extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
-                    else:
-                        extra = _compare_multi_nganh(dxt)
+                extra = ""
+                if ma_nganh:
+                    extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
+                elif _has_admission_question(ql):
+                    extra = _compare_multi_nganh(dxt)
             tail = "Anh/chị cần thêm thông tin gì không ạ?" if extra else "Anh/chị muốn đối chiếu với điểm chuẩn ngành nào ạ?"
             return f"📊 **Tính điểm xét tuyển PT3:**\n{body}\n→ **Điểm xét tuyển ≈ {dxt:.2f}**.{extra}\n{tail}"
 
@@ -677,13 +695,11 @@ def try_deterministic_b1_answer(query: str) -> str | None:
         if dxt is None:
             return body
         ten_nganh, ma_nganh = _find_nganh_in_query(ql)
-        extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt) if ma_nganh else ""
-        # Fix 1.4: luôn so sánh DC khi có admission question
-        if not extra and _has_admission_question(ql):
-            if ma_nganh:
-                extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
-            else:
-                extra = _compare_multi_nganh(dxt)
+        extra = ""
+        if ma_nganh:
+            extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
+        elif _has_admission_question(ql):
+            extra = _compare_multi_nganh(dxt)
         tail = "Anh/chị cần thêm thông tin gì không ạ?" if extra else "Anh/chị cần so sánh thêm ngành khác không ạ?"
         return f"📊 **Tính điểm xét tuyển PT3:**\n{body}\n→ **ĐXT ≈ {dxt:.2f}**.{extra}\n{tail}"
 
@@ -702,13 +718,11 @@ def try_deterministic_b1_answer(query: str) -> str | None:
         if dxt is None:
             return body
         ten_nganh, ma_nganh = _find_nganh_in_query(ql)
-        extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt) if ma_nganh else ""
-        # Fix 1.4: luôn so sánh DC khi có admission question
-        if not extra and _has_admission_question(ql):
-            if ma_nganh:
-                extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
-            else:
-                extra = _compare_multi_nganh(dxt)
+        extra = ""
+        if ma_nganh:
+            extra = _compare_diem_chuan(ten_nganh, ma_nganh, dxt)
+        elif _has_admission_question(ql):
+            extra = _compare_multi_nganh(dxt)
         tail = "Anh/chị cần thêm thông tin gì không ạ?" if extra else "Anh/chị cần tư vấn thêm ngành khác không ạ?"
         return (
             f"📊 **Quy đổi & tính ĐXT (tham khảo PT5 + ưu tiên):**\n"
@@ -813,6 +827,54 @@ def format_chi_tieu_snippet(ma: str) -> str:
     )
 
 
+def try_deterministic_kkht(query: str) -> str | None:
+    ql = query.lower()
+    if not re.search(r'(kkht|khuyến khích học tập)', ql):
+        return None
+    m_gpa = re.search(r'gpa\s*[:=]?\s*(\d\.\d+)', ql)
+    m_rl = re.search(r'rèn luyện\s*[:=]?\s*(\d+)', ql)
+    m_tc = re.search(r'tín chỉ\s*[:=]?\s*(\d+)', ql)
+    if not (m_gpa and m_rl and m_tc):
+        return None
+    gpa, rl, tc = float(m_gpa.group(1)), int(m_rl.group(1)), int(m_tc.group(1))
+    
+    if tc < 15: return f"❌ **KHÔNG ĐẠT** học bổng KKHT do tổng số tín chỉ ({tc}) < 15."
+    if re.search(r'có hp.*dưới 2', ql) or 'thi lại' in ql or 'học lại' in ql:
+        return f"❌ **KHÔNG ĐẠT** học bổng KKHT do có học phần < 2.0 hoặc thi lại."
+        
+    if gpa >= 3.6 and rl >= 90: return f"✅ **ĐẠT** Học bổng KKHT loại **Xuất sắc** (Hưởng 100% học phí)."
+    elif gpa >= 3.2 and rl >= 80: return f"✅ **ĐẠT** Học bổng KKHT loại **Giỏi** (Hưởng 50% học phí)."
+    elif gpa >= 2.5 and rl >= 65: return f"✅ **ĐẠT** Học bổng KKHT loại **Khá** (Hưởng 30% học phí)."
+    return f"❌ **KHÔNG ĐẠT** học bổng KKHT do GPA ({gpa}) hoặc Điểm rèn luyện ({rl}) chưa đủ chuẩn."
+
+
+def try_deterministic_hb_ntb(query: str) -> str | None:
+    ql = query.lower()
+    if not re.search(r'học bổng.*nhà tài trợ', ql) and not 'hb ntb' in ql:
+        return None
+    m_gpa = re.search(r'gpa\s*[:=]?\s*(\d\.\d+)', ql)
+    m_tc = re.search(r'tín chỉ\s*[:=]?\s*(\d+)', ql)
+    if not (m_gpa and m_tc):
+        return None
+    gpa, tc = float(m_gpa.group(1)), int(m_tc.group(1))
+    if tc < 30: return f"❌ **KHÔNG ĐẠT** học bổng Nhà tài trợ do tổng số tín chỉ tích lũy ({tc}) < 30."
+    if 'miễn giảm' in ql and not 'khuyết tật' in ql:
+        return f"❌ **KHÔNG ĐẠT** học bổng Nhà tài trợ do sinh viên đang hưởng chế độ miễn giảm học phí (trừ SV khuyết tật)."
+    if gpa < 2.5: return f"❌ **KHÔNG ĐẠT** học bổng Nhà tài trợ do GPA tích lũy ({gpa}) < 2.5."
+    return f"✅ **ĐỦ ĐIỀU KIỆN** nộp hồ sơ xét Học bổng Nhà tài trợ (phụ thuộc vào chỉ tiêu)."
+
+
+def _validate_tohop_nganh(to_hop: str, ma_nganh: str) -> str | None:
+    ct_data = _load_chi_tieu_to_hop()
+    to_hop = to_hop.upper()
+    for r in ct_data:
+        if r.get('nam') == 2025 and str(r.get('ma_nganh')) == str(ma_nganh):
+            if to_hop not in (r.get('to_hop') or []):
+                return f"⚠️ **Lỗi**: Tổ hợp {to_hop} KHÔNG được xét tuyển cho ngành {r.get('ten_nganh')}. Các tổ hợp hợp lệ: {', '.join(r.get('to_hop') or [])}."
+            return None
+    return None
+
+
 def try_deterministic_kb_answer(query: str) -> str | None:
     """Câu hỏi tra cứu ngắn: chỉ tiêu, IELTS PT2, tỷ lệ việc làm — trả lời khớp dữ liệu nguồn."""
     ql = query.lower()
@@ -842,6 +904,30 @@ def try_deterministic_kb_answer(query: str) -> str | None:
         )
 
     return None
+
+
+def find_matching_majors(query: str, data: list) -> list:
+    """Tự động tìm ngành khớp query thay vì hardcode nhóm."""
+    q = query.lower()
+    matched = []
+    for r in data:
+        if r.get('nam') != 2025:
+            continue
+        ten = r.get('ten_nganh', '').lower()
+        # Fuzzy match: bất kỳ keyword nào trong query khớp tên ngành
+        keywords = re.findall(r'[\w]+', q)
+        relevance = sum(1 for kw in keywords if kw in ten and len(kw) >= 3)
+        if relevance > 0:
+            matched.append({**r, '_relevance': relevance})
+    return sorted(matched, key=lambda x: -x['_relevance'])
+
+def format_major_table(matched_majors: list) -> str:
+    if not matched_majors: return ""
+    lines = ["[THÔNG TIN CÁC NGÀNH LIÊN QUAN — từ chi_tieu_to_hop_2025.json]", "| Ngành | Mã | Tổ hợp | Chỉ tiêu |", "|---|---:|---|---:|"]
+    for r in matched_majors[:10]: # limit to top 10 matches
+        th = ', '.join(r.get('to_hop') or [])
+        lines.append(f"| {r.get('ten_nganh')} | {r.get('ma_nganh')} | {th} | {r.get('chi_tieu')} |")
+    return '\n'.join(lines)
 
 
 def format_all_diem_chuan_2025() -> str:
@@ -923,25 +1009,13 @@ def enrich_context(query: str, intent: str, entities: dict) -> str:
             "- SV ĐH chính quy: **92,78%** | SV CĐ chính quy: **90,61%**"
         )
 
-    if intent == 'A2':
-        if 'cntt' in q and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('CNTT'))
-        if 'kinh tế' in q and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Kinh tế'))
-        # Fix 2.2: Inject data cho TẤT CẢ nhóm ngành
-        if re.search(r'cơ khí|cơ điện|ô tô|robot|tự động', q) and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Cơ khí'))
-        if re.search(r'du lịch|khách sạn|nhà hàng|lữ hành', q) and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Du lịch'))
-        if re.search(r'ngôn ngữ|tiếng|trung quốc|nhật|hàn', q) and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Ngôn ngữ'))
-        if re.search(r'dệt|may|thời trang', q) and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Dệt may'))
-        if re.search(r'thực phẩm|hóa|môi trường|dược', q) and 'điểm chuẩn' in q:
-            parts.append(format_nhom_diem_chuan_2025('Thực phẩm'))
-        # Fix 2.1: Inject TOÀN BỘ DC 2025 cho ranking/listing
-        if re.search(r'cao nhất|thấp nhất|top|xếp hạng|dễ vào|khó vào|tất cả|toàn bộ|danh sách', q):
-            parts.append(format_all_diem_chuan_2025())
+    if intent in ('A2', 'D') and re.search(r'(điểm chuẩn|chỉ tiêu|tổ hợp)', q):
+        matched_majors = find_matching_majors(q, _load_chi_tieu_to_hop())
+        if matched_majors:
+            parts.append(format_major_table(matched_majors))
+            
+    if intent == 'A2' and re.search(r'(cao nhất|thấp nhất|top|xếp hạng|dễ vào|khó vào|tất cả|toàn bộ|danh sách)', q):
+        parts.append(format_all_diem_chuan_2025())
 
     if intent == 'A2' and re.search(r'ngành nào.*(toán|lý).*anh|toán.*lý.*anh|tổ hợp\s*a01', q):
         parts.append(
@@ -971,7 +1045,16 @@ def enrich_context(query: str, intent: str, entities: dict) -> str:
             "- **PT3**: Xét điểm thi TN THPT (tổng 3 môn tổ hợp, thang 30 + ưu tiên)\n"
             "- **PT4**: Xét kết quả ĐGNL ĐHQG HN (HSA) — quy đổi theo bảng HaUI\n"
             "- **PT5**: Xét kết quả ĐGTD ĐHBK HN (TSA) — quy đổi theo bảng HaUI\n"
+            "⚠️ **Lưu ý PT5**: Chỉ áp dụng cho các ngành Kỹ thuật và Công nghệ thông tin. Nhóm ngành Kinh tế, Ngôn ngữ, Du lịch KHÔNG xét PT5.\n"
             "Năm 2025: ĐC **chung** cho PT2+PT3+PT5 (hoặc PT2+PT3+PT4). Năm 2026: dự kiến tương tự."
+        )
+        
+    if re.search(r'(so sánh|qua các năm|trend|biến động)', q) and re.search(r'(2023|2024)', q):
+        parts.append(
+            "⚠️ **CẢNH BÁO QUAN TRỌNG VỀ ĐIỂM CHUẨN:**\n"
+            "Năm 2023 và 2024, điểm chuẩn được công bố TÁCH RIÊNG từng phương thức (PT3 riêng, PT2 riêng, PT4 riêng...).\n"
+            "Từ năm 2025, HaUI gộp điểm chuẩn CHUNG cho các phương thức sử dụng chung thang điểm 30 (như PT2, PT3, PT4, PT5).\n"
+            "Do đó, KHÔNG THỂ so sánh trực tiếp điểm chuẩn chung 2025 với điểm chuẩn từng phương thức 2024 trở về trước."
         )
 
     # Fix 2.4: Inject học bổng đầy đủ
@@ -1003,10 +1086,8 @@ def enrich_context(query: str, intent: str, entities: dict) -> str:
         parts.append(
             "[CHƯƠNG TRÌNH ĐÀO TẠO BẰNG TIẾNG ANH — NĂM 2025]\n"
             "Các ngành có chương trình đào tạo bằng Tiếng Anh tại HaUI:\n"
-            "- Công nghệ thông tin (7480201)\n"
-            "- Kỹ thuật phần mềm (7480103)\n"
-            "- Quản trị kinh doanh (7340101)\n"
-            "- Kế toán (7340301)\n"
+            "- Khối Công nghệ: Khoa học máy tính, Kỹ thuật phần mềm, CNKT Cơ khí, CNKT Ô tô, CNKT Điện - Điện tử, CNKT Điện tử - Viễn thông.\n"
+            "- Khối Kinh tế - Dịch vụ: Quản trị kinh doanh, Kế toán, Du lịch, Quản trị dịch vụ du lịch và lữ hành, Quản trị khách sạn, Quản trị nhà hàng.\n"
             "Đơn giá: **1.000.000** đ/TC (so với 700.000 đ/TC chương trình đại trà)."
         )
 

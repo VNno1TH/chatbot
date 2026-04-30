@@ -126,5 +126,45 @@
     "ten_nganh": "",
     "time": 19.69,
     "chunks": 7
+  },
+  {
+    "ts": "2026-04-30T16:47:14",
+    "intent": "E",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 0.0,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-30T16:47:33",
+    "intent": "B1",
+    "ma_nganh": "",
+    "ten_nganh": "Kế toán",
+    "time": 0.03,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-30T16:48:24",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 11.65,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-30T16:49:09",
+    "intent": "A2",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 20.06,
+    "chunks": 20
+  },
+  {
+    "ts": "2026-04-30T16:49:31",
+    "intent": "A2",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 31.44,
+    "chunks": 20
   }
 ]

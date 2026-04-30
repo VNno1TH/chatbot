@@ -8,6 +8,9 @@ const welcomeScreen   = document.getElementById('welcomeScreen');
 const typingIndicator = document.getElementById('typingIndicator');
 const userInput       = document.getElementById('userInput');
 const sendBtn         = document.getElementById('sendBtn');
+const stopBtn         = document.getElementById('stopBtn');
+
+let currentController = null;
 
 let chatStarted = false;
 let autoSpeakerOn = false;
@@ -57,16 +60,20 @@ async function sendMessage() {
     addMessage(message, 'user');
     userInput.value = '';
     userInput.style.height = 'auto';
-    sendBtn.disabled = true;
+    sendBtn.style.display = 'none';
+    stopBtn.style.display = 'block';
 
     typingIndicator.classList.add('show');
     scrollToBottom();
+
+    currentController = new AbortController();
 
     try {
         const response = await fetch('/api/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message, session_id: sessionId })
+            body: JSON.stringify({ message, session_id: sessionId }),
+            signal: currentController.signal
         });
 
         const data = await response.json();
@@ -83,13 +90,25 @@ async function sendMessage() {
         } else {
             addMessage('Xin lỗi, em không thể xử lý câu hỏi này.', 'bot');
         }
-    } catch {
+    } catch (e) {
         typingIndicator.classList.remove('show');
-        addMessage('Xin lỗi, có lỗi kết nối. Vui lòng thử lại sau.', 'bot');
+        if (e.name === 'AbortError') {
+            addMessage('Đã dừng tạo câu trả lời.', 'bot');
+        } else {
+            addMessage('Xin lỗi, có lỗi kết nối. Vui lòng thử lại sau.', 'bot');
+        }
+    } finally {
+        sendBtn.style.display = 'block';
+        stopBtn.style.display = 'none';
+        userInput.focus();
+        currentController = null;
     }
+}
 
-    sendBtn.disabled = false;
-    userInput.focus();
+function stopMessage() {
+    if (currentController) {
+        currentController.abort();
+    }
 }
 
 // ── Render message ───────────────────────────────────────────────────────────
