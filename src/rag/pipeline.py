@@ -89,7 +89,12 @@ def call_llm(prompt, model=None, max_tokens=1024, temperature=0.05):
         model = OLLAMA_MODEL
     client = get_ollama_client()
     try:
-        response = client.generate(model=model, prompt=prompt, options={'num_predict': max_tokens, 'temperature': temperature})
+        response = client.generate(
+            model=model,
+            prompt=prompt,
+            options={'num_predict': max_tokens, 'temperature': temperature},
+            keep_alive='30m'  # Giữ model trong VRAM, tránh reload giữa các câu hỏi
+        )
         return response['response'].strip()
     except Exception as e:
         if HAUI_DEBUG:
@@ -99,7 +104,11 @@ def call_llm(prompt, model=None, max_tokens=1024, temperature=0.05):
 def embed_query(query):
     client = get_ollama_client()
     prefixed = f"Represent this sentence for searching relevant passages: {query}"
-    response = client.embeddings(model=OLLAMA_EMBED_MODEL, prompt=prefixed)
+    response = client.embeddings(
+        model=OLLAMA_EMBED_MODEL,
+        prompt=prefixed,
+        keep_alive='30m'  # Giữ embed model trong VRAM song song với LLM
+    )
     return response['embedding']
 
 # ══════════════════════════════════════════
@@ -199,8 +208,9 @@ def extract_entities(query):
 # ══════════════════════════════════════════
 FAST_PATTERNS = {
     'A1': [r'điểm chuẩn.*(ngành|mã)\s+\d{7}',
-           r'học phí\s+(ngành|tín chỉ)', r'(học phí|mức thu).*(k20|k19|k18|tiếng anh|đại trà|thạc sĩ)',
+           r'học phí\s+(ngành|tín chỉ|mỗi)', r'(học phí|mức thu).*(k20|k19|k18|tiếng anh|đại trà|thạc sĩ|tiến sĩ|cao đẳng|cao học)',
            r'ký túc xá.*(giá|bao nhiêu|tiền)', r'phòng ktx.*(loại|chất lượng cao|tiêu chuẩn|\d+\s*người)',
+           r'(ktx|ký túc xá|phòng).*(giá|bao nhiêu|\d+\s*người)',
            r'điểm chuẩn\s+\d{7}',
            r'(ngành|chuyên ngành)\s+\w+.*tổ hợp\s+(gì|nào)',
            r'ngành\s+\w+.*(ra trường|việc làm|làm gì|cơ hội)',
@@ -208,6 +218,11 @@ FAST_PATTERNS = {
            r'(haui|đại học công nghiệp).*(là gì|trường gì|giới thiệu|bao nhiêu sinh viên|quy mô)',
            r'chương trình.*(liên kết|2\+2|song bằng)',
            r'(ngành|chuyên ngành)\s+.+\s+chỉ tiêu',
+           r'lệ phí.*(đăng ký|xét tuyển|bao nhiêu)',
+           r'website.*(đăng ký|xét tuyển|nhập học)',
+           r'(thanh toán|nộp tiền).*(ngân hàng|qua).*nào',
+           r'(ưu tiên|khu vực).*nào.*(quận|huyện|nội thành|ngoại thành)',
+           r'(đăng ký|nộp).*(pt[2-5]|phương thức).*bao nhiêu',
            ],
     'A2': [r'(các|tất cả|danh sách|toàn bộ).*(ngành|điểm chuẩn)', r'(điểm chuẩn|dc).*(các ngành|nhóm ngành)',
            r'tổng hợp.*(điểm chuẩn|chỉ tiêu)', r'so sánh.*(điểm chuẩn|các năm)',
@@ -215,6 +230,13 @@ FAST_PATTERNS = {
            r'xếp hạng.*(điểm chuẩn|ngành)',
            r'ngành nào.*(điểm.*(cao nhất|thấp nhất))',
            r'ngành nào.*(thi|xét).*(toán|lý|hóa|anh|văn)',
+           r'(các|những) phương thức.*tuyển sinh.*(là gì|gồm|có)',
+           r'(có|gồm) những.*loại.*học bổng',
+           r'lịch.*(đăng ký|dự tuyển|xét tuyển).*(pt[2-5]|phương thức)',
+           r'những ngành.*nào.*(xét|thi|dùng).*tổ hợp',
+           r'những ngành.*nào.*(pt5|đgtd|đánh giá tư duy)',
+           r'ngành.*(mới|lâu năm).*(ổn định|thay đổi)',
+           r'(điểm chuẩn|dc).*\d{4}.*(thấp hơn|cao hơn|tăng|giảm).*\d{4}',
            ],
     'B1': [r'(tính|tôi được|em được).+điểm', r'\d+(\.\d+)?\s*(toán|lý|hóa|anh|văn)',
            r'quy đổi.*(hsa|tsa|đgnl|đgtd)', r'(kv1|kv2|kv3|kv2-nt).*(điểm|tính)',
@@ -223,10 +245,18 @@ FAST_PATTERNS = {
            r'tổng\s+\d+\s*điểm.*(kv|đt|tính)',
            r'\d+\s*tín\s*chỉ.*(lý thuyết|thực hành|chuyên sâu).*(k20|học phí|hp)',
            r'tính\s+học\s*phí.*\d+\s*tín\s*chỉ',
+           r'(toefl|sat|hsk|jlpt|topik)\s*\d+.*(quy đổi|bao nhiêu|điểm)',
+           r'(đt\d{1,2}|đối tượng\s*\d).*(tính|cộng|ưu tiên.*thế nào)',
+           r'(thuộc.*đt|thuộc.*đối tượng).*(tính|cộng)',
+           r'(toán|lý|hóa|anh|văn)[/,].*[/,].*(toán|lý|hóa|anh|văn).*\d',
+           r'tb.*(toán|lý|hóa|anh|văn).*\d+',
+           r'(có đỗ|có đậu|vào được).*(ngành|\d{7})',
            ],
     'B2': [r'ngành nào.*phù hợp', r'(nên|có thể).*(đăng ký|chọn) ngành', r'gợi ý ngành',
            r'với điểm.*(nên|có thể|đăng ký)', r'(đỗ|trúng tuyển).*(ngành|đâu)',
-           r'em có thể vào.*ngành', r'ngành nào em.*(đỗ|vào được)'],
+           r'em có thể vào.*ngành', r'ngành nào em.*(đỗ|vào được)',
+           r'nên chọn ngành (gì|nào)(?!.*(hay|hoặc|vs))',
+           ],
     'C': [r'(cách|làm thế nào|hướng dẫn).*(đăng ký|nộp|nhập học)', r'hồ sơ.*(cần|gồm|bao gồm)',
           r'(bước|thủ tục)', r'(deadline|hạn nộp|thời hạn).*(hồ sơ|đăng ký)',
           r'(học bổng|hỗ trợ tài chính).*(điều kiện|xét|cách|làm sao|loại|nào|mấy loại)',
@@ -245,17 +275,29 @@ FAST_PATTERNS = {
           r'(tuyển|lấy) bao nhiêu.*(sinh viên|sv|chỉ tiêu)',
           r'(thí sinh tự do|tốt nghiệp trước).*(xét|được|pt)',
           r'(gửi|nộp).*hồ sơ.*(bản cứng|bản giấy)',
+          r'(kkht|khuyến khích học tập).*(loại|điều kiện|gì|được)',
+          r'gpa.*rèn luyện.*(loại|được|kkht)',
+          r'(miễn giảm|giảm).*học phí.*(điều kiện|ai|đối tượng)',
+          r'(bằng kỹ sư|bằng cử nhân|học thêm gì).*(lấy|được|phải)',
+          r'(liên kết|2\+2).*(có gì|đặc biệt|khác gì|như thế nào)',
           ],
-    'D': [r'(so sánh|khác nhau|giống nhau).*(ngành|phương thức)',
+    'D': [r'(so sánh|khác nhau|giống nhau).*(ngành|phương thức|ktx|học phí|phòng)',
           r'nên chọn.*(ngành|phương thức).*(hay|hoặc)',
           r'(pt\d)\s+(và|vs|hay|khác)\s+(pt\d)',
+          r'(có tăng|có giảm|tăng so|giảm so).*(k19|k20|năm trước|năm ngoái)',
+          r'(cao hơn|thấp hơn).*(so với|hay|hoặc)',
+          r'(nên chọn|nên học).*(hay|hoặc|vs)',
+          r'nên.*(pt2|pt3|pt4|pt5).*(hay|hoặc)',
           ],
     'E': [r'^(xin chào|chào bạn|chào em|hello|hi|hey)\s*[!?.]*$',
           r'^(ok|được rồi|hiểu rồi)\s*[!?.]*$',
           r'^(cảm ơn|thanks|thank you|cám ơn).*$',
-          r'(chatbot|trợ lý|bot).*(là gì|tên gì|ai)'],
-    'F': [r'(trường|đại học)\s+(bách khoa|ngoại thương|kinh tế quốc dân|sư phạm|y hà nội|fpt|phenikaa|thăng long)',
-          r'điểm chuẩn.*(bách khoa|ngoại thương|kinh tế quốc dân|fpt)',
+          r'(chatbot|trợ lý|bot).*(là gì|tên gì|ai)',
+          r'^(bot ơi|ơi).*(phụ huynh|tìm hiểu|giúp).*$',
+          r'^(tư vấn giúp|lo quá|không biết).*(mình|em).*$',
+          ],
+    'F': [r'(trường|đại học)\s+(bách khoa|ngoại thương|kinh tế quốc dân|sư phạm|y hà nội|fpt|phenikaa|thăng long|mật mã|kỹ thuật mật mã|học viện)',
+          r'điểm chuẩn.*(bách khoa|ngoại thương|kinh tế quốc dân|fpt|mật mã|học viện)',
           r'(dự báo thời tiết|bóng đá|y tế|pháp luật|game|phim)',
           ]
 }
@@ -266,23 +308,138 @@ def fast_route(query):
     # Guard 0: F — trường khác / ngoài phạm vi (ưu tiên cao nhất)
     for pat in FAST_PATTERNS.get('F', []):
         if re.search(pat, query_lower):
-            # Chỉ match F nếu KHÔNG nhắc đến HaUI
             if not re.search(r'(haui|công nghiệp hà nội)', query_lower):
                 return 'F'
 
-    # Guard 1: E — chào hỏi ngắn (chỉ match khi câu rất ngắn / rõ ràng)
-    if len(query_lower.split()) <= 5:
+    # Guard 1: E — chào hỏi / phụ huynh giới thiệu (câu ngắn hoặc pattern rõ)
+    if len(query_lower.split()) <= 8:
         for pat in FAST_PATTERNS.get('E', []):
             if re.search(pat, query_lower):
                 return 'E'
+    # E mở rộng: câu cảm xúc / tư vấn mở không có số liệu hay mục tiêu cụ thể
+    if re.search(r'(tư vấn giúp|lo quá|không biết)', query_lower) and not re.search(r'\d', query_lower):
+        if not re.search(r'(muốn làm|thích|giỏi|chuyên|điểm|ngành\s+\w{4,}|học phí|tổ hợp)', query_lower):
+            return 'E'
 
-    # Guard 1b: A1 — ngành cụ thể + tổ hợp / chỉ tiêu (tránh LLM nhầm sang C)
+    # Guard 1c: A2 — xu hướng/trend điểm chuẩn (TRƯỚC D để tránh A2→D)
+    if re.search(r'(xu hướng|qua\s*\d+\s*năm|từ\s*\d{4}\s*(đến|tới)\s*\d{4})', query_lower) and re.search(r'(điểm chuẩn|dc\b)', query_lower):
+        return 'A2'
+    if re.search(r'(điểm chuẩn|dc\b).*\d{4}.*(thấp hơn|cao hơn|tăng|giảm).*\d{4}', query_lower):
+        return 'A2'
+    if re.search(r'(điểm chuẩn|dc\b).*(\d{4}).*(thay đổi|biến động|ổn định|thế nào)', query_lower):
+        return 'A2'
+    if re.search(r'ngành nào.*(tăng nhiều nhất|giảm nhiều nhất).*\d{4}', query_lower):
+        return 'A2'
+    if re.search(r'ngành.*(mới|lâu năm).*(ổn định|thay đổi)', query_lower):
+        return 'A2'
+    # A2: "những ngành kinh tế có dùng PT5 không"
+    if re.search(r'(những|các)\s+ngành.*(có dùng|có sử dụng|có xét|dùng).*(pt\d|phương thức)', query_lower):
+        return 'A2'
+    # A2: lịch đăng ký nhiều PT cùng lúc
+    if re.search(r'lịch.*(đăng ký|dự tuyển|xét tuyển).*(pt\d.*pt\d|nhiều phương thức)', query_lower):
+        return 'A2'
+    # A2: liệt kê nhiều ngành theo tổ hợp ("những ngành nào xét A00", "ngành nào thi tổ hợp A01")
+    if re.search(r'(những|các)\s+ngành\s+nào.*(xét|thi|dùng|sử dụng)\s+tổ\s+hợp', query_lower):
+        return 'A2'
+    if re.search(r'ngành\s+nào.*(xét|dùng|sử dụng)\s+(tổ hợp)\s+(a0[012]|b00|c0\d|d0[1467]|x0[5-7])', query_lower):
+        return 'A2'
+    # A2: trend ngành (điểm tăng/giảm, ngành dễ vào, ngành hot)
+    if re.search(r'(ngành nào|những ngành).*(tăng|giảm|thấp nhất|cao nhất|dễ vào|khó vào|hot|xu hướng)', query_lower):
+        if re.search(r'(\d{4}|năm nay|gần đây|hiện tại)', query_lower):
+            return 'A2'
+    # Fix 3.2: A2 — "nên chọn ngành gì" + "dự kiến/khoảng X điểm" + KV
+    if re.search(r'nên\s*(chọn|đăng ký)\s*(ngành|gì)', query_lower):
+        if re.search(r'(dự kiến|khoảng|tầm|chừng)\s*\d+', query_lower):
+            return 'A2'
+
+    # Guard 1b: D — so sánh (ưu tiên trước A1 để tránh nhầm tra cứu)
+    # Nhưng TRƯỚC ĐÓ: HSA/TSA + "khác nhau" = B1 (quy đổi so sánh), không phải D
+    if re.search(r'(hsa|tsa)\s*\d+.*(khác|và|vs).*(hsa|tsa)\s*\d+', query_lower):
+        return 'B1'
+    if re.search(r'(so sánh|khác nhau|giống nhau)', query_lower):
+        return 'D'
+    if re.search(r'(có tăng|có giảm|tăng so|giảm so).*(k19|k20|năm trước|năm ngoái|\d{4})', query_lower):
+        return 'D'
+    if re.search(r'nên.*(hay|hoặc).*(pt\d|ngành)', query_lower):
+        return 'D'
+    # D: "nên chọn ngành nào" + career/strategy goal (muốn làm AI, chi phí thấp, giỏi tiếng X)
+    if re.search(r'nên\s*(chọn|đăng ký|học)\s*(ngành|gì)', query_lower):
+        if re.search(r'(muốn làm|chi phí.*thấp|giỏi\s+tiếng|nếu muốn)', query_lower):
+            return 'D'
+    # D: 2+ tên ngành + "nên chọn" (so sánh ngành)
+    _nganh_found = sum(1 for alias in NGANH_ALIASES if alias in query_lower)
+    if _nganh_found >= 2 and re.search(r'(nên chọn|nên học|nên đăng ký)', query_lower):
+        return 'D'
+
+    # Guard 1d: C — điều kiện xét tuyển / đủ điều kiện (TRƯỚC B1, tránh C→B1)
+    if re.search(r'(đủ điều kiện|có được không|có đăng ký được|có xét được|được không)', query_lower):
+        if re.search(r'(ielts|jlpt|hsk|topik|toefl|chứng chỉ|pt2|phương thức)', query_lower):
+            if not re.search(r'tính|quy đổi|bao nhiêu điểm', query_lower):
+                return 'C'
+    # C: "đăng ký PT2 ngành X có được không" (eligibility check)
+    if re.search(r'đăng ký.*(pt\d|phương thức).*(có được|được không|có đủ)', query_lower):
+        return 'C'
+    # C: "còn có thể đăng ký" / thời hạn
+    if re.search(r'(còn.*đăng ký|hết hạn|quá hạn|còn kịp)', query_lower) and re.search(r'(pt\d|phương thức)', query_lower):
+        return 'C'
+
+    # Guard 2a: B1 — tính học phí (TRƯỚC A1 để tránh B1→A1 khi có K20+TC)
+    if re.search(r'\d+\s*(tc|tín chỉ)', query_lower) and re.search(r'(học phí|hp|bao nhiêu)', query_lower):
+        if re.search(r'(k20|k19|k18|đại trà|tiếng anh|thạc sĩ|cao đẳng|lý thuyết|thực hành|thể chất|gdtc|chuyên sâu|thí nghiệm|ngoại ngữ)', query_lower):
+            return 'B1'
+    # B1: "học phần X tín chỉ" + loại
+    if re.search(r'học phần.*\d+\s*(tc|tín chỉ)', query_lower) and re.search(r'(học phí|bao nhiêu|tính)', query_lower):
+        return 'B1'
+    # B1: "K20 ... N TC loại. Học phí?"
+    if re.search(r'(k20|k19|k18)', query_lower) and re.search(r'\d+\s*(tc|tín chỉ)', query_lower):
+        return 'B1'
+
+    # Guard 2b: A1 — chỉ tiêu + ngành cụ thể (TRƯỚC C generic chỉ tiêu)
+    if re.search(r'chỉ\s*tiêu', query_lower):
+        for alias in NGANH_ALIASES:
+            if alias in query_lower:
+                return 'A1'
+    # A1: ngành cụ thể + tổ hợp / chỉ tiêu (tránh nhầm sang C)
     if re.search(r'ngành\s+.{2,120}\s+(thi|xét)\s+tổ\s+hợp', query_lower):
         return 'A1'
     if re.search(r'ngành\s+.{2,120}\s+tổ\s+hợp\s+(gì|nào)', query_lower):
         return 'A1'
+    # A1: điểm chuẩn + 1 ngành cụ thể (không phải liệt kê nhiều)
+    if re.search(r'(điểm chuẩn|dc\b)', query_lower) and not re.search(r'(các|tất cả|danh sách|nhóm|liệt kê|những ngành)', query_lower):
+        for alias in NGANH_ALIASES:
+            if alias in query_lower:
+                return 'A1'
+    # A1: hỏi giá KTX / học phí cụ thể / lệ phí / website
+    if re.search(r'(ktx|ký túc xá|phòng).*(giá|bao nhiêu|\d+\s*người)', query_lower):
+        return 'A1'
+    if re.search(r'(học phí|mức thu).*(tiến sĩ|cao đẳng|thạc sĩ|k20|k19|k18|đại trà|tiếng anh)', query_lower):
+        # Nhưng nếu có TC/tín chỉ cụ thể → B1 (đã bắt ở trên)
+        return 'A1'
+    if re.search(r'(lệ phí|website|trang web).*(đăng ký|xét tuyển|nhập học|bao nhiêu|là gì)', query_lower):
+        return 'A1'
+    if re.search(r'(thanh toán|nộp tiền).*(ngân hàng|qua).*nào', query_lower):
+        return 'A1'
+    if re.search(r'(ưu tiên|khu vực).*(quận|huyện|nội thành|ngoại thành)', query_lower):
+        return 'A1'
+    if re.search(r'(được ưu tiên|ưu tiên khu vực).*nào', query_lower):
+        return 'A1'
+    if re.search(r'học phí.*mỗi.*tín chỉ.*bao nhiêu', query_lower):
+        return 'A1'
+    # A1: "nên thi tổ hợp nào" cho ngành cụ thể
+    if re.search(r'(nên thi|thi)\s+tổ\s+hợp\s+(nào|gì)', query_lower):
+        for alias in NGANH_ALIASES:
+            if alias in query_lower:
+                return 'A1'
+    # A1: "có thể vào ngành X" + tổ hợp cụ thể (không có điểm số)
+    if re.search(r'(có thể vào|vào được|có thi được)', query_lower) and not re.search(r'\d+(\.\d+)?\s*(toán|lý|hóa|anh|văn|điểm|tổng)', query_lower):
+        for alias in NGANH_ALIASES:
+            if alias in query_lower:
+                return 'A1'
+    # A1: "ngành X ở HaUI được không" (hỏi ngành có hay không)
+    if re.search(r'(ngành|học)\s+.{2,60}\s+(ở haui|haui)\s*(được không|có không)', query_lower):
+        return 'A1'
 
-    # Guard 2: A2 — nhóm ngành (match khi hỏi NHIỀU ngành, không có mã cụ thể + năm cụ thể)
+    # Guard 3: A2 — nhóm ngành / liệt kê nhiều
     if re.search(r'(điểm chuẩn|dc)\s+(các ngành|nhóm ngành|tất cả)', query_lower):
         return 'A2'
     if re.search(r'(các|tất cả|danh sách|toàn bộ).*(ngành|điểm chuẩn)', query_lower):
@@ -291,15 +448,32 @@ def fast_route(query):
         return 'A2'
     if re.search(r'ngành nào.*(thi|xét).*(toán|lý|hóa|anh|văn)', query_lower):
         return 'A2'
-
-    # Guard 3: C — chỉ tiêu tổng, lịch, chính sách
-    if re.search(r'chỉ tiêu\s+20(25|26)', query_lower):
-        if not re.search(r'\d{7}', query_lower) and not re.search(r'ngành\s+\w+', query_lower):
-            return 'C'
-    if re.search(r'(tuyển|lấy) bao nhiêu.*(sinh viên|sv|chỉ tiêu)', query_lower):
-        return 'C'
+    if re.search(r'những ngành.*nào.*(xét|thi|dùng).*tổ hợp', query_lower):
+        return 'A2'
+    if re.search(r'(các|những) phương thức.*tuyển sinh.*(là gì|gồm|có)', query_lower):
+        return 'A2'
+    if re.search(r'(có|gồm) những.*loại.*học bổng', query_lower):
+        return 'A2'
+    if re.search(r'những ngành.*nào.*(pt5|đgtd|đánh giá tư duy)', query_lower):
+        return 'A2'
+    # A2: "nên chọn ngành gì" + điểm cụ thể + KV (listing candidates, KHÔNG phải B2/D)
+    if re.search(r'nên\s*(chọn|đăng ký)\s*(ngành|gì)', query_lower) and re.search(r'(điểm|tổng)\s*\d', query_lower) and re.search(r'(kv\d|khu vực)', query_lower):
+        return 'A2'
+    # A2: trend ngành — điểm tăng/giảm nhiều nhất, ngành dễ vào, ngành hot
+    if re.search(r'(điểm chuẩn).*(tăng|giảm).*(nhiều nhất|ít nhất|mạnh nhất)', query_lower):
+        return 'A2'
+    if re.search(r'ngành.*(điểm chuẩn).*(thấp nhất|thấp nhất|dễ vào|dễ đậu)', query_lower):
+        return 'A2'
+    # A2: muốn làm AI/robot → liệt kê ngành liên quan (KHÔNG phải D)
+    if re.search(r'(muốn làm|học về|theo đuổi).*(ai|trí tuệ nhân tạo|robot|machine learning|data)', query_lower) and re.search(r'(ngành nào|nên chọn|phù hợp)', query_lower):
+        return 'A2'
 
     # Guard 4: B1 — tính cụ thể (phải có SỐ LIỆU)
+    # Fix 3.1: B1 guard cho "điểm cụ thể + các ngành"
+    if re.search(r'(toán|lý|hóa|anh|văn)\s*\d+', query_lower) and re.search(r'(các ngành|ngành nào|những ngành)', query_lower) and re.search(r'(kv\d|khu vực|đỗ|vào được|có đỗ)', query_lower):
+        return 'B1'
+    if re.search(r'tổng\s*\d+', query_lower) and re.search(r'(các ngành|ngành nào|những ngành)', query_lower) and re.search(r'(kv\d|đỗ|vào|đậu)', query_lower):
+        return 'B1'
     if re.search(r'tính.*(học phí|hp).*\d+\s*(tc|tín chỉ)', query_lower):
         return 'B1'
     if re.search(r'(hsa|tsa)\s+\d+', query_lower):
@@ -308,13 +482,78 @@ def fast_route(query):
         return 'B1'
     if re.search(r'\d+(\.\d+)?\s*(toán|lý|hóa|anh|văn)', query_lower):
         return 'B1'
+    # B1: quy đổi chứng chỉ quốc tế với điểm cụ thể
+    if re.search(r'(toefl|sat|hsk|jlpt|topik)\s*\d+.*(quy đổi|bao nhiêu|điểm)', query_lower):
+        return 'B1'
+    # B1: chứng chỉ + số + "quy đổi" (TOEFL iBT 65 quy đổi bao nhiêu)
+    if re.search(r'(toefl|ielts|hsk|jlpt|topik|sat)', query_lower) and re.search(r'\d+', query_lower) and re.search(r'(quy đổi|bao nhiêu.*điểm|điểm.*bao nhiêu|tính)', query_lower):
+        if not re.search(r'(đủ điều kiện|có được|có đăng ký được)', query_lower):
+            return 'B1'
+    # B1: hỏi tính ưu tiên với đối tượng cụ thể
+    if re.search(r'(thuộc|là).*đt\s*\d.*(tính|cộng|ưu tiên.*thế nào)', query_lower):
+        return 'B1'
+    # B1: điểm môn dạng phân cách x/y/z + score or "lần lượt là"
+    if re.search(r'(toán|lý|hóa|anh|văn)[/,]\s*(toán|lý|hóa|anh|văn)', query_lower) and re.search(r'\d', query_lower):
+        return 'B1'
+    if re.search(r'tb.*(toán|lý|hóa|anh|văn).*\d+', query_lower):
+        return 'B1'
+    # B1: "có đỗ ngành X không" khi có điểm cụ thể
+    if re.search(r'(có đỗ|có đậu|vào được).*(ngành|\d{7})', query_lower) and re.search(r'\d+(\.\d+)?\s*(điểm|toán|lý|hóa|anh|văn|tổng)', query_lower):
+        return 'B1'
+    # B1: "HSA X và HSA Y quy đổi khác nhau"
+    if re.search(r'(hsa|tsa)\s*\d+.*(và|vs|khác).*(hsa|tsa)\s*\d+', query_lower):
+        return 'B1'
+    # B1: tổng điểm + KV + "có đỗ" (MULTI_21 style)
+    if re.search(r'tổng\s*\d+', query_lower) and re.search(r'kv\d', query_lower) and re.search(r'(có đỗ|đỗ không|đậu không|vào được)', query_lower):
+        return 'B1'
+    # B1: "K19/K20 học phần X TC. Học phí tính thế nào"
+    if re.search(r'(k19|k20|k18)', query_lower) and re.search(r'\d+\s*(tín chỉ|tc)', query_lower) and re.search(r'(tính|thế nào|bao nhiêu)', query_lower):
+        return 'B1'
 
-    # Guard 5: C — cách tính học phí (không có số cụ thể → C, không phải B1)
+    # Guard 4b: B1 — có điểm + KV + "có đỗ/ngành nào" → tính điểm so sánh (KHÔNG phải A2)
+    if re.search(r'(toán|lý|hóa|anh|văn)\s*\d+.*(kv\d|khu vực)', query_lower):
+        if re.search(r'(đỗ|đậu|vào|ngành nào|các ngành)', query_lower):
+            return 'B1'
+    if re.search(r'tổng\s*(\d+)\s*(điểm)?.*kv\d', query_lower) and re.search(r'(ngành nào|có đỗ|có đậu|vào được)', query_lower):
+        return 'B1'
+    # Guard 4c: B1 — điểm nhiều môn dạng "X/Y/Z" hoặc liệt kê kèm tổ hợp + KV
+    if re.search(r'\d+(\.\d+)?[/,]\s*\d+(\.\d+)?[/,]\s*\d+(\.\d+)?', query_lower) and re.search(r'kv\d', query_lower):
+        return 'B1'
+
+    # Guard 5: C — chỉ tiêu tổng, lịch, chính sách, KKHT
+    # C: chỉ tiêu năm không kèm ngành cụ thể → C (KHÔNG phải A1)
+    if re.search(r'chỉ\s*tiêu\s*(đh|đại học|chính quy|hệ|tổng)?\s*haui?\s*(\d{4}|dự kiến)', query_lower):
+        if not re.search(r'\d{7}', query_lower) and not any(alias in query_lower for alias in NGANH_ALIASES):
+            return 'C'
+    if re.search(r'chỉ tiêu\s+20(25|26)', query_lower):
+        if not re.search(r'\d{7}', query_lower) and not any(alias in query_lower for alias in NGANH_ALIASES):
+            return 'C'
+    if re.search(r'(tuyển|lấy) bao nhiêu.*(sinh viên|sv|chỉ tiêu)', query_lower):
+        return 'C'
     if re.search(r'cách tính học phí', query_lower):
         return 'C'
+    # C: KKHT / GPA + rèn luyện → chính sách, KHÔNG phải B1
+    if re.search(r'(kkht|khuyến khích học tập)', query_lower):
+        return 'C'
+    if re.search(r'gpa.*rèn luyện|rèn luyện.*gpa', query_lower):
+        return 'C'
+    # C: điều kiện học bổng
+    if re.search(r'điều kiện.*(học bổng|hb|kkht)', query_lower):
+        return 'C'
+    # C: bằng kỹ sư / cử nhân
+    if re.search(r'(bằng kỹ sư|bằng cử nhân).*(lấy|được|phải|học thêm)', query_lower):
+        return 'C'
+    # C: liên kết 2+2 đặc biệt
+    if re.search(r'(liên kết|2\+2).*(có gì|đặc biệt|khác gì|như thế nào)', query_lower):
+        return 'C'
+    # C: hỏi ưu tiên khu vực khi học nhiều nơi (KHÔNG phải A1)
+    if re.search(r'(học thpt|học cấp 3|sống|ở).*(\d+\s*năm|lớp \d+).*(kv\d|khu vực)', query_lower):
+        return 'C'
+    if re.search(r'(kv\d|khu vực).*(được hưởng|tính thế nào|áp dụng|nào đúng)', query_lower):
+        return 'C'
 
-    # Standard pattern matching (thứ tự: B2 → C → D → A1)
-    for intent in ['B2', 'C', 'D', 'A1']:
+    # Standard pattern matching (thứ tự: D → B2 → C → A1)
+    for intent in ['D', 'B2', 'C', 'A1']:
         for pattern in FAST_PATTERNS.get(intent, []):
             if re.search(pattern, query_lower):
                 return intent
@@ -322,33 +561,52 @@ def fast_route(query):
 
 ROUTER_PROMPT = """Phân loại câu hỏi tuyển sinh đại học HaUI vào ĐÚNG 1 nhóm:
 
-A1 - Tra cứu đơn: điểm chuẩn/học phí/chỉ tiêu/tổ hợp/việc làm/giới thiệu của 1 ngành hoặc 1 vấn đề cụ thể
-A2 - Tra cứu nhiều: liệt kê NHIỀU ngành, xếp hạng, xu hướng nhiều năm, ngành nào cao/thấp nhất
-B1 - Tính toán: tính điểm có ưu tiên kèm SỐ LIỆU CỤ THỂ, quy đổi HSA/TSA với điểm số, tính học phí N tín chỉ
-B2 - Tư vấn ngành: gợi ý ngành theo điểm + tổ hợp + sở thích
-C  - Thủ tục/chính sách: đăng ký, hồ sơ, nhập học, học bổng, KTX đăng ký, lịch tuyển sinh, phương thức xét tuyển, văn bằng, cách tính HP (không kèm số), điều kiện xét tuyển, ưu tiên đối tượng, chỉ tiêu tổng
-D  - So sánh: ngành vs ngành, PT vs PT (phải có TỪ KHÓA so sánh rõ ràng)
-E  - Chào hỏi / cảm ơn ngắn gọn (chỉ 1-2 từ, không hỏi thông tin)
+A1 - Tra cứu đơn: điểm chuẩn/học phí/chỉ tiêu/tổ hợp/việc làm/giới thiệu/giá KTX/lệ phí/website của 1 ngành hoặc 1 vấn đề cụ thể
+A2 - Tra cứu nhiều: liệt kê NHIỀU ngành, xếp hạng, xu hướng điểm chuẩn qua nhiều năm, ngành nào cao/thấp nhất, những ngành nào xét tổ hợp X, lịch đăng ký nhiều PT
+B1 - Tính toán: tính điểm có ưu tiên kèm SỐ LIỆU CỤ THỂ, quy đổi HSA/TSA/TOEFL/SAT, tính học phí N tín chỉ, tính ưu tiên ĐT cụ thể
+B2 - Tư vấn ngành: gợi ý ngành theo điểm + sở thích (KHÔNG nêu 2 ngành để so sánh, KHÔNG có mục tiêu nghề nghiệp cụ thể)
+C  - Thủ tục/chính sách: đăng ký, hồ sơ, nhập học, điều kiện xét tuyển (đủ điều kiện không?), học bổng/KKHT, KTX đăng ký, lịch tuyển sinh, phương thức xét tuyển, văn bằng, cách tính HP (không kèm số), ưu tiên đối tượng, chỉ tiêu tổng, liên kết 2+2 chi tiết, miễn giảm HP, còn kịp đăng ký không
+D  - So sánh / Tư vấn chiến lược: ngành vs ngành, PT vs PT, hoặc "nên chọn ngành nào" KÈM mục tiêu nghề nghiệp (muốn làm AI, chi phí thấp, giỏi tiếng X)
+E  - Chào hỏi / cảm ơn / phụ huynh giới thiệu ngắn / lo lắng chung (không hỏi thông tin cụ thể, không có số liệu)
 F  - Ngoài phạm vi (trường khác, thời tiết, y tế...)
 
+QUY TẮC QUAN TRỌNG:
+- Xu hướng điểm chuẩn qua nhiều năm (2023→2025, "thay đổi thế nào") → A2, KHÔNG phải D
+- "Đủ điều kiện không" + chứng chỉ (IELTS/JLPT) → C, KHÔNG phải B1
+- "Nên chọn ngành nào" + mục tiêu nghề (muốn làm AI) → D, KHÔNG phải B2
+- "Học phí K20 3TC lý thuyết bao nhiêu" → B1, KHÔNG phải A1 (có SỐ TC cụ thể = tính toán)
+- "Chỉ tiêu ngành CNTT 2025" → A1 (chỉ tiêu 1 ngành), "Chỉ tiêu HaUI 2026 tổng" → C
+- "Tư vấn giúp mình, lo quá" (không có số liệu/ngành) → E
+
 Ví dụ phân loại:
-- "Điểm chuẩn CNTT 2025" → A1 (1 ngành cụ thể)
-- "Điểm chuẩn tất cả ngành CNTT" → A2 (nhiều ngành)
-- "HaUI là trường gì?" → A1 (tra cứu giới thiệu, KHÔNG phải E)
-- "Ngành KTPM ra trường làm gì?" → A1 (tra cứu việc làm 1 ngành)
-- "HaUI có bao nhiêu sinh viên?" → A1 (tra cứu quy mô)
-- "Tỷ lệ có việc làm sau tốt nghiệp?" → A1 (tra cứu thống kê)
-- "Cách tính học phí HaUI?" → C (hỏi cách, không có số)
-- "Tính HP 3 TC lý thuyết K20" → B1 (tính với số liệu cụ thể)
-- "Phương thức xét tuyển gồm gì?" → C
-- "IELTS bao nhiêu đủ PT2?" → C (điều kiện)
-- "Người khuyết tật cộng mấy điểm?" → C (chính sách ưu tiên)
-- "PT3 và PT5 khác nhau thế nào?" → D
-- "Ngành Logistics tổ hợp gì?" → A1 (tra cứu 1 ngành)
-- "Chương trình liên kết 2+2?" → A1
+- "Điểm chuẩn CNTT 2025" → A1
+- "Ngành CNTT chỉ tiêu 2025?" → A1 (chỉ tiêu 1 ngành cụ thể)
+- "Ưu tiên khu vực nào cho quận Ba Đình?" → A1
+- "Nên thi tổ hợp nào vào Du lịch?" → A1 (tra tổ hợp cho 1 ngành)
+- "Điểm chuẩn tất cả ngành CNTT" → A2
+- "Điểm chuẩn CNTT từ 2023 đến 2025 có xu hướng giảm không?" → A2 (xu hướng, KHÔNG phải D)
+- "Ngành nào tăng điểm nhiều nhất từ 2023 đến 2024?" → A2
+- "Những ngành kinh tế có dùng PT5 không?" → A2 (liệt kê nhiều ngành)
+- "Tính HP 3 TC lý thuyết K20" → B1
+- "K20 tiếng Anh, học phần 4TC lý thuyết. Học phí bao nhiêu?" → B1
+- "TOEFL iBT 65 quy đổi bao nhiêu PT2?" → B1 (tính toán quy đổi)
+- "Toán 8/Lý 7.5/Anh 7.25, KV2-NT, đỗ Cơ điện tử?" → B1 (tính điểm)
+- "HSA 93 và HSA 94 quy đổi khác nhau bao nhiêu?" → B1 (quy đổi + số)
+- "Em có IELTS 6.0, TB Toán 8.5... Đăng ký PT2 CNTT có đủ điều kiện không?" → C (hỏi điều kiện)
+- "Thí sinh có JLPT N4, xét PT2 Ngôn ngữ Nhật, có đủ điều kiện không?" → C
+- "Hiện tại tháng 6/2026, còn đăng ký PT2 được không?" → C (thời hạn)
+- "GPA 3.65, rèn luyện 92, KKHT loại gì?" → C (chính sách KKHT)
+- "Học phí K20 có tăng so với K19?" → D (so sánh 2 khóa)
+- "KTPM và KHMT nên chọn ngành nào cho AI?" → D (so sánh 2 ngành)
+- "Em muốn làm AI, nên chọn ngành nào?" → D (có mục tiêu nghề)
+- "Em muốn chi phí thấp nhất, nên chọn ngành gì?" → D (chiến lược)
+- "Tư vấn giúp mình, không biết chọn ngành nào" → E (lo lắng chung)
+- "Ơi cho hỏi, lo quá không biết có đỗ không?" → E (cảm xúc, không có số)
+- "Điểm chuẩn Học viện Mật Mã?" → F
 
 Trả về ĐÚNG 1 trong: A1 A2 B1 B2 C D E F
 Câu hỏi: {query}"""
+
 
 def llm_route(query):
     result = call_llm(ROUTER_PROMPT.format(query=query), model=ROUTER_MODEL, max_tokens=5)
@@ -451,13 +709,15 @@ def build_filter(query, intent, entities):
     # === B1: tính toán ===
     elif intent == 'B1':
         if any(kw in query_lower for kw in ['học phí', 'tín chỉ', 'tc']):
-            filters['loai__in'] = ['hoc_phi']
+            filters['loai__in'] = ['hoc_phi', 'huong_dan']
         elif any(kw in query_lower for kw in ['quy đổi', 'hsa', 'tsa', 'đgnl', 'đgtd']):
-            filters['loai__in'] = ['diem_quy_doi']
+            filters['loai__in'] = ['diem_quy_doi', 'huong_dan']
+        elif any(kw in query_lower for kw in ['ielts', 'toefl', 'hsk', 'jlpt', 'topik', 'sat']):
+            filters['loai__in'] = ['diem_quy_doi', 'huong_dan', 'chinh_sach']
         elif any(kw in query_lower for kw in ['pt2', 'phương thức 2', 'học bạ', 'hsg', 'chứng chỉ']):
-            filters['loai__in'] = ['diem_quy_doi', 'huong_dan', 'diem_uu_tien']
+            filters['loai__in'] = ['diem_quy_doi', 'huong_dan', 'diem_uu_tien', 'chinh_sach']
         else:
-            filters['loai__in'] = ['diem_chuan', 'diem_uu_tien', 'diem_quy_doi']
+            filters['loai__in'] = ['diem_chuan', 'diem_uu_tien', 'diem_quy_doi', 'hoc_phi']
 
     # === C: thủ tục / chính sách ===
     elif intent == 'C':
@@ -465,14 +725,16 @@ def build_filter(query, intent, entities):
             filters['loai__in'] = ['hoc_phi', 'huong_dan', 'chinh_sach']
         elif any(kw in query_lower for kw in ['ký túc xá', 'ktx', 'phòng ở']):
             filters['loai__in'] = ['ky_tuc_xa']
-        elif any(kw in query_lower for kw in ['học bổng', 'hỗ trợ tài chính', 'miễn giảm']):
-            filters['loai__in'] = ['hoc_bong']
+        elif any(kw in query_lower for kw in ['học bổng', 'hỗ trợ tài chính', 'miễn giảm',
+                                               'kkht', 'khuyến khích', 'gpa', 'rèn luyện',
+                                               'loại gì', 'xuất sắc', 'giỏi']):
+            filters['loai__in'] = ['hoc_bong', 'chinh_sach']
         elif any(kw in query_lower for kw in ['lịch', 'thời gian', 'khi nào',
                                                'chỉ tiêu 2026', 'tuyển bao nhiêu']):
             filters['loai__in'] = ['lich_tuyen_sinh', 'chi_tieu_tong', 'huong_dan']
         elif any(kw in query_lower for kw in ['phương thức', 'pt1', 'pt2', 'pt3', 'pt4', 'pt5',
                                                'điều kiện', 'ielts', 'chứng chỉ']):
-            filters['loai__in'] = ['huong_dan', 'faq', 'chinh_sach']
+            filters['loai__in'] = ['huong_dan', 'faq', 'chinh_sach', 'diem_quy_doi']
         elif any(kw in query_lower for kw in ['ưu tiên', 'đối tượng', 'khuyết tật', 'thương binh',
                                                'liệt sĩ', 'ut1', 'ut2']):
             filters['loai__in'] = ['diem_uu_tien', 'chinh_sach']
@@ -484,6 +746,8 @@ def build_filter(query, intent, entities):
             filters['loai__in'] = ['chinh_sach']
         elif any(kw in query_lower for kw in ['thí sinh tự do', 'tốt nghiệp trước']):
             filters['loai__in'] = ['huong_dan', 'faq', 'chinh_sach']
+        elif any(kw in query_lower for kw in ['liên kết', '2+2', 'song bằng']):
+            filters['loai__in'] = ['mo_ta_nganh', 'chinh_sach']
         else:
             filters['loai__in'] = ['huong_dan', 'faq', 'chinh_sach', 'hoc_phi',
                                    'ky_tuc_xa', 'hoc_bong', 'lich_tuyen_sinh',
@@ -491,8 +755,13 @@ def build_filter(query, intent, entities):
 
     # === D: so sánh ===
     elif intent == 'D':
-        # Không filter chặt — cần retrieve nhiều loại chunk cho cả 2 entity
-        pass
+        # D cần retrieve nhiều loại chunk để so sánh — chỉ filter theo nhóm ngành nếu có
+        if entities.get('nhom_nganh'):
+            filters['nhom_nganh'] = entities['nhom_nganh']
+        if any(kw in query_lower for kw in ['học phí', 'k20', 'k19', 'mức thu', 'tín chỉ']):
+            filters['loai__in'] = ['hoc_phi']
+        elif any(kw in query_lower for kw in ['ktx', 'ký túc xá', 'phòng']):
+            filters['loai__in'] = ['ky_tuc_xa']
 
     return filters
 
@@ -527,14 +796,14 @@ def check_filter(chunk, filters):
 #  HYBRID SEARCH + RRF
 # ══════════════════════════════════════════
 TOP_K_CONFIG = {
-    'A1': {'vector': 5, 'bm25': 5, 'rerank_top': 3},
-    'A2': {'vector': 15, 'bm25': 10, 'rerank_top': 8},
-    'B1': {'vector': 8, 'bm25': 8, 'rerank_top': 5},
-    'B2': {'vector': 15, 'bm25': 12, 'rerank_top': 8},
-    'C': {'vector': 8, 'bm25': 6, 'rerank_top': 5},
-    'D': {'vector': 10, 'bm25': 8, 'rerank_top': 6},
-    'E': {'vector': 0, 'bm25': 0, 'rerank_top': 0},
-    'F': {'vector': 0, 'bm25': 0, 'rerank_top': 0},
+    'A1': {'vector': 10, 'bm25': 10, 'rerank_top': 7},
+    'A2': {'vector': 40, 'bm25': 30, 'rerank_top': 20},
+    'B1': {'vector': 12, 'bm25': 12, 'rerank_top': 7},
+    'B2': {'vector': 18, 'bm25': 15, 'rerank_top': 10},
+    'C':  {'vector': 15, 'bm25': 12, 'rerank_top': 8},
+    'D':  {'vector': 20, 'bm25': 15, 'rerank_top': 10},
+    'E':  {'vector': 0,  'bm25': 0,  'rerank_top': 0},
+    'F':  {'vector': 0,  'bm25': 0,  'rerank_top': 0},
 }
 
 def hybrid_search(query_vec, query_text, filters, top_k=10):
@@ -659,12 +928,25 @@ VI_RULE = (
 )
 
 def generate_response(query, context, intent):
-    system = SYSTEM_PROMPT_TEMPLATE.replace('{context}', context).replace('{intent}', intent)
-    prompt = f"{system}{VI_RULE}\n\nCâu hỏi của người dùng: {query}"
-    mt = 1536 if intent in ('A1', 'E', 'F', 'C') else 2048
-    if intent == 'A1':
-        mt = 1024
-    raw = call_llm(prompt, max_tokens=mt, temperature=0.02)
+    # System prompt KHÔNG chứa {context} → cố định → KV-cache hoạt động
+    system = SYSTEM_PROMPT_TEMPLATE.replace('{intent}', intent)
+    # Context đặt ở CUỐI → chỉ phần variable (context+query) cần compute mới
+    prompt = (
+        f"{system}{VI_RULE}"
+        f"\n\n[RETRIEVED CONTEXT]\n{context}\n[END RETRIEVED CONTEXT]"
+        f"\n\nIntent: {intent}\nCâu hỏi của người dùng: {query}"
+    )
+    # Giảm max_tokens để tối ưu tốc độ khi cloud GPU chậm
+    if intent in ('E', 'F'):
+        mt = 256
+    elif intent == 'A1':
+        mt = 512
+    elif intent == 'C':
+        mt = 640
+    else:
+        mt = 896  # B1, A2, B2, D
+    temp = 0.01 if intent in ('A1', 'B1') else 0.02
+    raw = call_llm(prompt, max_tokens=mt, temperature=temp)
     return sanitize_answer_vietnamese(raw)
 
 
@@ -749,16 +1031,29 @@ def handle_query(user_query):
     cfg = TOP_K_CONFIG.get(intent, TOP_K_CONFIG['A1'])
     candidates = hybrid_search(final_vec, clean_query, filters, top_k=max(cfg['vector'], cfg['bm25']))
 
-    # 9b. Fallback: nếu filter chặt quá → mở rộng search không filter
-    if len(candidates) < 2 and filters:
-        if HAUI_DEBUG:
-            print(f"[SEARCH] Only {len(candidates)} results with filter, retrying without filter")
-        fallback_candidates = hybrid_search(final_vec, clean_query, {}, top_k=max(cfg['vector'], cfg['bm25']))
-        seen_ids = {c['id'] for c in candidates}
-        for c in fallback_candidates:
-            if c['id'] not in seen_ids:
-                candidates.append(c)
-                seen_ids.add(c['id'])
+    # 9b. Fallback: nếu filter chặt quá → mở rộng dần
+    if len(candidates) < 3 and filters:
+        # Stage 1: bỏ loai filter, giữ nhom_nganh
+        if 'loai__in' in filters and len(filters) > 1:
+            relaxed = {k: v for k, v in filters.items() if k != 'loai__in'}
+            if HAUI_DEBUG:
+                print(f"[SEARCH] Only {len(candidates)} results, relaxing loai filter")
+            fb1 = hybrid_search(final_vec, clean_query, relaxed, top_k=max(cfg['vector'], cfg['bm25']))
+            seen_ids = {c['id'] for c in candidates}
+            for c in fb1:
+                if c['id'] not in seen_ids:
+                    candidates.append(c)
+                    seen_ids.add(c['id'])
+        # Stage 2: nếu vẫn thiếu, bỏ hết filter
+        if len(candidates) < 3:
+            if HAUI_DEBUG:
+                print(f"[SEARCH] Still only {len(candidates)} results, dropping all filters")
+            fb2 = hybrid_search(final_vec, clean_query, {}, top_k=max(cfg['vector'], cfg['bm25']))
+            seen_ids = {c['id'] for c in candidates}
+            for c in fb2:
+                if c['id'] not in seen_ids:
+                    candidates.append(c)
+                    seen_ids.add(c['id'])
 
     # 9c. Intent D: multi-entity search — search cho từng entity ngành
     if intent == 'D' and entities.get('ten_nganh'):

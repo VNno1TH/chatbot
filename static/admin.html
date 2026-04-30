@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin — HaUI Chatbot</title>
     <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <!-- Login Overlay -->
@@ -36,7 +37,7 @@
             </div>
         </div>
 
-        <!-- Stats -->
+        <!-- ── Stat Cards ─────────────────────────────────────────────── -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="value" id="statChunks">—</div>
@@ -50,9 +51,17 @@
                 <div class="value" id="statFiles">—</div>
                 <div class="label">Data Files</div>
             </div>
+            <div class="stat-card">
+                <div class="value" id="statTotalQueries">—</div>
+                <div class="label">Tổng câu hỏi (7 ngày)</div>
+            </div>
+            <div class="stat-card">
+                <div class="value" id="statAvgTime">—</div>
+                <div class="label">Thời gian TB (s)</div>
+            </div>
         </div>
 
-        <!-- File Management -->
+        <!-- ── File Management ────────────────────────────────────────── -->
         <div class="data-panel">
             <h3>📂 Quản lý dữ liệu</h3>
             <ul class="file-list" id="fileList"></ul>
@@ -64,6 +73,34 @@
                 <p style="font-size:12px;color:var(--text-muted);margin-top:8px;">File sẽ được tự động index sau khi upload</p>
             </div>
             <input type="file" id="fileInput" accept=".json,.md" style="display:none" onchange="uploadFile(this.files[0])">
+        </div>
+
+        <!-- ── Analytics Charts ───────────────────────────────────────── -->
+        <div class="data-panel" id="analyticsPanel">
+            <h3>📊 Phân tích câu hỏi (7 ngày gần nhất)</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:16px;">
+                <div>
+                    <h4 style="text-align:center;margin-bottom:12px;font-size:14px;color:var(--text-muted);">Phân bố ý định (Intent)</h4>
+                    <canvas id="chartIntent" height="220"></canvas>
+                </div>
+                <div>
+                    <h4 style="text-align:center;margin-bottom:12px;font-size:14px;color:var(--text-muted);">Top ngành được hỏi nhiều nhất</h4>
+                    <canvas id="chartMajors" height="220"></canvas>
+                </div>
+            </div>
+            <p id="analyticsEmpty" style="text-align:center;color:var(--text-muted);padding:32px 0;display:none;">
+                Chưa có dữ liệu câu hỏi nào. Hãy chat thử để tạo thống kê!
+            </p>
+        </div>
+
+        <!-- ── Feedback Table ─────────────────────────────────────────── -->
+        <div class="data-panel" id="feedbackPanel">
+            <h3>💬 Phản hồi từ người dùng</h3>
+            <div id="feedbackTableWrap">
+                <p style="text-align:center;color:var(--text-muted);padding:24px 0;" id="feedbackEmpty">
+                    Chưa có phản hồi nào.
+                </p>
+            </div>
         </div>
     </div>
 

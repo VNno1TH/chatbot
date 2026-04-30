@@ -5,161 +5,292 @@
     "question": "Điểm chuẩn CNTT 2025 bao nhiêu?",
     "expected_intent": "A1",
     "ground_truth": "23.09",
-    "ground_truth_full": "Ngành Công nghệ thông tin (mã 7480201) năm 2025 có điểm chuẩn chung 23.09 điểm (thang 30)",
-    "difficulty": "easy"
+    "ground_truth_full": "Ngành Công nghệ thông tin (mã 7480201) năm 2025 điểm chuẩn chung 23.09 điểm (thang 30), áp dụng cho PT2, PT3, PT5",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.09"
+    ]
   },
   {
     "id": "A1_02",
     "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn ngành Kỹ thuật phần mềm năm 2024 PT3?",
+    "question": "Điểm chuẩn Điều khiển và tự động hóa năm 2025?",
     "expected_intent": "A1",
-    "ground_truth": "24.68",
-    "ground_truth_full": "Ngành Kỹ thuật phần mềm năm 2024 phương thức PT3 (thi THPT) có điểm chuẩn 24.68 điểm",
-    "difficulty": "medium"
+    "ground_truth": "26.27",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật điều khiển và tự động hóa (mã 7510303) năm 2025 điểm chuẩn 26.27 – cao nhất HaUI năm 2025",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.27"
+    ]
   },
   {
     "id": "A1_03",
     "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn Cơ điện tử 2025?",
+    "question": "dc cơ điện tử 2024 pt3?",
     "expected_intent": "A1",
-    "ground_truth": "25.17",
-    "ground_truth_full": "Ngành Công nghệ kỹ thuật cơ điện tử (mã 7510203) năm 2025 có điểm chuẩn 25.17 điểm",
-    "difficulty": "easy"
+    "ground_truth": "25.41",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật cơ điện tử năm 2024 theo PT3 (thi THPT): 25.41 điểm",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.41"
+    ]
   },
   {
     "id": "A1_04",
-    "category": "A1_hoc_phi",
-    "question": "Học phí K20 đại trà bao nhiêu?",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn ngành Hóa dược 2025 là bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "700000",
-    "ground_truth_full": "Học phí cử nhân K20 chương trình đại trà là 700.000 đồng/tín chỉ năm học 2025-2026",
-    "difficulty": "easy"
+    "ground_truth": "21.35",
+    "ground_truth_full": "Ngành Hóa dược (mã 7720203) năm 2025: điểm chuẩn 21.35 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "21.35"
+    ]
   },
   {
     "id": "A1_05",
-    "category": "A1_ktx",
-    "question": "Ký túc xá HaUI giá bao nhiêu?",
+    "category": "A1_diem_chuan",
+    "question": "Ngành Kỹ thuật phần mềm điểm chuẩn 2025 bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "280000-800000",
-    "ground_truth_full": "Giá KTX HaUI từ 280.000 đến 800.000 đ/người/tháng tùy loại phòng và cơ sở",
-    "difficulty": "easy"
+    "ground_truth": "21.75",
+    "ground_truth_full": "Ngành Kỹ thuật phần mềm (mã 7480103) năm 2025: điểm chuẩn chung 21.75 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "21.75"
+    ]
   },
   {
     "id": "A1_06",
-    "category": "A1_to_hop",
-    "question": "Ngành Ngôn ngữ Hàn Quốc thi tổ hợp gì?",
+    "category": "A1_hoc_phi",
+    "question": "Học phí K20 đại trà mỗi tín chỉ bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "D01, DD2",
-    "ground_truth_full": "Ngôn ngữ Hàn Quốc xét tuyển tổ hợp D01 (Toán-Văn-Anh) và DD2 (Toán-Văn-Tiếng Hàn)",
-    "difficulty": "easy"
+    "ground_truth": "700000",
+    "ground_truth_full": "Học phí cử nhân K20 chương trình đại trà: 700.000 đồng/tín chỉ, áp dụng từ năm học 2025-2026",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "700000"
+    ]
   },
   {
     "id": "A1_07",
-    "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn Marketing 2025?",
+    "category": "A1_hoc_phi",
+    "question": "Học phí ngành tiếng Anh (chương trình đào tạo bằng tiếng Anh) K20 bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "22.5",
-    "ground_truth_full": "Ngành Marketing (mã 7340115) năm 2025 điểm chuẩn chung 22.5 điểm",
-    "difficulty": "easy"
+    "ground_truth": "1000000",
+    "ground_truth_full": "Học phí cử nhân K20 chương trình đào tạo bằng tiếng Anh: 1.000.000 đồng/tín chỉ năm học 2025-2026",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "1000000"
+    ]
   },
   {
     "id": "A1_08",
-    "category": "A1_chi_tieu",
-    "question": "Chỉ tiêu ngành Cơ điện tử 2025?",
+    "category": "A1_ktx",
+    "question": "KTX phòng chất lượng cao 4 người giá bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "300",
-    "ground_truth_full": "Ngành Công nghệ kỹ thuật cơ điện tử chỉ tiêu 2025: 300 sinh viên",
-    "difficulty": "easy"
+    "ground_truth": "600000",
+    "ground_truth_full": "Phòng KTX chất lượng cao 4 người: 600.000 đồng/người/tháng (áp dụng cả CS1 và CS2)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "600000"
+    ]
   },
   {
     "id": "A1_09",
-    "category": "A1_diem_chuan",
-    "question": "dc cntt 2023 pt3?",
+    "category": "A1_to_hop",
+    "question": "Ngành Ngôn ngữ Hàn Quốc HaUI thi tổ hợp gì?",
     "expected_intent": "A1",
-    "ground_truth": "25.19",
-    "ground_truth_full": "CNTT 2023 PT3 (thi THPT): 25.19 điểm",
-    "difficulty": "medium"
+    "ground_truth": "D01, DD2",
+    "ground_truth_full": "Ngôn ngữ Hàn Quốc (7220210): tổ hợp D01 (Toán-Văn-Anh) và DD2 (Toán-Văn-Tiếng Hàn)",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "D01",
+      "DD2"
+    ]
   },
   {
     "id": "A1_10",
-    "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn ngành Thiết kế thời trang 2025?",
+    "category": "A1_to_hop",
+    "question": "Tổ hợp X06 gồm những môn gì?",
     "expected_intent": "A1",
-    "ground_truth": "20.75",
-    "ground_truth_full": "Điểm chuẩn ngành Thiết kế thời trang (mã 7210404) năm 2025 là 20.75 điểm",
-    "difficulty": "easy"
+    "ground_truth": "Toán, Tin học, Công nghệ",
+    "ground_truth_full": "Tổ hợp X06: Toán, Tin học, Công nghệ – dùng cho nhiều ngành kỹ thuật ở HaUI",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "Toán",
+      "Tin học",
+      "Công nghệ"
+    ]
   },
   {
     "id": "A1_11",
-    "category": "A2_to_hop",
-    "question": "Ngành nào thi Toán Lý Anh?",
-    "expected_intent": "A2",
-    "ground_truth": "tổ hợp A01",
-    "ground_truth_full": "Liệt kê tất cả ngành có tổ hợp A01 (Toán-Lý-Anh)",
-    "difficulty": "medium"
+    "category": "A1_chi_tieu",
+    "question": "Chỉ tiêu ngành Kỹ thuật phần mềm 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "240",
+    "ground_truth_full": "Ngành Kỹ thuật phần mềm (7480103) chỉ tiêu năm 2025: 240 sinh viên",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "240"
+    ]
   },
   {
     "id": "A1_12",
-    "category": "A1_gioi_thieu",
-    "question": "HaUI là trường gì?",
-    "expected_intent": "A1",
-    "ground_truth": "Đại học Công nghiệp Hà Nội",
-    "ground_truth_full": "Giới thiệu Trường Đại học Công nghiệp Hà Nội (HaUI, mã DCN), trực thuộc Bộ Công Thương",
-    "difficulty": "easy"
+    "category": "A1_chi_tieu",
+    "question": "Chỉ tiêu ĐH chính quy HaUI dự kiến 2026 là bao nhiêu?",
+    "expected_intent": "C",
+    "ground_truth": "8300",
+    "ground_truth_full": "Chỉ tiêu ĐH chính quy HaUI dự kiến 2026: 8.300 sinh viên (tổng tất cả hệ: 9.420)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "8300"
+    ]
   },
   {
     "id": "A1_13",
-    "category": "A1_quy_mo",
-    "question": "Hiện tại HaUI có bao nhiêu sinh viên đang học?",
+    "category": "A1_gioi_thieu",
+    "question": "HaUI có tỷ lệ sinh viên có việc làm sau tốt nghiệp bao nhiêu %?",
     "expected_intent": "A1",
-    "ground_truth": "32000-34000",
-    "ground_truth_full": "Tổng số sinh viên HaUI đang theo học khoảng 32.000-34.000 người, trong đó SV ĐH chính quy 25.447",
-    "difficulty": "easy"
+    "ground_truth": "92.14",
+    "ground_truth_full": "Tỷ lệ SV chính quy HaUI có việc làm sau 12 tháng tốt nghiệp: 92.14% (SV ĐH CQ: 92.78%; SV CĐ CQ: 90.61%)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "92.14"
+    ]
   },
   {
     "id": "A1_14",
     "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn Logistics HaUI 2025?",
+    "question": "Điểm chuẩn ngành Logistics 2025?",
     "expected_intent": "A1",
     "ground_truth": "22.76",
-    "ground_truth_full": "Ngành Logistics và quản lý chuỗi cung ứng (mã 7510605) năm 2025 điểm chuẩn 22.76 điểm",
-    "difficulty": "easy"
+    "ground_truth_full": "Ngành Logistics và quản lý chuỗi cung ứng (7510605) năm 2025: điểm chuẩn chung 22.76 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.76"
+    ]
   },
   {
     "id": "A1_15",
     "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn ngành Hóa dược 2025?",
+    "question": "Ngành Robot và TTNT điểm chuẩn 2024?",
     "expected_intent": "A1",
-    "ground_truth": "21.35",
-    "ground_truth_full": "Ngành Hóa dược (mã 7720203) năm 2025 điểm chuẩn 21.35 điểm",
-    "difficulty": "easy"
+    "ground_truth": "25.01",
+    "ground_truth_full": "Ngành Robot và trí tuệ nhân tạo (cũ mã 7510209) năm 2024 PT3: 25.01 điểm",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.01"
+    ]
   },
   {
     "id": "A1_16",
-    "category": "A1_diem_chuan",
-    "question": "Điểm chuẩn ngành Điều khiển và tự động hóa 2025?",
+    "category": "A1_hoc_phi",
+    "question": "Học phí Tiến sĩ HaUI một năm bao nhiêu?",
     "expected_intent": "A1",
-    "ground_truth": "26.27",
-    "ground_truth_full": "Ngành CNKT Điều khiển và tự động hóa (mã 7510303) năm 2025 điểm chuẩn 26.27 điểm – cao nhất HaUI",
-    "difficulty": "easy"
+    "ground_truth": "35000000",
+    "ground_truth_full": "Học phí chương trình Tiến sĩ HaUI: 35.000.000 đồng/năm (2025-2026)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "35000000"
+    ]
+  },
+  {
+    "id": "A1_17",
+    "category": "A1_ktx",
+    "question": "Phòng KTX tiêu chuẩn 6 người Cơ sở 2 giá bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "280000",
+    "ground_truth_full": "Phòng KTX tiêu chuẩn 6 người tại Cơ sở 2: 280.000 đồng/người/tháng",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "280000"
+    ]
+  },
+  {
+    "id": "A1_18",
+    "category": "A1_chi_tieu",
+    "question": "Ngành Công nghệ thông tin chỉ tiêu 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "360",
+    "ground_truth_full": "Ngành Công nghệ thông tin (7480201) chỉ tiêu 2025: 360 sinh viên",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "360"
+    ]
+  },
+  {
+    "id": "A1_19",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn ngành An toàn thông tin 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "23.43",
+    "ground_truth_full": "Ngành An toàn thông tin (74802021) năm 2025: điểm chuẩn chung 23.43 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.43"
+    ]
+  },
+  {
+    "id": "A1_20",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Khoa học máy tính 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "23.72",
+    "ground_truth_full": "Ngành Khoa học máy tính (7480101) năm 2025: điểm chuẩn chung 23.72 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.72"
+    ]
   },
   {
     "id": "A2_01",
     "category": "A2_nhom_nganh",
-    "question": "Điểm chuẩn tất cả các ngành CNTT 2025?",
+    "question": "Điểm chuẩn tất cả ngành CNTT HaUI 2025?",
     "expected_intent": "A2",
     "ground_truth": "bảng đầy đủ ngành CNTT",
-    "ground_truth_full": "Liệt kê bảng điểm chuẩn 2025 tất cả ngành nhóm CNTT (CNTT, KTPM, KHMT, HTTT, ATTT, ĐPTT, MMT, KTMT)",
-    "difficulty": "medium"
+    "ground_truth_full": "Bảng điểm chuẩn 2025 nhóm CNTT: CNTT(23.09), KTPM(21.75), KHMT(23.72), HTTT(21.10), ATTT(23.43), ĐPTT(22.25), MMT(21.70), KTMT(21.85), KHMT-TA(20.45), ATTT chung",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "23.09",
+      "21.75",
+      "23.72"
+    ]
   },
   {
     "id": "A2_02",
     "category": "A2_nhom_nganh",
-    "question": "Điểm chuẩn các ngành kinh tế HaUI 2025?",
+    "question": "Liệt kê các ngành Cơ khí HaUI và điểm chuẩn 2025?",
     "expected_intent": "A2",
-    "ground_truth": "bảng nhóm kinh tế",
-    "ground_truth_full": "Liệt kê bảng điểm chuẩn 2025 tất cả ngành nhóm Kinh tế",
-    "difficulty": "medium"
+    "ground_truth": "bảng nhóm cơ khí",
+    "ground_truth_full": "Nhóm Cơ khí 2025: CĐT(25.17), ĐK&TĐH(26.27), CNKT ô tô(22.50), CNKT cơ khí(23.72), Robot(24.30), CĐT ô tô(23.93), Điện-điện tử(23.93), ĐT-VT(22.75), Nhiệt(21.85), NLTT(20.75), KTSXTM(22.50), y sinh(20.60)...",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "25.17",
+      "26.27",
+      "22.50"
+    ]
   },
   {
     "id": "A2_03",
@@ -167,484 +298,2313 @@
     "question": "Ngành nào có điểm chuẩn cao nhất HaUI 2025?",
     "expected_intent": "A2",
     "ground_truth": "Điều khiển và tự động hóa 26.27",
-    "ground_truth_full": "Ngành có điểm chuẩn cao nhất 2025 là Công nghệ kỹ thuật điều khiển và tự động hóa (26.27)",
-    "difficulty": "medium"
+    "ground_truth_full": "Ngành có điểm chuẩn cao nhất 2025: Công nghệ kỹ thuật điều khiển và tự động hóa (26.27 điểm)",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "26.27",
+      "Điều",
+      "khiển",
+      "động"
+    ]
+  },
+  {
+    "id": "A2_04",
+    "category": "A2_ranking",
+    "question": "Top 5 ngành có điểm chuẩn cao nhất HaUI năm 2025?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng top 5 điểm chuẩn",
+    "ground_truth_full": "Top 5 ngành điểm cao nhất 2025: 1.ĐK&TĐH (26.27), 2.Cơ điện tử (25.17), 3.Robot&TTNT (24.30), 4.Cơ điện tử ô tô (23.93), 5.Điện-điện tử (23.93) / KHMT (23.72) / CNKT cơ khí (23.72)",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "26.27",
+      "25.17",
+      "24.30"
+    ]
+  },
+  {
+    "id": "A2_05",
+    "category": "A2_to_hop",
+    "question": "Những ngành nào ở HaUI có thể xét tổ hợp A00 (Toán-Lý-Hóa)?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách ngành A00",
+    "ground_truth_full": "Tổ hợp A00 dùng được cho nhóm CNTT (CNTT, KTPM, KHMT, HTTT, ATTT...) và Cơ khí (cơ điện tử, ô tô, điện...) và Hóa học (CN Hóa, Hóa dược, Môi trường, Thực phẩm)",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "A2_06",
+    "category": "A2_to_hop",
+    "question": "Ngành nào thi được bằng môn Tiếng Hàn trong tổ hợp?",
+    "expected_intent": "A2",
+    "ground_truth": "Ngôn ngữ Hàn Quốc, tổ hợp DD2",
+    "ground_truth_full": "Chỉ ngành Ngôn ngữ Hàn Quốc (7220210) có tổ hợp DD2 (Toán-Văn-Tiếng Hàn), không có ngành nào khác tại HaUI dùng Tiếng Hàn trong tổ hợp",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "Ngôn",
+      "Quốc"
+    ]
+  },
+  {
+    "id": "A2_07",
+    "category": "A2_chi_tieu",
+    "question": "Các ngành nào có chỉ tiêu lớn nhất ở HaUI 2025?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng top chỉ tiêu",
+    "ground_truth_full": "Top chỉ tiêu lớn nhất 2025: Kế toán (600), CNKT ô tô (360), CNTT (360), CNKT cơ khí (360), CNKT điện-điện tử (420), CNKT điện tử-viễn thông (480), QTKD (300), Cơ điện tử (300)",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "A2_08",
+    "category": "A2_phuong_thuc",
+    "question": "Các phương thức tuyển sinh HaUI 2025 là gì?",
+    "expected_intent": "A2",
+    "ground_truth": "5 phương thức",
+    "ground_truth_full": "HaUI 2025 có 5 phương thức: PT1 (xét thẳng), PT2 (HSG/chứng chỉ quốc tế + học bạ), PT3 (thi TN THPT), PT4 (ĐGNL ĐHQG HN), PT5 (ĐGTD ĐHBK HN). Tổng 7.990 chỉ tiêu, 62 mã ngành",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "PT1",
+      "PT2",
+      "PT3",
+      "PT4",
+      "PT5"
+    ]
+  },
+  {
+    "id": "A2_09",
+    "category": "A2_nhom_nganh",
+    "question": "HaUI có những ngành nào thuộc lĩnh vực du lịch?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách ngành du lịch",
+    "ground_truth_full": "Nhóm Du lịch HaUI: Du lịch (7810101), Du lịch TA, Quản trị dịch vụ du lịch và lữ hành (7810103), QT lữ hành TA, Quản trị khách sạn (7810201), QT khách sạn TA, Quản trị nhà hàng và DVAU (7810202), QT nhà hàng TA",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "A2_10",
+    "category": "A2_hoc_bong",
+    "question": "HaUI có những loại học bổng nào dành cho sinh viên?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách học bổng",
+    "ground_truth_full": "4 nhóm học bổng: 1.HB HaUI đầu vào (100% toàn khóa, 100% năm 1, 5tr/suất); 2.HB Khuyến khích học tập (theo kết quả kỳ: Xuất sắc/Giỏi/Khá); 3.HB Nguyễn Thanh Bình (hoàn cảnh khó khăn); 4.HB tài trợ doanh nghiệp",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "A2_11",
+    "category": "A2_nhom_nganh",
+    "question": "Các ngành nào ở HaUI có chương trình đào tạo bằng tiếng Anh?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách ngành tiếng Anh",
+    "ground_truth_full": "Chương trình TA: Khoa học máy tính-TA, CNKT cơ khí-TA, CNKT ô tô-TA, CNKT điện-điện tử-TA, CNKT ĐT-VT-TA, Kế toán-TA, Du lịch-TA, QT lữ hành-TA, QT khách sạn-TA, QT nhà hàng-TA; học phí 1.000.000đ/TC",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "1.000"
+    ]
+  },
+  {
+    "id": "A2_12",
+    "category": "A2_lich",
+    "question": "Lịch đăng ký dự tuyển PT2, PT4, PT5 năm 2026 là khi nào?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng lịch",
+    "ground_truth_full": "Lịch tuyển sinh 2026 (dự kiến): Đăng ký PT2/PT4/PT5 online: 15/5/2026 – 20/6/2026 tại xettuyen.haui.edu.vn; Công bố kết quả PT2/4/5: trước 17h00 ngày 10/7/2026; Nhập học online: 15/8 – 25/8/2026; Khai giảng HK1: từ 07/9/2026",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
     "id": "B1_01",
     "category": "B1_tinh_diem_thpt",
-    "question": "Em được Toán 8, Lý 7.5, Anh 7.25. KV2-NT. Tính điểm xét tuyển?",
+    "question": "Toán 8, Lý 7.5, Anh 7.25, KV2-NT. Tính điểm xét tuyển PT3?",
     "expected_intent": "B1",
     "ground_truth": "23.23",
-    "ground_truth_full": "Tổng 22.75; vì ≥22.5 nên ĐĐT=[(30-22.75)/7.5]×0.5=0.48; ĐXT=22.75+0.48=23.23",
-    "difficulty": "hard"
+    "ground_truth_full": "Tổng=22.75; ≥22.5→giảm dần; KV2-NT=0.50; ĐĐT=[(30-22.75)/7.5]×0.50=(7.25/7.5)×0.50=0.483≈0.48; ĐXT=22.75+0.48=23.23",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.23"
+    ]
   },
   {
     "id": "B1_02",
     "category": "B1_tinh_diem_thpt",
-    "question": "Tổng 22 điểm, KV1, tính điểm xét tuyển?",
+    "question": "Toán 9.0, Lý 8.5, Anh 8.0, KV2. Tính điểm xét tuyển PT3?",
     "expected_intent": "B1",
-    "ground_truth": "22.75",
-    "ground_truth_full": "Tổng 22.0 < 22.5 nên cộng thẳng: ĐXT = 22.0 + 0.75 = 22.75",
-    "difficulty": "medium"
+    "ground_truth": "25.65",
+    "ground_truth_full": "Tổng=25.5; ≥22.5→giảm dần; KV2=0.25; ĐĐT=[(30-25.5)/7.5]×0.25=0.6×0.25=0.15; ĐXT=25.5+0.15=25.65",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.65"
+    ]
   },
   {
     "id": "B1_03",
-    "category": "B1_quy_doi_hsa",
-    "question": "HSA 95 quy đổi bao nhiêu điểm?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Tổng 22 điểm, KV1, tính điểm xét tuyển?",
     "expected_intent": "B1",
-    "ground_truth": "23.50",
-    "ground_truth_full": "HSA 95 quy đổi thang 30 = 23.50 điểm (tra bảng chính xác, không nội suy)",
-    "difficulty": "medium"
+    "ground_truth": "22.75",
+    "ground_truth_full": "Tổng=22.0 < 22.5 → cộng thẳng; KV1=0.75; ĐXT=22.0+0.75=22.75",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.75"
+    ]
   },
   {
     "id": "B1_04",
-    "category": "B1_quy_doi_hsa",
-    "question": "HSA 93 quy đổi thang 30?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Toán 7.5, Lý 7.0, Anh 7.5, KV1, ĐT02 (thương binh). Tính ĐXT?",
     "expected_intent": "B1",
-    "ground_truth": "23.01",
-    "ground_truth_full": "HSA 93 quy đổi = 23.01 (tra bảng, KHÔNG nội suy)",
-    "difficulty": "hard"
+    "ground_truth": "24.75",
+    "ground_truth_full": "Tổng=22.0; < 22.5→cộng thẳng; KV1=0.75; ĐT02 thuộc UT1=2.00; tổng ưu tiên=2.75; ĐXT=22.0+2.75=24.75",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "24.75"
+    ]
   },
   {
     "id": "B1_05",
-    "category": "B1_tinh_hoc_phi",
-    "question": "Tính học phí 3 tín chỉ lý thuyết K20 đại trà?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Toán 8.5, Vật lý 8.0, Anh 8.5 tổng 25 điểm, KV1, ĐT05 (con thương binh dưới 81%). Tính ĐXT?",
     "expected_intent": "B1",
-    "ground_truth": "3150000",
-    "ground_truth_full": "HP = 3 × 1.5 × 700.000 = 3.150.000 đồng (lý thuyết hệ số 1.5 cho K20)",
-    "difficulty": "medium"
+    "ground_truth": "26.17",
+    "ground_truth_full": "Tổng=25.0; ≥22.5→giảm dần; KV1=0.75; ĐT05 thuộc UT2=1.00; tổng mức ưu tiên=1.75; ĐĐT=[(30-25)/7.5]×1.75=(5/7.5)×1.75=0.6667×1.75=1.167≈1.17; ĐXT=25.0+1.17=26.17",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.17"
+    ]
   },
   {
     "id": "B1_06",
-    "category": "B1_quy_doi_tsa",
-    "question": "TSA 58 điểm quy đổi bao nhiêu?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Tổng 27 điểm, KV1. Tính điểm xét tuyển?",
     "expected_intent": "B1",
-    "ground_truth": "24.75",
-    "ground_truth_full": "TSA 58.00-58.99 → 24.75 điểm (tra bảng)",
-    "difficulty": "medium"
+    "ground_truth": "27.30",
+    "ground_truth_full": "Tổng=27.0; ≥22.5→giảm dần; KV1=0.75; ĐĐT=[(30-27)/7.5]×0.75=(3/7.5)×0.75=0.4×0.75=0.30; ĐXT=27.0+0.30=27.30",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "27.30"
+    ]
   },
   {
     "id": "B1_07",
-    "category": "B1_tinh_diem_pt2",
-    "question": "TB Toán 8.5, TB Lý 8.0, TB Anh 8.2, IELTS 6.0. Tính điểm PT2?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Toán 7, Lý 6.5, Anh 7 (tổng 20.5), KV2-NT, ĐT01 (dân tộc thiểu số KV1). Tính ĐXT?",
     "expected_intent": "B1",
-    "ground_truth": "25.97",
-    "ground_truth_full": "ĐKQHT=(8.5+8.0+8.2)/3=8.233; IELTS 6.0→ĐQĐCC=9.5; ĐXT=8.233×2+9.5=25.97",
-    "difficulty": "hard"
+    "ground_truth": "23.00",
+    "ground_truth_full": "Tổng=20.5; < 22.5→cộng thẳng; KV2-NT=0.50; ĐT01 thuộc UT1=2.00; tổng ưu tiên=2.50; ĐXT=20.5+2.50=23.00",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.00"
+    ]
   },
   {
     "id": "B1_08",
-    "category": "B1_quy_doi_kqhb",
-    "question": "Điểm học bạ trung bình môn Toán 9.2 thì quy đổi thang 10 bằng bao nhiêu?",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Toán 8.0, Văn 7.5, Anh 8.0 (tổng 23.5), KV3. Tính điểm xét tuyển PT3?",
     "expected_intent": "B1",
-    "ground_truth": "8.25",
-    "ground_truth_full": "TB học bạ môn Toán 9.20-9.29 quy đổi = 8.25 (tra bảng KQHB)",
-    "difficulty": "medium"
+    "ground_truth": "23.50",
+    "ground_truth_full": "Tổng=23.5; KV3=0 điểm ưu tiên; ĐXT=23.5+0=23.50 (không có ưu tiên khu vực/đối tượng)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.50"
+    ]
   },
   {
     "id": "B1_09",
-    "category": "B1_tinh_diem_pt2",
-    "question": "PT2: TB Toán 9.0, TB Lý 8.5, TB Anh 8.0, giải Ba HSG Toán tỉnh. Tính điểm xét tuyển?",
+    "category": "B1_quy_doi_hsa",
+    "question": "Điểm ĐGNL HSA 95 điểm quy đổi bao nhiêu?",
     "expected_intent": "B1",
-    "ground_truth": "26.00",
-    "ground_truth_full": "ĐKQHT=(9.0+8.5+8.0)/3=8.5; Giải Ba→ĐQĐCC=9.00; ĐXT=8.5×2+9.00=26.00",
-    "difficulty": "hard"
+    "ground_truth": "23.50",
+    "ground_truth_full": "HSA 95 → quy đổi thang 30 = 23.50 điểm (tra bảng chính xác HaUI, KHÔNG nội suy)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.50"
+    ]
   },
   {
     "id": "B1_10",
-    "category": "B1_tinh_diem_thpt",
-    "question": "Tổng 25 điểm, ĐT01 (thương binh), KV3. Tính điểm xét tuyển?",
+    "category": "B1_quy_doi_hsa",
+    "question": "HSA 91 quy đổi thang 30?",
     "expected_intent": "B1",
-    "ground_truth": "26.33",
-    "ground_truth_full": "ĐT01 thuộc UT1 (+2.0), KV3 (+0); 25≥22.5 nên ĐĐT=[(30-25)/7.5]×2.0=1.33; ĐXT=25+1.33=26.33... Chờ: (5/7.5)×2=1.333→26.33",
-    "difficulty": "hard"
+    "ground_truth": "22.75",
+    "ground_truth_full": "HSA 91 → 22.75 điểm (tra bảng HaUI, lưu ý 90→22.70 và 91→22.75 không nội suy đều)",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.75"
+    ]
   },
   {
-    "id": "B2_01",
-    "category": "B2_tu_van",
-    "question": "Em thi A01 được 24.5 điểm, KV3, thích mảng điện tử và tự động hóa. Gợi ý ngành?",
-    "expected_intent": "B2",
-    "ground_truth": "bảng gợi ý ngành",
-    "ground_truth_full": "ĐXT=24.50; gợi ý Robot&TTNT (vừa sức), Cơ điện tử ô tô (an toàn), Điện tử-VT (an toàn)",
-    "difficulty": "hard"
+    "id": "B1_11",
+    "category": "B1_quy_doi_hsa",
+    "question": "HSA 110 điểm quy đổi về thang THPT là bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "25.75",
+    "ground_truth_full": "HSA 110 → 25.75 điểm (bảng quy đổi HaUI thang 30)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.75"
+    ]
   },
   {
-    "id": "B2_02",
-    "category": "B2_tu_van",
-    "question": "23 điểm tổ hợp A00, gợi ý ngành nào đỗ?",
-    "expected_intent": "B2",
-    "ground_truth": "bảng gợi ý",
-    "ground_truth_full": "Gợi ý các ngành có ĐC 2025 ≤ 23 + 2.0 với tổ hợp A00",
-    "difficulty": "hard"
+    "id": "B1_12",
+    "category": "B1_quy_doi_hsa",
+    "question": "Em thi ĐGNL được 120 điểm, quy đổi được bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "27.05",
+    "ground_truth_full": "HSA 120 → 27.05 điểm (theo bảng quy đổi chính xác HaUI; 119→27.00, 120→27.05 có bước nhảy nhỏ)",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "27.05"
+    ]
+  },
+  {
+    "id": "B1_13",
+    "category": "B1_quy_doi_tsa",
+    "question": "Điểm ĐGTD (TSA) 58 điểm quy đổi bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "24.75",
+    "ground_truth_full": "TSA 58.00-58.99 → 24.75 điểm (tra bảng TSA HaUI)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "24.75"
+    ]
+  },
+  {
+    "id": "B1_14",
+    "category": "B1_quy_doi_tsa",
+    "question": "TSA 65.5 điểm quy đổi thang 30 là bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "26.75",
+    "ground_truth_full": "TSA 65.00-65.99 → 26.75 điểm (bảng quy đổi TSA HaUI; 65.5 nằm trong khoảng 65.00-65.99)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.75"
+    ]
+  },
+  {
+    "id": "B1_15",
+    "category": "B1_quy_doi_tsa",
+    "question": "Em thi ĐGTD được 80 điểm. Quy đổi được bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "29.00",
+    "ground_truth_full": "TSA 80.00-82.99 → 29.00 điểm (bảng TSA HaUI; điểm cao nhất dưới 85 là 29.00)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "29.00"
+    ]
+  },
+  {
+    "id": "B1_16",
+    "category": "B1_tinh_hoc_phi",
+    "question": "K20 đại trà, học phần 3 tín chỉ lý thuyết. Tính học phí?",
+    "expected_intent": "B1",
+    "ground_truth": "3150000",
+    "ground_truth_full": "HP = 3TC × hệ số 1.5 (LT) × 700.000đ = 3 × 1.5 × 700.000 = 3.150.000 đồng",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "3150000"
+    ]
+  },
+  {
+    "id": "B1_17",
+    "category": "B1_tinh_hoc_phi",
+    "question": "K20 tiếng Anh, học phần 4 tín chỉ thực hành chuyên sâu. Học phí bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "10000000",
+    "ground_truth_full": "HP = 4TC × hệ số 2.5 (TH chuyên sâu) × 1.000.000đ = 4 × 2.5 × 1.000.000 = 10.000.000 đồng",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "10000000"
+    ]
+  },
+  {
+    "id": "B1_18",
+    "category": "B1_tinh_hoc_phi",
+    "question": "Học phần Giáo dục thể chất K20 2 tín chỉ. Học phí bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "1400000",
+    "ground_truth_full": "GDTC/QPAN K20: hệ số 1.0; HP = 2TC × 1.0 × 700.000đ = 1.400.000 đồng",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "1400000"
+    ]
+  },
+  {
+    "id": "B1_19",
+    "category": "B1_tinh_hoc_phi",
+    "question": "K20 đại trà, học phần 3TC lý thuyết + 2TC thực hành thí nghiệm. Tổng học phí?",
+    "expected_intent": "B1",
+    "ground_truth": "5250000",
+    "ground_truth_full": "LT: 3×1.5×700.000=3.150.000; TN (không chuyên sâu): 2×1.5×700.000=2.100.000; Tổng=5.250.000 đồng",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "5250000"
+    ]
+  },
+  {
+    "id": "B1_20",
+    "category": "B1_tinh_hoc_phi",
+    "question": "K19, học phần Ngoại ngữ 3 tín chỉ. Học phí tính thế nào?",
+    "expected_intent": "B1",
+    "ground_truth": "2475000",
+    "ground_truth_full": "K19 Ngoại ngữ: N_TCHP = số TC × 1.5; HP = 3 × 1.5 × 550.000đ = 2.475.000 đồng",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "2475000"
+    ]
+  },
+  {
+    "id": "B1_21",
+    "category": "B1_quy_doi_hb",
+    "question": "Điểm TB học bạ môn Toán 9.3, tính điểm quy đổi KQHB là bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "8.75",
+    "ground_truth_full": "KQHB 9.30-9.39 → quy đổi = 8.75 điểm (thang 10, theo bảng quy đổi kết quả học bạ HaUI)",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "8.75"
+    ]
+  },
+  {
+    "id": "B1_22",
+    "category": "B1_quy_doi_hb",
+    "question": "Điểm TB học bạ 3 năm môn Tiếng Anh là 9.4. KQHB quy đổi bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "9.26",
+    "ground_truth_full": "KQHB 9.40-9.49 → 9.26 điểm (bảng KQHB; lưu ý các mức khác nhau rõ rệt: 9.30→8.75, 9.40→9.26)",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "9.26"
+    ]
+  },
+  {
+    "id": "B1_23",
+    "category": "B1_tinh_diem_pt2",
+    "question": "PT2: điểm TB học bạ Toán/Văn/Anh lần lượt là 9.0/8.5/9.4, chứng chỉ IELTS 6.5, KV3. Tính ĐXT?",
+    "expected_intent": "B1",
+    "ground_truth": "25.36",
+    "ground_truth_full": "KQHB: Toán9.0→7.23, Văn8.5→6.55, Anh9.4→9.26; ĐKQHT=(7.23+6.55+9.26)/3=7.68; ĐQĐCC(IELTS≥6.5)=10.00; ĐXT=7.68×2+10.00=15.36+10.00=25.36; KV3=0 điểm ưu tiên; ĐXT cuối=25.36",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.36"
+    ]
+  },
+  {
+    "id": "B1_24",
+    "category": "B1_tinh_diem_pt2",
+    "question": "PT2: TB học bạ D01 Toán 8.3/Văn 8.5/Anh 9.2, IELTS 6.0, KV2-NT. Tính ĐXT?",
+    "expected_intent": "B1",
+    "ground_truth": "24.07",
+    "ground_truth_full": "KQHB: Toán8.3→6.42, Văn8.5→6.55, Anh9.2→8.25; ĐKQHT=(6.42+6.55+8.25)/3=7.07; ĐQĐCC(IELTS6.0)=9.50; ĐXT base=7.07×2+9.50=14.14+9.50=23.64; KV2-NT=0.50; ≥22.5→giảm dần: ĐĐT=[(30-23.64)/7.5]×0.50=(6.36/7.5)×0.50=0.848×0.50=0.42; ĐXT=23.64+0.42=24.06≈24.07",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "24.07"
+    ]
+  },
+  {
+    "id": "B1_25",
+    "category": "B1_tinh_diem_pt2",
+    "question": "PT2: điểm TB học bạ Toán 9.5/Văn 9.2/Anh 9.0, Giải Nhì HSG tỉnh môn Văn, KV2. Tính ĐXT PT2?",
+    "expected_intent": "B1",
+    "ground_truth": "26.31",
+    "ground_truth_full": "KQHB: Toán9.5→9.55, Văn9.2→8.25, Anh9.0→7.23; ĐKQHT=(9.55+8.25+7.23)/3=8.34; ĐQĐCC(Giải Nhì HSG tỉnh)=9.50; ĐXT base=8.34×2+9.50=16.68+9.50=26.18; KV2=0.25; ≥22.5→giảm dần: ĐĐT=[(30-26.18)/7.5]×0.25=(3.82/7.5)×0.25=0.509×0.25=0.13; ĐXT=26.18+0.13=26.31",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.31"
+    ]
+  },
+  {
+    "id": "B1_26",
+    "category": "B1_hsa_uu_tien",
+    "question": "ĐGNL HSA 100 điểm, KV2-NT, không có đối tượng. Tính ĐXT PT4?",
+    "expected_intent": "B1",
+    "ground_truth": "24.63",
+    "ground_truth_full": "HSA100→24.25; ≥22.5→giảm dần; KV2-NT=0.50; ĐĐT=[(30-24.25)/7.5]×0.50=(5.75/7.5)×0.50=0.383≈0.38; ĐXT=24.25+0.38=24.63",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "24.63"
+    ]
+  },
+  {
+    "id": "B1_27",
+    "category": "B1_hsa_uu_tien",
+    "question": "HSA 115, KV1, tính điểm xét tuyển PT4?",
+    "expected_intent": "B1",
+    "ground_truth": "26.85",
+    "ground_truth_full": "HSA115→26.50; ≥22.5→giảm dần; KV1=0.75; ĐĐT=[(30-26.50)/7.5]×0.75=(3.5/7.5)×0.75=0.4667×0.75=0.35; ĐXT=26.50+0.35=26.85",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.85"
+    ]
+  },
+  {
+    "id": "B1_28",
+    "category": "B1_tsa_uu_tien",
+    "question": "TSA 57, KV2. Tính điểm xét tuyển PT5?",
+    "expected_intent": "B1",
+    "ground_truth": "24.68",
+    "ground_truth_full": "TSA57.xx→24.50; ≥22.5→giảm dần; KV2=0.25; ĐĐT=[(30-24.50)/7.5]×0.25=0.7333×0.25=0.183≈0.18; ĐXT=24.50+0.18=24.68",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "24.68"
+    ]
+  },
+  {
+    "id": "B1_29",
+    "category": "B1_edge_tinh_diem",
+    "question": "Tổng điểm 3 môn là 22.5 điểm chính xác, KV2. Tính ĐXT?",
+    "expected_intent": "B1",
+    "ground_truth": "22.75",
+    "ground_truth_full": "Tổng=22.5: đúng ngưỡng ≥22.5 → áp dụng giảm dần; KV2=0.25; ĐĐT=[(30-22.5)/7.5]×0.25=(7.5/7.5)×0.25=1.0×0.25=0.25; ĐXT=22.5+0.25=22.75. Đây là điểm biên quan trọng: bằng đúng 22.5 vẫn áp dụng giảm dần (≥ không phải >)",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.75"
+    ]
+  },
+  {
+    "id": "B1_30",
+    "category": "B1_edge_tinh_diem",
+    "question": "Tổng 31 điểm 3 môn, KV1. Tính điểm xét tuyển?",
+    "expected_intent": "B1",
+    "ground_truth": "lỗi input",
+    "ground_truth_full": "Phát hiện tổng 31 > 30 (thang 30 tối đa 30 điểm). Dữ liệu đầu vào không hợp lệ, cảnh báo và yêu cầu kiểm tra lại điểm từng môn",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không hợp lệ"
+    ]
   },
   {
     "id": "C_01",
-    "category": "C_thu_tuc",
-    "question": "Cách đăng ký xét tuyển bằng điểm ĐGTD?",
+    "category": "C_dieu_kien_pt2",
+    "question": "IELTS bao nhiêu điểm thì đủ điều kiện đăng ký PT2 HaUI?",
     "expected_intent": "C",
-    "ground_truth": "6 bước đăng ký",
-    "ground_truth_full": "Bước 1-6: đăng ký tài khoản, upload giấy tờ, nhập điểm ĐGTD, chọn ngành, nộp lệ phí 50.000đ",
-    "difficulty": "medium"
+    "ground_truth": "IELTS Academic ≥ 5.5",
+    "ground_truth_full": "PT2 yêu cầu: IELTS Academic ≥ 5.5 (còn hiệu lực tại thời điểm kết thúc đăng ký) HOẶC giải HSG cấp tỉnh; kết hợp TB từng môn trong tổ hợp xét tuyển ≥ 7.0; tốt nghiệp THPT 2025",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "5.5",
+      "IELTS"
+    ]
   },
   {
     "id": "C_02",
-    "category": "C_hoc_bong",
-    "question": "Điều kiện để được học bổng khuyến khích học tập?",
+    "category": "C_dieu_kien_pt2",
+    "question": "Thí sinh có JLPT N4, muốn xét PT2 ngành Ngôn ngữ Nhật, có đủ điều kiện không?",
     "expected_intent": "C",
-    "ground_truth": "TBC ≥ 2.5, rèn luyện Tốt, không HP < 2.0, ≥ 15 TC",
-    "ground_truth_full": "4 điều kiện đồng thời: TBC ≥ 2.5, rèn luyện Tốt trở lên, không có HP nào < 2.0, ≥ 15 tín chỉ",
-    "difficulty": "medium"
+    "ground_truth": "đủ điều kiện chứng chỉ",
+    "ground_truth_full": "JLPT N4 đủ điều kiện PT2 thông thường (N4→ĐQĐCC=9.00). Cần thêm: TB từng môn trong tổ hợp D01 hoặc D06 ≥7.0, và tốt nghiệp THPT 2025. Lưu ý: LK 2+2 Trung Quốc yêu cầu JLPT ≥ N3 nhưng ngành Nhật không có LK 2+2",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "đủ điều kiện"
+    ]
   },
   {
     "id": "C_03",
-    "category": "C_lich",
-    "question": "Lịch tuyển sinh HaUI năm 2026?",
+    "category": "C_dieu_kien_thi_tu_do",
+    "question": "Thí sinh tốt nghiệp THPT năm 2024, có thi ĐGTD 2025, có được đăng ký PT5 không?",
     "expected_intent": "C",
-    "ground_truth": "bảng lịch 2026",
-    "ground_truth_full": "Lịch tuyển sinh 2026 với các mốc thời gian: đăng ký PT2,4,5 từ 15/5-20/6, khai giảng 07/9/2026",
-    "difficulty": "easy"
+    "ground_truth": "không được",
+    "ground_truth_full": "Theo quy định 2025: thí sinh tốt nghiệp THPT trước năm 2025 KHÔNG được đăng ký PT2, PT4, PT5. Chỉ được xét bằng PT1 (nếu đủ điều kiện thẳng) hoặc PT3 (thi lại cùng lớp 12 năm 2025)",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "không được"
+    ]
   },
   {
     "id": "C_04",
-    "category": "C_chi_tieu",
-    "question": "HaUI tuyển bao nhiêu sinh viên năm 2026?",
+    "category": "C_quy_trinh_dang_ky",
+    "question": "Sau khi đăng ký dự tuyển trên hệ thống HaUI, có cần nộp hồ sơ bản cứng không?",
     "expected_intent": "C",
-    "ground_truth": "9420",
-    "ground_truth_full": "Tổng chỉ tiêu 2026: 9.420 (ĐH CQ 8.300, từ xa 750, liên thông 250, KS bậc 7: 120)",
-    "difficulty": "easy"
+    "ground_truth": "không cần",
+    "ground_truth_full": "Không. Thí sinh KHÔNG cần nộp hồ sơ bản cứng khi đăng ký dự tuyển. Chỉ nộp hồ sơ bản cứng khi TRÚNG TUYỂN và được giấy báo nhập học",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "không cần",
+      "bản cứng"
+    ]
   },
   {
     "id": "C_05",
-    "category": "C_phuong_thuc",
-    "question": "Phương thức xét tuyển HaUI gồm những gì?",
+    "category": "C_hoc_bong_dau_vao",
+    "question": "Điều kiện nhận học bổng toàn khóa HaUI đầu vào là gì?",
     "expected_intent": "C",
-    "ground_truth": "5 phương thức PT1-PT5",
-    "ground_truth_full": "5 PT: PT1 (tuyển thẳng), PT2 (HSG+CC quốc tế), PT3 (thi THPT), PT4 (học bạ+ĐGNL), PT5 (ĐGTD BKHN)",
-    "difficulty": "easy"
+    "ground_truth": "thủ khoa tổ hợp/phương thức hoặc giải quốc gia",
+    "ground_truth_full": "HB toàn khóa: (1) Giải Nhất/Nhì/Ba HSG quốc gia/quốc tế hoặc KHKT quốc gia/quốc tế do Bộ GD tổ chức (≤3 năm); (2) Giải tay nghề ASEAN/quốc tế do Bộ LĐTBXH; (3) Thủ khoa 4 nhóm tổ hợp A00/A01/D01/(B00,C00,D04,D06,D07,D14,DD2); (4) Thủ khoa PT2/PT4/PT5",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "toàn khóa",
+      "100%"
+    ]
   },
   {
     "id": "C_06",
-    "category": "C_ktx",
-    "question": "Phòng KTX chất lượng cao 4 người giá bao nhiêu?",
-    "expected_intent": "A1",
-    "ground_truth": "600000",
-    "ground_truth_full": "Phòng KTX chất lượng cao 4 người: 600.000 đ/người/tháng (áp dụng cả CS1 và CS2)",
-    "difficulty": "easy"
+    "category": "C_hoc_bong_kkht",
+    "question": "Điều kiện xét học bổng KKHT tại HaUI là gì?",
+    "expected_intent": "C",
+    "ground_truth": "TBC ≥ 2.5, rèn luyện Tốt, không HP < 2.0, ≥ 15TC",
+    "ground_truth_full": "Điều kiện xét KKHT: (1) TBC học kỳ ≥ 2.5 (tín chỉ); (2) Rèn luyện Tốt trở lên (≥80đ); (3) Không có học phần < 2.0; (4) Tổng TC xét ≥ 15TC (HK cuối ≥ 7TC); (5) Không đang nhận HB HaUI cùng kỳ",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "2.5",
+      "Tốt",
+      "15"
+    ]
   },
   {
     "id": "C_07",
-    "category": "C_thu_tuc",
-    "question": "Hồ sơ nhập học HaUI gồm những gì?",
+    "category": "C_hoc_bong_kkht_xep_loai",
+    "question": "GPA kỳ 3.65 (Xuất sắc), rèn luyện 92 điểm (Xuất sắc), không có HP < 2.0, 17TC. Được KKHT loại gì?",
     "expected_intent": "C",
-    "ground_truth": "danh sách giấy tờ nhập học",
-    "ground_truth_full": "Hồ sơ nhập học: GCN tốt nghiệp THPT, học bạ, giấy khai sinh, giấy NVQS (nam), thẻ Vietinbank",
-    "difficulty": "medium"
+    "ground_truth": "KKHT Xuất sắc",
+    "ground_truth_full": "GPA 3.65 thuộc Xuất sắc (3.60-4.0); rèn luyện 92đ thuộc Xuất sắc (90-100đ); theo bảng: Xuất sắc + Xuất sắc = KKHT Xuất sắc. Đủ điều kiện ≥15TC và không HP<2.0",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "Xuất sắc"
+    ]
   },
   {
     "id": "C_08",
-    "category": "C_hoc_phi",
-    "question": "Cách tính học phí HaUI?",
+    "category": "C_hoc_bong_kkht_xep_loai",
+    "question": "GPA kỳ 3.35 (Giỏi), rèn luyện 85 điểm (Tốt), không có HP dưới 2.0, 16TC. Được KKHT loại gì?",
     "expected_intent": "C",
-    "ground_truth": "HP = N_TCHP × H_LHP × ĐG",
-    "ground_truth_full": "Công thức HP = N_TCHP × H_LHP × ĐG; hệ số tín chỉ theo nhóm học phần (LT=1.5, TH chuyên sâu=2.5, TDQP=1.0)",
-    "difficulty": "medium"
+    "ground_truth": "KKHT Giỏi",
+    "ground_truth_full": "GPA 3.35 thuộc Giỏi (3.20-3.59); rèn luyện 85đ thuộc Tốt (80-89đ); theo bảng: Giỏi + Tốt = KKHT Giỏi (cả Giỏi+XS và Giỏi+Tốt đều xếp Giỏi)",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "Giỏi"
+    ]
   },
   {
     "id": "C_09",
-    "category": "C_faq",
-    "question": "Sau khi đăng ký dự tuyển có cần gửi hồ sơ bản cứng không?",
+    "category": "C_hoc_bong_kkht_khong_du",
+    "question": "GPA kỳ 2.45, rèn luyện Tốt (82đ), 16TC. Có được xét KKHT không?",
     "expected_intent": "C",
-    "ground_truth": "không",
-    "ground_truth_full": "Không cần gửi hồ sơ bản cứng khi đăng ký dự tuyển; chỉ nộp khi trúng tuyển và nhập học",
-    "difficulty": "easy"
+    "ground_truth": "không đủ điều kiện",
+    "ground_truth_full": "KHÔNG đủ điều kiện KKHT. GPA 2.45 < ngưỡng tối thiểu 2.50 (thang 4). Cần đồng thời đạt TBC ≥ 2.5 + rèn luyện Tốt + không HP<2.0 + ≥15TC",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
   },
   {
     "id": "C_10",
-    "category": "C_hoc_bong",
-    "question": "HaUI có những loại học bổng nào?",
+    "category": "C_hoc_bong_kkht_khong_du",
+    "question": "GPA 2.85, rèn luyện Tốt (83đ), không có HP nào dưới 2.0, nhưng học kỳ này chỉ có 14 tín chỉ. Có được KKHT không?",
     "expected_intent": "C",
-    "ground_truth": "danh sách học bổng",
-    "ground_truth_full": "4 nhóm: HB HaUI (đầu vào), HB KKHT (học kỳ), HB Nguyễn Thanh Bình (khó khăn), HB tài trợ doanh nghiệp",
-    "difficulty": "medium"
+    "ground_truth": "không đủ điều kiện",
+    "ground_truth_full": "KHÔNG đủ. GPA và rèn luyện thỏa mãn nhưng tổng TC = 14 < 15 (yêu cầu ≥15TC trong kỳ học thông thường). Chỉ kỳ học CUỐI mới chấp nhận ≥7TC",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
   },
   {
     "id": "C_11",
-    "category": "C_van_bang",
-    "question": "HaUI cấp bằng gì khi tốt nghiệp?",
+    "category": "C_hoc_bong_kkht_khong_du",
+    "question": "GPA 2.70, rèn luyện 76 điểm, 18TC, không có HP < 2.0. Có KKHT không?",
     "expected_intent": "C",
-    "ground_truth": "bằng cử nhân, bằng kỹ sư",
-    "ground_truth_full": "Bằng cử nhân (4 năm); có thể học tiếp lấy bằng kỹ sư; có thể học 2 bằng đồng thời từ năm 2",
-    "difficulty": "easy"
+    "ground_truth": "không đủ điều kiện",
+    "ground_truth_full": "KHÔNG đủ. Rèn luyện 76đ < 80đ (chưa đạt Tốt – cần ≥80đ để được xét KKHT dù GPA và TC thỏa mãn)",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
   },
   {
     "id": "C_12",
-    "category": "C_lich",
-    "question": "Thời gian đăng ký xét tuyển PT2, PT4, PT5 năm 2026 là khi nào?",
+    "category": "C_quy_trinh_nhap_hoc",
+    "question": "Sau khi trúng tuyển, sinh viên cần làm gì để nhập học?",
     "expected_intent": "C",
-    "ground_truth": "15/5/2026 – 20/6/2026",
-    "ground_truth_full": "Đăng ký trực tuyến PT2, PT4, PT5 tại xettuyen.haui.edu.vn từ 15/5/2026 đến 20/6/2026",
-    "difficulty": "medium"
+    "ground_truth": "3 bước",
+    "ground_truth_full": "3 bước chính: B1-Nhập học trực tuyến (app MyHaUI hoặc nhaphoc.haui.edu.vn, nộp học phí qua QR BIDV/Lộc Phát); B2-Cập nhật thông tin cá nhân trên sv.haui.edu.vn; B3-Tham gia tuần sinh hoạt công dân và thực hiện kế hoạch học tập. Ngoài ra nộp hồ sơ bản cứng theo lịch trường",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "bước"
+    ]
   },
   {
     "id": "C_13",
-    "category": "C_uu_tien",
-    "question": "Đối tượng nào thuộc nhóm ưu tiên UT1?",
+    "category": "C_mien_giam_hoc_phi",
+    "question": "Sinh viên là người dân tộc thiểu số, thuộc vùng đặc biệt khó khăn, có được miễn giảm học phí không?",
     "expected_intent": "C",
-    "ground_truth": "đối tượng 01, 02, 03 cộng 2.0 điểm",
-    "ground_truth_full": "UT1 gồm ĐT01 (DTTS+KV1), ĐT02 (thương binh/quân nhân xuất ngũ), ĐT03 (thân nhân liệt sĩ/anh hùng) → cộng 2.0 điểm",
-    "difficulty": "medium"
+    "ground_truth": "được miễn giảm",
+    "ground_truth_full": "Sinh viên dân tộc thiểu số (không phải rất ít người) vùng đặc biệt khó khăn hoặc có giấy chứng nhận hộ nghèo/cận nghèo 2025 được miễn giảm học phí. Cần nộp: Giấy xác nhận vùng + Giấy CN hộ nghèo/cận nghèo + CT07 thông tin cư trú + bản sao Khai sinh",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "được",
+      "miễn",
+      "giảm"
+    ]
   },
   {
     "id": "C_14",
-    "category": "C_uu_tien",
-    "question": "Người khuyết tật nặng được cộng mấy điểm ưu tiên?",
+    "category": "C_chuong_trinh_lien_ket",
+    "question": "Chương trình liên kết 2+2 Ngôn ngữ Trung Quốc có gì đặc biệt?",
     "expected_intent": "C",
-    "ground_truth": "1.0 điểm (UT2)",
-    "ground_truth_full": "Người khuyết tật nặng (có giấy xác nhận) thuộc ĐT06, nhóm UT2, được cộng +1.0 điểm ưu tiên",
-    "difficulty": "medium"
+    "ground_truth": "2 bằng, 2 năm HaUI + 2 năm Quảng Tây",
+    "ground_truth_full": "LK 2+2: 2 năm tại HaUI + 2 năm tại ĐH Khoa học Kỹ thuật Quảng Tây (Trung Quốc); tốt nghiệp nhận 2 bằng (cử nhân HaUI + cử nhân Hán ngữ đối ngoại Quảng Tây); thí sinh không đạt bậc 4 khung 6 bậc tiếng TQ sẽ được bồi dưỡng trước khi học chính khóa",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "bằng",
+      "HaUI",
+      "Quảng"
+    ]
   },
   {
     "id": "C_15",
-    "category": "C_thu_tuc",
-    "question": "Mở thẻ sinh viên HaUI cần chuẩn bị gì?",
+    "category": "C_van_bang",
+    "question": "Sinh viên tốt nghiệp HaUI nhận bằng gì? Có học thêm để lấy bằng kỹ sư không?",
     "expected_intent": "C",
-    "ground_truth": "thẻ tích hợp Vietinbank",
-    "ground_truth_full": "Thẻ SV tích hợp ATM Vietinbank: thỏa thuận mở TK, bản sao CCCD, xác nhận thuê bao chính chủ (nhắn TTTB SốCCCD gửi 1414)",
-    "difficulty": "medium"
-  },
-  {
-    "id": "C_16",
-    "category": "C_hoc_bong",
-    "question": "Điều kiện để được học bổng HaUI toàn khóa học?",
-    "expected_intent": "C",
-    "ground_truth": "thủ khoa tổ hợp hoặc phương thức",
-    "ground_truth_full": "HB toàn khóa: thủ khoa 4 nhóm tổ hợp (A00, A01, D01, B00/C00...) hoặc thủ khoa PT2, PT4, PT5; hoặc HSG quốc gia/quốc tế",
-    "difficulty": "medium"
-  },
-  {
-    "id": "C_17",
-    "category": "C_ktx",
-    "question": "Phòng KTX tiêu chuẩn 6 người ở Cơ sở 1 giá bao nhiêu mỗi tháng?",
-    "expected_intent": "A1",
-    "ground_truth": "310000",
-    "ground_truth_full": "Phòng KTX tiêu chuẩn 6 người tại Cơ sở 1: 310.000 đồng/người/tháng",
-    "difficulty": "easy"
-  },
-  {
-    "id": "C_18",
-    "category": "C_hoc_phi",
-    "question": "Học phí Thạc sĩ HaUI bao nhiêu?",
-    "expected_intent": "A1",
-    "ground_truth": "900000",
-    "ground_truth_full": "Học phí chương trình Thạc sĩ HaUI: 900.000 đồng/tín chỉ (năm học 2025-2026)",
-    "difficulty": "easy"
+    "ground_truth": "bằng cử nhân",
+    "ground_truth_full": "Chuẩn đầu ra là bằng Cử nhân (4 năm). Sau khi tốt nghiệp, SV có thể dự tuyển chương trình đào tạo chuyên sâu đặc thù để lấy bằng Kỹ sư (bậc 7, chỉ tiêu 2026: 120 SV). SV năm 1 xong cũng có thể đăng ký học 2 chương trình cùng lúc để nhận 2 bằng",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "bằng",
+      "nhân"
+    ]
   },
   {
     "id": "D_01",
-    "category": "D_so_sanh",
-    "question": "So sánh Robot & TTNT và CNTT khác nhau gì?",
+    "category": "D_so_sanh_nganh",
+    "question": "Sự khác nhau giữa Robot & TTNT và Cơ điện tử HaUI?",
     "expected_intent": "D",
-    "ground_truth": "bảng so sánh Robot vs CNTT",
-    "ground_truth_full": "So sánh: Robot&TTNT (mã 75102032, CK-ÔTô, AI/phần cứng) vs CNTT (7480201, CNTT&TT, phần mềm); ĐC, tổ hợp, việc làm",
-    "difficulty": "medium"
+    "ground_truth": "bảng so sánh Robot vs Cơ điện tử",
+    "ground_truth_full": "Cơ điện tử (7510203, 300CT, ĐC2025=25.17): tích hợp cơ-điện-tử tổng quát, lập trình PLC/robot công nghiệp; Robot&TTNT (75102032, 60CT, ĐC2025=24.30): chuyên sâu AI/ML, thị giác máy tính, xe tự hành; Cơ điện tử hướng manufacturing, Robot hướng AI+hardware",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "25.17",
+      "24.30"
+    ]
   },
   {
     "id": "D_02",
-    "category": "D_so_sanh",
-    "question": "PT3 và PT5 khác nhau thế nào?",
+    "category": "D_so_sanh_nganh",
+    "question": "CNTT và Kỹ thuật phần mềm khác nhau thế nào?",
     "expected_intent": "D",
-    "ground_truth": "bảng so sánh PT3 vs PT5",
-    "ground_truth_full": "PT3 dùng điểm thi TN THPT (thang 30); PT5 dùng điểm ĐGTD ĐHBK Hà Nội quy đổi về thang 30",
-    "difficulty": "medium"
+    "ground_truth": "bảng so sánh CNTT vs KTPM",
+    "ground_truth_full": "CNTT (7480201, 360CT, 23.09): tổng quát, gồm cả quản trị hệ thống, cơ sở dữ liệu, AI ứng dụng; KTPM (7480103, 240CT, 21.75): chuyên phát triển phần mềm, Agile/Scrum, DevOps, full-stack; CNTT rộng hơn, KTPM chuyên sâu phần mềm hơn",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "23.09",
+      "21.75"
+    ]
   },
   {
     "id": "D_03",
-    "category": "D_so_sanh",
-    "question": "Kỹ thuật phần mềm và Khoa học máy tính khác nhau như thế nào?",
+    "category": "D_so_sanh_phuong_thuc",
+    "question": "PT3 và PT5 khác nhau gì và cách tính điểm ra sao?",
     "expected_intent": "D",
-    "ground_truth": "bảng so sánh 2 ngành",
-    "ground_truth_full": "KTPM (7480103, 240 CT, nghiêng phát triển PM) vs KHMT (7480101, 160 CT, nghiêng lý thuyết & AI/data)",
-    "difficulty": "medium"
+    "ground_truth": "bảng so sánh PT3 vs PT5",
+    "ground_truth_full": "PT3: dùng điểm thi TN THPT (thang 30 = tổng 3 môn); PT5: dùng điểm ĐGTD ĐHBK HN (thang 100) quy đổi về thang 30 theo bảng HaUI, điểm 85+ → 30 điểm. PT3 áp dụng trực tiếp, PT5 cần quy đổi trước",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "D_04",
+    "category": "D_so_sanh_ktx",
+    "question": "So sánh giá phòng KTX chất lượng cao và tiêu chuẩn tại HaUI?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh KTX CLCao vs Tiêu chuẩn",
+    "ground_truth_full": "CLCao: có điều hòa; giá 3ng=800k, 4ng=600k, 6ng=400k; Tiêu chuẩn: không điều hòa; CS1: 4ng=465k, 6ng=310k; CS2: 4ng=420k, 6ng=280k. Tất cả có WC riêng, khép kín, ≥30m²",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "D_05",
+    "category": "D_so_sanh_hoc_phi",
+    "question": "So sánh học phí K20 đại trà, K20 tiếng Anh và K19 HaUI?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh học phí K20 vs K19",
+    "ground_truth_full": "K20 đại trà: 700.000đ/TC; K20 Tiếng Anh: 1.000.000đ/TC (+43%); K19: 550.000đ/TC; K18 trở về: 495.000đ/TC. Cùng công thức N_TCHP nhưng đơn giá khác nhau. K20 TA đắt hơn K20 đại trà 300.000đ/TC",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "700.000",
+      "1.000",
+      "550.000"
+    ]
+  },
+  {
+    "id": "D_06",
+    "category": "D_so_sanh_nganh",
+    "question": "Ngành Ngôn ngữ Trung Quốc và Trung Quốc học khác nhau thế nào?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh Ngôn ngữ TQ vs TQ học",
+    "ground_truth_full": "Ngôn ngữ TQ (7220204, 100CT, 23.00): thiên về ngôn ngữ học, dịch thuật, giảng dạy; Trung Quốc học (7310612, 50CT, 21.55): thiên về nghiên cứu văn hóa-chính trị-kinh tế TQ, quan hệ Việt-Trung; TQ học mang tính học thuật-khu vực học hơn",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "23.00",
+      "21.55"
+    ]
+  },
+  {
+    "id": "D_07",
+    "category": "D_so_sanh_nganh",
+    "question": "Công nghệ kỹ thuật ô tô và Cơ điện tử ô tô khác nhau gì?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh ô tô vs cơ điện tử ô tô",
+    "ground_truth_full": "CNKT ô tô (7510205, 360CT, 22.50): tổng quát kỹ thuật ô tô, động cơ đốt trong, bảo trì sửa chữa; CĐT ô tô (75102033, 60CT, 23.93): chuyên hệ thống điện tử tích hợp, ECU, ADAS, xe điện/hybrid; CĐT ô tô có điểm chuẩn cao hơn và thiên về điện tử hơn",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "22.50",
+      "23.93"
+    ]
+  },
+  {
+    "id": "D_08",
+    "category": "D_so_sanh_nganh",
+    "question": "Du lịch và Quản trị dịch vụ du lịch lữ hành khác nhau thế nào?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh Du lịch vs QT lữ hành",
+    "ground_truth_full": "Du lịch (7810101, 140CT, 21.85): nền tảng rộng, phát triển sản phẩm, hướng dẫn viên, marketing; QT dịch vụ DL-lữ hành (7810103, 130CT, 22.25): thiên về quản lý điều hành tour, vận hành dịch vụ, quản trị chuỗi; QTLH điểm chuẩn cao hơn một chút, thiên thực hành quản lý hơn",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "21.85",
+      "22.25"
+    ]
+  },
+  {
+    "id": "D_09",
+    "category": "D_so_sanh_phuong_thuc",
+    "question": "So sánh học bổng dành cho thủ khoa PT2 và thủ khoa nhóm tổ hợp A01?",
+    "expected_intent": "D",
+    "ground_truth": "cùng loại học bổng toàn khóa",
+    "ground_truth_full": "Cả thủ khoa PT2 (HSG/CC quốc tế) và thủ khoa nhóm tổ hợp A01 (THPT) đều được nhận HB HaUI TOÀN KHÓA = 100% học phí toàn khóa học. Không có sự phân biệt giữa các nguồn thủ khoa về giá trị học bổng",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "cùng",
+      "loại",
+      "bổng"
+    ]
+  },
+  {
+    "id": "D_10",
+    "category": "D_so_sanh_nganh",
+    "question": "Kỹ thuật phần mềm và Khoa học máy tính nên chọn ngành nào nếu muốn làm AI?",
+    "expected_intent": "D",
+    "ground_truth": "bảng so sánh KTPM vs KHMT cho AI",
+    "ground_truth_full": "KHMT (7480101, 120CT, 23.72): mạnh về lý thuyết AI, thuật toán, học máy, nghiên cứu; KTPM (7480103, 240CT, 21.75): mạnh về ứng dụng AI vào sản phẩm phần mềm, MLOps. Muốn nghiên cứu AI học thuật → KHMT; Muốn triển khai AI sản phẩm → KTPM. ĐC KHMT cao hơn KTPM",
+    "difficulty": "hard",
+    "eval_type": "semantic",
+    "key_facts": [
+      "23.72",
+      "21.75"
+    ]
   },
   {
     "id": "E_01",
     "category": "E_chao_hoi",
-    "question": "Xin chào",
+    "question": "Xin chào em ơi, cho mình hỏi về HaUI!",
     "expected_intent": "E",
     "ground_truth": "lời chào",
-    "ground_truth_full": "Phản hồi thân thiện, giới thiệu chatbot tư vấn tuyển sinh HaUI, mời hỏi thêm",
-    "difficulty": "easy"
+    "ground_truth_full": "Phản hồi thân thiện, giới thiệu chatbot tư vấn tuyển sinh HaUI, sẵn sàng hỗ trợ thông tin tuyển sinh, ngành học, điểm chuẩn, học phí…",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
     "id": "E_02",
     "category": "E_cam_on",
-    "question": "Cảm ơn em nhé",
+    "question": "Cảm ơn bạn đã tư vấn!",
     "expected_intent": "E",
     "ground_truth": "lời cảm ơn",
-    "ground_truth_full": "Phản hồi lịch sự, mời hỏi thêm thông tin tuyển sinh",
-    "difficulty": "easy"
+    "ground_truth_full": "Phản hồi lịch sự, mời tiếp tục hỏi nếu cần thêm thông tin tuyển sinh HaUI",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "E_03",
+    "category": "E_chao_hoi",
+    "question": "Tư vấn giúp mình với ạ, mình đang không biết nên chọn ngành nào",
+    "expected_intent": "E",
+    "ground_truth": "lời chào",
+    "ground_truth_full": "Phản hồi thân thiện, hỏi thêm về sở thích/năng lực để tư vấn ngành phù hợp, giới thiệu bản thân là chatbot tuyển sinh HaUI",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
     "id": "F_01",
     "category": "F_ngoai_pham_vi",
-    "question": "Điểm chuẩn trường Bách khoa Hà Nội?",
+    "question": "Điểm chuẩn Đại học Bách khoa Hà Nội năm 2025 là bao nhiêu?",
     "expected_intent": "F",
     "ground_truth": "từ chối lịch sự",
-    "ground_truth_full": "Từ chối lịch sự, chỉ tư vấn thông tin tuyển sinh HaUI",
-    "difficulty": "easy"
+    "ground_truth_full": "Từ chối lịch sự, chatbot chỉ tư vấn thông tin tuyển sinh Đại học Công nghiệp Hà Nội (HaUI). Gợi ý truy cập website của Bách Khoa nếu cần",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
     "id": "F_02",
     "category": "F_ngoai_pham_vi",
-    "question": "Dự báo thời tiết Hà Nội ngày mai?",
+    "question": "Dự báo thời tiết Hà Nội ngày mai thế nào?",
     "expected_intent": "F",
     "ground_truth": "từ chối, ngoài phạm vi",
-    "ground_truth_full": "Câu hỏi không liên quan tuyển sinh HaUI, từ chối lịch sự và hướng về chủ đề tuyển sinh",
-    "difficulty": "easy"
+    "ground_truth_full": "Câu hỏi không liên quan đến tuyển sinh HaUI. Từ chối lịch sự và hướng về chủ đề tuyển sinh",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
-    "id": "MAJOR_01",
-    "category": "MAJOR_viec_lam",
-    "question": "Ngành Kỹ thuật phần mềm ra trường có thể làm gì?",
-    "expected_intent": "A1",
-    "ground_truth": "lập trình viên, kỹ sư phần mềm, DevOps",
-    "ground_truth_full": "KTV phần mềm: Lập trình viên, Kỹ sư phần mềm, QA/QC, DevOps, quản lý dự án, kiến trúc sư giải pháp",
-    "difficulty": "easy"
+    "id": "F_03",
+    "category": "F_ngoai_pham_vi",
+    "question": "Học phí đại học FPT bao nhiêu?",
+    "expected_intent": "F",
+    "ground_truth": "từ chối lịch sự",
+    "ground_truth_full": "Chatbot chỉ tư vấn thông tin HaUI. Từ chối, hướng đến các câu hỏi về HaUI",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
-    "id": "MAJOR_02",
-    "category": "MAJOR_nganh_hoc",
-    "question": "Ngành Robot và trí tuệ nhân tạo HaUI học gì, tổ hợp nào, chỉ tiêu bao nhiêu?",
-    "expected_intent": "A1",
-    "ground_truth": "A00, A01, X06, X07; 60 chỉ tiêu",
-    "ground_truth_full": "Robot&TTNT (75102032): học AI, học máy, điều khiển robot, ROS; tổ hợp A00/A01/X06/X07; chỉ tiêu 60",
-    "difficulty": "medium"
+    "id": "F_04",
+    "category": "F_ngoai_pham_vi",
+    "question": "ChatGPT có thể giải toán không?",
+    "expected_intent": "F",
+    "ground_truth": "từ chối, ngoài phạm vi",
+    "ground_truth_full": "Câu hỏi không liên quan đến tuyển sinh HaUI. Từ chối lịch sự",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
-    "id": "MAJOR_03",
-    "category": "MAJOR_to_hop",
-    "question": "Ngành Ngôn ngữ Nhật thi tổ hợp gì và lấy bao nhiêu chỉ tiêu?",
-    "expected_intent": "A1",
-    "ground_truth": "D01, D06; 70 chỉ tiêu",
-    "ground_truth_full": "Ngôn ngữ Nhật (7220209): tổ hợp D01 (Toán-Văn-Anh) và D06 (Toán-Văn-Nhật); 70 chỉ tiêu",
-    "difficulty": "easy"
-  },
-  {
-    "id": "MAJOR_04",
-    "category": "MAJOR_dieu_kien",
-    "question": "IELTS bao nhiêu thì đủ điều kiện xét tuyển PT2?",
-    "expected_intent": "C",
-    "ground_truth": "IELTS Academic ≥ 5.5",
-    "ground_truth_full": "PT2 yêu cầu IELTS Academic ≥ 5.5 (còn hiệu lực) kết hợp TB từng môn trong tổ hợp ≥ 7.0",
-    "difficulty": "easy"
-  },
-  {
-    "id": "MAJOR_05",
-    "category": "MAJOR_to_hop",
-    "question": "Ngành Logistics và quản lý chuỗi cung ứng thi tổ hợp gì?",
-    "expected_intent": "A1",
-    "ground_truth": "A01, D01, X25",
-    "ground_truth_full": "Logistics (7510605): tổ hợp A01 (Toán-Lý-Anh), D01 (Toán-Văn-Anh), X25 (Toán-Anh-GDKTPL)",
-    "difficulty": "easy"
-  },
-  {
-    "id": "EDGE_01",
-    "category": "edge_case",
-    "question": "Điểm chuẩn CNTT 2026?",
-    "expected_intent": "A1",
-    "ground_truth": "chưa công bố",
-    "ground_truth_full": "Điểm chuẩn 2026 chưa công bố, tham khảo 2025: 23.09; nên theo dõi tuyensinh.haui.edu.vn",
-    "difficulty": "medium"
-  },
-  {
-    "id": "EDGE_02",
-    "category": "edge_case",
-    "question": "Tổng 31 điểm 3 môn, KV1, tính điểm?",
-    "expected_intent": "B1",
-    "ground_truth": "lỗi input",
-    "ground_truth_full": "Phát hiện tổng > 30 điểm (thang 30 tối đa 30), cảnh báo lỗi đầu vào không hợp lệ",
-    "difficulty": "hard"
-  },
-  {
-    "id": "EDGE_03",
-    "category": "edge_case",
-    "question": "Ngành hóa học HaUI có gì?",
-    "expected_intent": "A1",
-    "ground_truth": "Công nghệ kỹ thuật hóa học",
-    "ground_truth_full": "HaUI có ngành Công nghệ kỹ thuật hóa học (7510401, 210 CT, tổ hợp A00/B00/C02/D07)",
-    "difficulty": "medium"
-  },
-  {
-    "id": "EDGE_04",
-    "category": "edge_case",
-    "question": "HSA 91 quy đổi bao nhiêu?",
-    "expected_intent": "B1",
-    "ground_truth": "22.75",
-    "ground_truth_full": "HSA 91 → 22.75 (tra bảng chính xác, không nội suy tuyến tính)",
-    "difficulty": "hard"
-  },
-  {
-    "id": "EDGE_05",
-    "category": "edge_case",
-    "question": "Thí sinh tự do tốt nghiệp 2024 có được xét PT5 không?",
-    "expected_intent": "C",
-    "ground_truth": "không được",
-    "ground_truth_full": "Thí sinh tốt nghiệp THPT trước 2025 (năm 2026) không được đăng ký PT2, PT4, PT5; chỉ dùng PT1 hoặc PT3",
-    "difficulty": "medium"
-  },
-  {
-    "id": "EDGE_06",
-    "category": "edge_case",
-    "question": "Chương trình liên kết 2+2 Ngôn ngữ Trung Quốc có gì đặc biệt?",
-    "expected_intent": "A1",
-    "ground_truth": "2 bằng, 2 năm HaUI + 2 năm Quảng Tây",
-    "ground_truth_full": "LK 2+2: 2 năm tại HaUI + 2 năm tại ĐH KH Kỹ thuật Quảng Tây; nhận 2 bằng cử nhân (HaUI + ĐH Quảng Tây)",
-    "difficulty": "medium"
-  },
-  {
-    "id": "EDGE_07",
-    "category": "edge_case",
-    "question": "Điều kiện tối thiểu để đăng ký PT2?",
-    "expected_intent": "C",
-    "ground_truth": "giải HSG tỉnh hoặc CC quốc tế + TB môn ≥ 7.0",
-    "ground_truth_full": "PT2: tốt nghiệp THPT 2025 + (Giải HSG cấp tỉnh HOẶC CC quốc tế còn HH) + TB từng môn trong TH ≥ 7.0",
-    "difficulty": "medium"
-  },
-  {
-    "id": "EDGE_08",
-    "category": "edge_case",
-    "question": "Tỷ lệ sinh viên HaUI có việc làm sau tốt nghiệp là bao nhiêu?",
-    "expected_intent": "A1",
-    "ground_truth": "92.14",
-    "ground_truth_full": "Tỷ lệ SV chính quy có việc làm sau 12 tháng tốt nghiệp: 92.14% (SV ĐH CQ: 92.78%)",
-    "difficulty": "easy"
+    "id": "F_05",
+    "category": "F_ngoai_pham_vi",
+    "question": "Cho mình xin code python giải phương trình bậc 2?",
+    "expected_intent": "F",
+    "ground_truth": "từ chối, ngoài phạm vi",
+    "ground_truth_full": "Câu hỏi về lập trình không thuộc phạm vi tư vấn tuyển sinh HaUI. Từ chối và hướng về thông tin tuyển sinh",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
   },
   {
     "id": "MULTI_01",
-    "category": "multi_step",
-    "question": "Em được HSA 95, KV1. Tính điểm rồi cho em biết có đỗ CNTT không?",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Em được HSA 95, KV1. Tính điểm rồi cho em biết có đỗ CNTT HaUI 2025 không?",
     "expected_intent": "B1",
     "ground_truth": "đỗ CNTT",
-    "ground_truth_full": "HSA 95→23.50; KV1+0.75; 23.50≥22.5 nên ĐĐT=[(30-23.50)/7.5]×0.75=0.65; ĐXT=24.15; ĐC CNTT 2025=23.09 → ĐỖ",
-    "difficulty": "hard"
+    "ground_truth_full": "B1:HSA95→23.50; B2:≥22.5→giảm dần; KV1=0.75; ĐĐT=[(30-23.50)/7.5]×0.75=(6.5/7.5)×0.75=0.8667×0.75=0.65; B3:ĐXT=23.50+0.65=24.15; B4:ĐC CNTT2025=23.09; 24.15>23.09 → ĐỖ",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "CNTT"
+    ]
   },
   {
     "id": "MULTI_02",
-    "category": "multi_step",
-    "question": "Cách tính học phí học phần 4 tín chỉ thực hành chuyên sâu K20 tiếng Anh?",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Toán 8, Vật lý 8, Anh 8 (tổng 24), KV2-NT. Có đủ điểm vào Cơ điện tử HaUI 2025 không?",
     "expected_intent": "B1",
-    "ground_truth": "10000000",
-    "ground_truth_full": "HP = 4 × 2.5 × 1.000.000 = 10.000.000 đồng (TH chuyên sâu hệ số 2.5; K20 TA đơn giá 1.000.000đ/TC)",
-    "difficulty": "hard"
+    "ground_truth": "trượt Cơ điện tử",
+    "ground_truth_full": "Tổng=24; ≥22.5→giảm dần; KV2-NT=0.50; ĐĐT=[(30-24)/7.5]×0.50=(6/7.5)×0.50=0.8×0.50=0.40; ĐXT=24.40; ĐC Cơ điện tử 2025=25.17; 24.40<25.17 → TRƯỢT. Thiếu khoảng 0.77 điểm",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
   },
   {
     "id": "MULTI_03",
-    "category": "multi_step",
-    "question": "Tổng 24 điểm, KV2-NT, ĐT 04. Tính điểm rồi xem có đỗ Cơ điện tử không?",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "TSA 65.5, KV2. Tính điểm rồi xem có đỗ ngành Điều khiển tự động hóa không?",
     "expected_intent": "B1",
-    "ground_truth": "đỗ (vừa đủ)",
-    "ground_truth_full": "24≥22.5; KV2-NT+UT2(ĐT04)→ĐĐT=[(30-24)/7.5]×1.5=1.2; ĐXT=25.2; ĐC Cơ điện tử 2025=25.17 → VỪA ĐỖ",
-    "difficulty": "hard"
+    "ground_truth": "đỗ ĐK&TĐH",
+    "ground_truth_full": "TSA65.5→khoảng 65.00-65.99→26.75; ≥22.5→giảm dần; KV2=0.25; ĐĐT=[(30-26.75)/7.5]×0.25=(3.25/7.5)×0.25=0.433×0.25=0.11; ĐXT=26.75+0.11=26.86; ĐC ĐK&TĐH 2025=26.27; 26.86>26.27 → ĐỖ (câu hỏi trong đề hỏi dưới dạng mặc định 'trượt' để test khả năng tính đúng của bot)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "ĐK&TĐH"
+    ]
+  },
+  {
+    "id": "MULTI_04",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "TSA 57, KV2. Có đỗ Cơ điện tử HaUI không?",
+    "expected_intent": "B1",
+    "ground_truth": "trượt Cơ điện tử",
+    "ground_truth_full": "TSA57.xx→24.50; ≥22.5→giảm dần; KV2=0.25; ĐĐT=[(30-24.50)/7.5]×0.25=0.7333×0.25=0.18; ĐXT=24.50+0.18=24.68; ĐC Cơ điện tử 2025=25.17; 24.68<25.17 → TRƯỢT (thiếu 0.49đ)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "MULTI_05",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "HSA 110, KV1, ĐT01 (dân tộc thiểu số). Tính điểm và có đỗ Cơ điện tử không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ Cơ điện tử",
+    "ground_truth_full": "HSA110→25.75; ≥22.5→giảm dần; KV1=0.75, ĐT01 thuộc UT1=2.00, tổng=2.75; ĐĐT=[(30-25.75)/7.5]×2.75=(4.25/7.5)×2.75=0.5667×2.75=1.558≈1.56; ĐXT=25.75+1.56=27.31; ĐC CĐT2025=25.17 → ĐỖ",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "Cơ"
+    ]
+  },
+  {
+    "id": "MULTI_06",
+    "category": "multi_hoc_phi_tong",
+    "question": "K20 đại trà, 1 kỳ học 30TC (20TC lý thuyết + 8TC TH thường + 2TC GDTC). Tính tổng học phí kỳ đó?",
+    "expected_intent": "B1",
+    "ground_truth": "30800000",
+    "ground_truth_full": "K20 đại trà: LT(20TC×1.5×700k)=21.000.000; TH thường(8TC×1.5×700k)=8.400.000; GDTC(2TC×1.0×700k)=1.400.000; Tổng HP kỳ=21.000.000+8.400.000+1.400.000=30.800.000 đồng. Lưu ý: hóa đơn đầu kỳ thường chỉ thu 1 phần (ví dụ 7tr đặt cọc), phần còn lại thu sau",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "30800000"
+    ]
+  },
+  {
+    "id": "MULTI_07",
+    "category": "multi_hoc_phi_tong",
+    "question": "Học phần Cơ sở dữ liệu K20 đại trà: 3TC lý thuyết + 1TC thực hành chuyên sâu (lab). Tổng học phí?",
+    "expected_intent": "B1",
+    "ground_truth": "4900000",
+    "ground_truth_full": "LT(hệ số 1.5): 3×1.5×700k=3.150.000; TH chuyên sâu(hệ số 2.5): 1×2.5×700k=1.750.000; Tổng=3.150.000+1.750.000=4.900.000 đồng",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "4900000"
+    ]
+  },
+  {
+    "id": "MULTI_08",
+    "category": "multi_kt_tong_chi_phi",
+    "question": "SV ở KTX chất lượng cao phòng 4 người, học K20 đại trà 15TC lý thuyết. Tổng chi phí 1 tháng (KTX + học phí chia đều)?",
+    "expected_intent": "B1",
+    "ground_truth": "bảng gợi ý",
+    "ground_truth_full": "KTX CLCao 4ng: 600.000đ/tháng; HP 15TC LT K20: 15×1.5×700.000=15.750.000đ/kỳ; chia 4 tháng học=3.937.500đ/tháng; Tổng chi học phí+KTX≈4.537.500đ/tháng (chưa tính sinh hoạt, điện nước thực tế)",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "600.000",
+      "KTX"
+    ]
+  },
+  {
+    "id": "MULTI_09",
+    "category": "multi_xet_nhieu_nganh",
+    "question": "Em điểm A01 là Toán 8.5, Lý 8.0, Anh 8.5 (tổng 25), KV3. Có đỗ vào các ngành nào của HaUI?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ nhiều ngành CNTT và Cơ khí",
+    "ground_truth_full": "ĐXT=25.0 (KV3=0, không cộng); So với ĐC 2025: đỗ CNTT(23.09), KTPM(21.75), KHMT(23.72), HTTT(21.10), MMT(21.70), KTMT(21.85), ATTT(23.43), CNKT cơ khí(23.72), Điện-điện tử(23.93), Robot&TTNT(24.30); TRƯỢT: CĐT(25.17), ĐK&TĐH(26.27)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "nhiều"
+    ]
+  },
+  {
+    "id": "MULTI_10",
+    "category": "multi_xet_nhieu_nganh",
+    "question": "Em có điểm D01: Toán 7, Văn 7.5, Anh 7.5 (tổng 22), KV2. Có thể vào ngành kinh tế nào ở HaUI?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ một số ngành kinh tế",
+    "ground_truth_full": "Tổng=22; KV2=0.25; < 22.5→cộng thẳng; ĐXT=22.25; ĐC ngành kinh tế 2025: đỗ Kế toán(20.00), Kiểm toán(20.00), QT văn phòng(20.00), QTKD(20.25), Tài chính-NH(20.75), PTTDKD(20.00), QT nhân lực(21.25), KT đầu tư(21.25); TRƯỢT: Marketing(22.50), Logistics(22.76)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "một"
+    ]
+  },
+  {
+    "id": "MULTI_11",
+    "category": "multi_hoc_bong_ket_luan",
+    "question": "SV thủ khoa nhóm A01 toàn trường được học bổng gì và giá trị bao nhiêu?",
+    "expected_intent": "C",
+    "ground_truth": "học bổng toàn khóa 100% học phí",
+    "ground_truth_full": "Thủ khoa nhóm A01 (tổ hợp A01 - Toán-Lý-Anh) được nhận HB HaUI toàn khóa = miễn 100% học phí toàn bộ khóa học (điều kiện duy trì: TBC kỳ ≥2.5, rèn luyện Tốt, ≥15TC mỗi kỳ)",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "bổng",
+      "toàn",
+      "khóa"
+    ]
+  },
+  {
+    "id": "MULTI_12",
+    "category": "multi_dieu_kien_hoc_bong",
+    "question": "GPA 3.60 (Xuất sắc), rèn luyện 91đ (Xuất sắc), 16TC, đang nhận HB HaUI. Có thêm được KKHT không?",
+    "expected_intent": "C",
+    "ground_truth": "không được xét KKHT đồng thời",
+    "ground_truth_full": "KHÔNG. Quy định KKHT: không xét cho SV đang nhận HB HaUI cùng học kỳ. Dù đủ điều kiện GPA/rèn luyện/TC, SV đang nhận HB HaUI sẽ không được xét KKHT cùng kỳ đó",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "MULTI_13",
+    "category": "multi_kiem_tra_dieu_kien",
+    "question": "Em có IELTS 6.0 và điểm TB lớp 10,11,12 môn Toán là 8.5, Văn 7.2, Anh 9.0. Đăng ký PT2 ngành CNTT có đủ điều kiện không?",
+    "expected_intent": "C",
+    "ground_truth": "đủ điều kiện PT2",
+    "ground_truth_full": "Đủ: IELTS 6.0 ≥ 5.5 ✓; TB Toán 8.5 ≥ 7.0 ✓, TB Văn 7.2 ≥ 7.0 ✓, TB Anh 9.0 ≥ 7.0 ✓; CNTT tổ hợp D01 (Toán-Văn-Anh). Cần tốt nghiệp THPT 2025 ✓. Tất cả điều kiện đã đáp ứng để đăng ký PT2",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "điều",
+      "kiện"
+    ]
+  },
+  {
+    "id": "MULTI_14",
+    "category": "multi_kiem_tra_dieu_kien",
+    "question": "Em có IELTS 6.5, TB môn Vật lý học bạ là 6.8. Đăng ký PT2 tổ hợp A01 (Toán-Lý-Anh) được không?",
+    "expected_intent": "C",
+    "ground_truth": "không đủ điều kiện PT2",
+    "ground_truth_full": "KHÔNG đủ. Dù IELTS 6.5 ≥ 5.5 nhưng TB môn Vật lý = 6.8 < 7.0 (yêu cầu TB từng môn trong tổ hợp ≥ 7.0). Thiếu điều kiện về kết quả học tập. Cần cải thiện điểm Vật lý lên ≥ 7.0",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "MULTI_15",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Tổng 24 điểm, KV2-NT, đối tượng 04 (quân nhân xuất ngũ UT2). Tính ĐXT rồi xem có đỗ Robot & TTNT không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ Robot",
+    "ground_truth_full": "Tổng=24; ≥22.5→giảm dần; KV2-NT=0.50, ĐT04 thuộc UT2=1.00, tổng ưu tiên=1.50; ĐĐT=[(30-24)/7.5]×1.50=(6/7.5)×1.50=0.80×1.50=1.20; ĐXT=24+1.20=25.20; ĐC Robot 2025=24.30; 25.20>24.30 → ĐỖ",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "Robot"
+    ]
+  },
+  {
+    "id": "MULTI_16",
+    "category": "multi_lich_tuyen_sinh",
+    "question": "Hiện tại là tháng 6 năm 2026, thí sinh còn có thể đăng ký PT2 không?",
+    "expected_intent": "C",
+    "ground_truth": "có thể đăng ký nếu trước 20/6/2026",
+    "ground_truth_full": "Theo lịch tuyển sinh 2026 (dự kiến): đăng ký PT2/PT4/PT5 từ 15/5 đến 20/6/2026. Nếu hiện tại là đầu tháng 6/2026, thí sinh vẫn còn thời gian đăng ký. Cần kiểm tra ngày chính xác với deadline 20/6/2026 lúc 17h00",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "đăng",
+      "trước"
+    ]
+  },
+  {
+    "id": "MULTI_17",
+    "category": "multi_tinh_diem_hsa_nganh",
+    "question": "Em được HSA 93, KV3. Có đỗ ngành Điều khiển tự động hóa 2025 không?",
+    "expected_intent": "B1",
+    "ground_truth": "trượt ĐK&TĐH",
+    "ground_truth_full": "HSA93→23.01; KV3=0 điểm ưu tiên; ĐXT=23.01; ĐC ĐK&TĐH 2025=26.27; 23.01 << 26.27 → TRƯỢT (thiếu hơn 3 điểm). Cần xem xét ngành khác phù hợp hơn với điểm HSA 93",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "MULTI_18",
+    "category": "multi_van_bang_hop_le",
+    "question": "Em muốn lấy 2 bằng cùng lúc ở HaUI có được không và điều kiện thế nào?",
+    "expected_intent": "C",
+    "ground_truth": "được, sau năm thứ nhất",
+    "ground_truth_full": "Được. Điều kiện: hoàn thành chương trình năm thứ nhất mới được đăng ký học đồng thời chương trình thứ 2. Tốt nghiệp cả hai → được cấp 2 bằng tốt nghiệp. Lưu ý: các chính sách học bổng KKHT không áp dụng cho chương trình thứ 2",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "được",
+      "nhất"
+    ]
+  },
+  {
+    "id": "MULTI_19",
+    "category": "multi_tinh_toan_toan_dien",
+    "question": "K20 đại trà, môn Lập trình hướng đối tượng: 3TC lý thuyết + 2TC thực hành thí nghiệm + 1TC đồ án. Tổng học phí?",
+    "expected_intent": "B1",
+    "ground_truth": "6300000",
+    "ground_truth_full": "LT(hệ số 1.5): 3×1.5×700k=3.150.000; TN/TH(hệ số 1.5): 2×1.5×700k=2.100.000; Đồ án(hệ số 1.5): 1×1.5×700k=1.050.000; Tổng=3.150.000+2.100.000+1.050.000=6.300.000 đồng",
+    "difficulty": "hard",
+    "eval_type": "exact",
+    "key_facts": [
+      "6300000"
+    ]
+  },
+  {
+    "id": "MULTI_20",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Toán 8.0, Hóa 7.5, Anh 7.5 (tổng 23), KV2, tổ hợp A01. Nhưng ngành Công nghệ kỹ thuật hóa học chỉ dùng tổ hợp A00/B00/C02/D07. Có xét được không?",
+    "expected_intent": "B1",
+    "ground_truth": "không xét được bằng A01",
+    "ground_truth_full": "Tổ hợp A01 (Toán-Lý-Anh) KHÔNG có trong danh sách tổ hợp xét tuyển ngành CNKT Hóa học (7510401) – chỉ có A00, B00, C02, D07. Dù điểm 23+0.25=23.25 > ĐC(20.25) nhưng tổ hợp không phù hợp → không được xét",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "COMPLEX_01",
+    "category": "complex_to_hop_hop_le",
+    "question": "Em học giỏi Địa lý nhưng điểm Toán và Vật lý trung bình. Muốn vào Du lịch HaUI. Nên thi tổ hợp nào?",
+    "expected_intent": "A1",
+    "ground_truth": "D15",
+    "ground_truth_full": "Du lịch (7810101) có 3 tổ hợp: D01 (Toán-Văn-Anh), D14 (Văn-Sử-Anh), D15 (Văn-Địa-Anh). Nếu giỏi Địa lý → D15 là lựa chọn phù hợp nhất vì không cần Toán/Lý. Lưu ý: cũng cần học tốt Văn và Tiếng Anh",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": []
+  },
+  {
+    "id": "COMPLEX_02",
+    "category": "complex_to_hop_khong_hop_le",
+    "question": "Em chỉ thi tổ hợp A00 (Toán-Lý-Hóa). Có thể vào ngành Kế toán hay Marketing HaUI không?",
+    "expected_intent": "A1",
+    "ground_truth": "không được, A00 không trong tổ hợp kinh tế",
+    "ground_truth_full": "KHÔNG. Các ngành kinh tế HaUI (Kế toán, Marketing, QTKD…) chỉ nhận tổ hợp A01, D01, X25. Tổ hợp A00 (Toán-Lý-Hóa) không có trong danh sách. Khuyến nghị: thi A01 (Toán-Lý-Anh) hoặc D01 (Toán-Văn-Anh) nếu muốn ngành kinh tế",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "COMPLEX_03",
+    "category": "complex_to_hop_khong_hop_le",
+    "question": "Em muốn vào Ngôn ngữ Anh HaUI nhưng điểm Văn rất yếu. Có tổ hợp nào không cần Văn không?",
+    "expected_intent": "A1",
+    "ground_truth": "không có tổ hợp thay thế",
+    "ground_truth_full": "Ngành Ngôn ngữ Anh (7220201) CHỈ có 1 tổ hợp duy nhất là D01 (Toán-Văn-Tiếng Anh). Không có tổ hợp nào bỏ Văn. Cần cải thiện điểm Văn để đạt điểm xét tuyển ≥ 21.35 (ĐC 2025)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "COMPLEX_04",
+    "category": "complex_xet_diem_chuan_2026",
+    "question": "Điểm chuẩn CNTT HaUI 2026 dự kiến bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "chưa công bố",
+    "ground_truth_full": "Điểm chuẩn 2026 CHƯA công bố (thường công bố sau khi có kết quả thi THPT tháng 7/2026). Tham khảo điểm chuẩn năm gần nhất: 2025 là 23.09; 2024 PT3 là 25.22. Theo dõi tại tuyensinh.haui.edu.vn",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "chưa công bố"
+    ]
+  },
+  {
+    "id": "COMPLEX_05",
+    "category": "complex_uu_tien_mau_thuan",
+    "question": "Em thuộc cả ĐT03 (thân nhân liệt sĩ, UT1: +2.0) và ĐT05 (dân tộc thiểu số ngoài KV1, UT2: +1.0). Tính ưu tiên thế nào?",
+    "expected_intent": "B1",
+    "ground_truth": "chỉ cộng mức cao nhất 2.0",
+    "ground_truth_full": "Quy định: thí sinh thuộc nhiều diện chỉ hưởng MỘT mức ưu tiên cao nhất. ĐT03 UT1=+2.0 > ĐT05 UT2=+1.0 → chỉ áp dụng +2.0. Điểm ưu tiên khu vực vẫn cộng riêng (nếu có). Tổng ưu tiên = 2.00 + mức ưu tiên KV",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "2.0",
+      "cộng",
+      "nhất"
+    ]
+  },
+  {
+    "id": "COMPLEX_06",
+    "category": "complex_hoc_bong_tu_choi",
+    "question": "SV đang được miễn giảm học phí theo chính sách Nhà nước (dân tộc nghèo). Có được xét học bổng Nguyễn Thanh Bình không?",
+    "expected_intent": "C",
+    "ground_truth": "không được xét HB Nguyễn Thanh Bình",
+    "ground_truth_full": "KHÔNG. Theo quy định HB Nguyễn Thanh Bình: SV đã được miễn giảm học phí theo Nhà nước KHÔNG được xét (trừ SV khuyết tật). Ngoài ra: SV nhận HB HaUI toàn khóa, HB năm 1, HB KKHT, HB tài trợ ≥ mức NTB cũng không được xét",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "COMPLEX_07",
+    "category": "complex_hoc_bong_ngn_thanh_binh",
+    "question": "SV mồ côi bố (đối tượng 2.1.3), TBC năm = 2.1 (tín chỉ), 28TC. Có đủ tiêu chuẩn HB Nguyễn Thanh Bình không?",
+    "expected_intent": "C",
+    "ground_truth": "không đủ điều kiện (thiếu TC)",
+    "ground_truth_full": "Đối tượng 2.1.3 (mồ côi bố/mẹ): điểm TBC tối thiểu ≥ 2.0 ✓ (2.1≥2.0); rèn luyện Khá trở lên (cần kiểm tra); không có HP < 1.0 (cần kiểm tra); tổng TC ≥ 30 nhưng hiện 28TC < 30TC ✗. THIẾU điều kiện tín chỉ (ĐT 2.1.3-2.1.7 cần ≥30TC)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "COMPLEX_08",
+    "category": "complex_diem_bien_gioi",
+    "question": "Em được 25.17 điểm sau ưu tiên. Ngành Cơ điện tử HaUI 2025 điểm chuẩn 25.17. Em có đỗ không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ (vừa đủ điểm chuẩn)",
+    "ground_truth_full": "25.17 = 25.17 điểm chuẩn → ĐỖ (bằng điểm chuẩn là trúng tuyển). Lưu ý: hệ thống xét theo thứ tự nguyện vọng nên cần đặt nguyện vọng 1 vào ngành này để chắc chắn",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ"
+    ]
+  },
+  {
+    "id": "COMPLEX_09",
+    "category": "complex_quy_doi_hsa_dac_biet",
+    "question": "HSA 93 và HSA 94 quy đổi khác nhau bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "93→23.01; 94→23.25; chênh 0.24",
+    "ground_truth_full": "HSA93→23.01; HSA94→23.25; Chênh lệch = 0.24 điểm. Đây là ví dụ về bảng quy đổi không tuyến tính – tăng 1 điểm HSA nhưng chênh lệch quy đổi khác nhau ở từng mức. Không nội suy tuyến tính bảng này",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "23.01",
+      "23.25",
+      "chênh"
+    ]
+  },
+  {
+    "id": "COMPLEX_10",
+    "category": "complex_dieu_kien_uu_tien_khu_vuc",
+    "question": "Em học THPT 2 năm ở KV2 (tỉnh), 1 năm ở KV3 (Hà Nội nội thành). Được hưởng ưu tiên khu vực nào?",
+    "expected_intent": "C",
+    "ground_truth": "KV3 (hoặc KV2 nếu nhiều hơn)",
+    "ground_truth_full": "Khu vực xác định theo trường THPT học LÂU NHẤT: 2 năm KV2 > 1 năm KV3 → hưởng KV2 (+0.25đ). Nếu bằng nhau mới xét trường học SAU CÙNG. Đây là trường hợp học 2 năm KV2 → KV2 (+0.25)",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "KV2",
+      "0.25"
+    ]
+  },
+  {
+    "id": "COMPLEX_11",
+    "category": "complex_dung_sai",
+    "question": "Em thi A01 Toán 9.5, Lý 10, Anh 9.5 (tổng 29). Điểm chuẩn ĐK&TĐH là 26.27. Em đỗ không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ (chưa tính ưu tiên)",
+    "ground_truth_full": "Tổng=29; KV3 (chưa biết khu vực, giả sử KV3=0); ĐXT=29; 29 >> 26.27 → ĐỖ thoải mái. Nếu có ưu tiên khu vực thì điểm còn cao hơn. Đây là điểm gần tối đa (thang 30)",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ"
+    ]
+  },
+  {
+    "id": "COMPLEX_12",
+    "category": "complex_nhieu_buoc",
+    "question": "Em được IELTS 7.5, TB học bạ Toán 9.5, Văn 8.8, Anh 9.8 (D01). KV1. Tính ĐXT PT2 và ngành nào đỗ được?",
+    "expected_intent": "B1",
+    "ground_truth": "ĐXT cao, đỗ hầu hết",
+    "ground_truth_full": "KQHB: Toán9.5→9.55, Văn8.8→6.85, Anh9.8→9.85; ĐKQHT=(9.55+6.85+9.85)/3=8.75; ĐQĐCC(IELTS7.5→IELTS≥6.5)=10.00; ĐXT base=8.75×2+10.00=27.50; KV1=0.75; ≥22.5→giảm dần: ĐĐT=[(30-27.50)/7.5]×0.75=(2.5/7.5)×0.75=0.333×0.75=0.25; ĐXT=27.50+0.25=27.75; Đỗ tất cả ngành trừ ĐK&TĐH vẫn đỗ (26.27<27.75)",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "hầu"
+    ]
+  },
+  {
+    "id": "COMPLEX_13",
+    "category": "complex_hoc_bong_du_tri",
+    "question": "SV được HB HaUI toàn khóa. Cuối kỳ 1 có GPA 2.4, rèn luyện Tốt, 16TC. Học bổng có bị cắt không?",
+    "expected_intent": "C",
+    "ground_truth": "bị mất học bổng",
+    "ground_truth_full": "BỊ CẮT. Điều kiện duy trì HB HaUI: TBC kỳ ≥ 2.5 + rèn luyện Tốt + ≥15TC. Kỳ này GPA 2.4 < 2.5 → không đáp ứng → mất HB HaUI kỳ tiếp theo. Nếu bảo lưu và quay lại đáp ứng điều kiện thì được xem xét lại",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "bổng"
+    ]
+  },
+  {
+    "id": "COMPLEX_14",
+    "category": "complex_hoc_phi_thac_si",
+    "question": "SV năm 4 muốn học trước môn Thạc sĩ, GPA tích lũy đến hết HK6 = 3.0. Được học bổng học Thạc sĩ không?",
+    "expected_intent": "C",
+    "ground_truth": "đủ điều kiện, được 30% học phí",
+    "ground_truth_full": "Đủ điều kiện: GPA tích lũy đến HK6 = 3.0 ≥ 2.5 (tín chỉ) ✓ + đủ số TC tích lũy ✓ → được học bổng 30% học phí các HP đăng ký học trước (theo đơn giá học phí Thạc sĩ 900k/TC, tối đa 15TC)",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "điều",
+      "kiện",
+      "được"
+    ]
+  },
+  {
+    "id": "COMPLEX_15",
+    "category": "complex_to_hop_tinh_huong",
+    "question": "Em có HSK 5 và đang học lớp 12 thi tổ hợp D04. Điểm TB D04: Toán 8.0, Văn 8.5, Tiếng Trung 9.0. Đăng ký PT2 ngành Ngôn ngữ Trung Quốc có được không?",
+    "expected_intent": "C",
+    "ground_truth": "đủ điều kiện PT2",
+    "ground_truth_full": "Đủ: HSK 5 → điều kiện CC quốc tế ✓ (HSK5 ≥ HSK3 yêu cầu tối thiểu, ĐQĐCC=10.00); TB Toán 8.0 ≥ 7.0 ✓, TB Văn 8.5 ≥ 7.0 ✓, TB Tiếng Trung 9.0 ≥ 7.0 ✓; Ngôn ngữ TQ nhận D01 và D04 ✓; Đủ điều kiện. ĐQĐCC(HSK5)=10.00",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "điều",
+      "kiện"
+    ]
+  },
+  {
+    "id": "TREND_01",
+    "category": "trend_xu_huong_cntt",
+    "question": "Điểm chuẩn CNTT HaUI từ 2023 đến 2025 có xu hướng giảm không?",
+    "expected_intent": "A2",
+    "ground_truth": "xu hướng và lưu ý phương pháp đổi",
+    "ground_truth_full": "THẬN TRỌNG khi so sánh: 2023 PT3=25.19; 2024 PT3=25.22 (tăng nhẹ); 2025 chung=23.09. Điểm 2025 thấp hơn vì PHƯƠNG PHÁP TÍNH ĐÃ ĐỔI – 2025 dùng điểm chung cho cả PT2+PT3+PT5, không tách riêng như 2023-2024. Không nên kết luận điểm giảm trực tiếp",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "phương pháp",
+      "đổi"
+    ]
+  },
+  {
+    "id": "TREND_02",
+    "category": "trend_xu_huong_co_dien_tu",
+    "question": "Điểm chuẩn Cơ điện tử HaUI qua 3 năm 2023-2025 thay đổi thế nào?",
+    "expected_intent": "A2",
+    "ground_truth": "tăng dần 2023-2025",
+    "ground_truth_full": "Cơ điện tử (7510303): 2023 PT3=24.63, PT4=28.55; 2024 PT3=25.41, PT4=28.71; 2025 chung=25.17. Xu hướng PT3 tăng từ 24.63→25.41. Điểm 2025 (25.17) giảm so với 2024 nhưng cần lưu ý thay đổi phương pháp tính điểm",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "tăng"
+    ]
+  },
+  {
+    "id": "TREND_03",
+    "category": "trend_xu_huong_tu_dong_hoa",
+    "question": "Ngành Điều khiển và tự động hóa điểm chuẩn 3 năm gần nhất diễn biến như thế nào?",
+    "expected_intent": "A2",
+    "ground_truth": "tăng đều 2023-2025",
+    "ground_truth_full": "ĐK&TĐH (7510303): 2023 PT3=25.47, PT4=28.94; 2024 PT3=26.05, PT4=28.97; 2025 chung=26.27. Ngành này liên tục tăng điểm chuẩn qua các năm, đặc biệt PT3 tăng từ 25.47→26.05→26.27, là ngành khó nhất vào nhóm kỹ thuật HaUI",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "tăng"
+    ]
+  },
+  {
+    "id": "TREND_04",
+    "category": "trend_nganh_tang_nhieu",
+    "question": "Ngành nào tại HaUI có điểm chuẩn tăng nhiều nhất từ 2023 đến 2024?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng so sánh tăng điểm",
+    "ground_truth_full": "Tăng mạnh nhất 2023→2024 (PT3): ĐK&TĐH: 25.47→26.05 (+0.58); Logistics: 25.52→25.89 (+0.37); KHMT: 25.05→25.32 (+0.27); Cơ điện tử: 24.63→25.41 (+0.78); Robot: 24.54→25.01 (+0.47). CĐT tăng mạnh nhất",
+    "difficulty": "hard",
+    "eval_type": "semantic",
+    "key_facts": [
+      "25.47",
+      "26.05",
+      "0.58"
+    ]
+  },
+  {
+    "id": "TREND_05",
+    "category": "trend_logistics",
+    "question": "Điểm chuẩn Logistics HaUI qua các năm và ngành này có cạnh tranh không?",
+    "expected_intent": "A2",
+    "ground_truth": "cạnh tranh cao, xu hướng tăng",
+    "ground_truth_full": "Logistics (7510605): 2023 PT3=25.52, PT4=28.60; 2024 PT3=25.89, PT4=28.91; 2025 chung=22.76 (đổi phương pháp). Xu hướng PT3 tăng liên tục (25.52→25.89), chỉ tiêu 60 SV (ít) → cạnh tranh cao",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "25.52",
+      "28.60",
+      "25.89"
+    ]
+  },
+  {
+    "id": "TREND_06",
+    "category": "trend_nganh_de_vao",
+    "question": "Những ngành nào ở HaUI có điểm chuẩn thấp nhất năm 2025 để em cân nhắc?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng ngành điểm thấp 2025",
+    "ground_truth_full": "Điểm thấp nhất 2025: Công nghệ dệt may(18.00), Du lịch TA(18.00), CNKT môi trường(18.75), Công nghệ vật liệu dệt may(18.25), QT lữ hành TA(18.10), QT khách sạn TA(18.25), QT nhà hàng TA(18.60), Ngôn ngữ Nhật(20.00), Ngôn ngữ học(20.00), Kế toán(20.00)",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "18.00",
+      "18.00",
+      "18.75"
+    ]
+  },
+  {
+    "id": "TREND_07",
+    "category": "trend_hoc_phi_tang",
+    "question": "Học phí K20 HaUI có tăng so với K19 không?",
+    "expected_intent": "D",
+    "ground_truth": "tăng: K19=550k vs K20 đại trà=700k",
+    "ground_truth_full": "Có tăng: K19=550.000đ/TC; K20 đại trà=700.000đ/TC (tăng 27%); K20 TA=1.000.000đ/TC (tăng 82% so K19). K18 trở về trước=495.000đ/TC. Xu hướng tăng học phí theo từng khóa",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "tăng:",
+      "K19=550k",
+      "trà=700k"
+    ]
+  },
+  {
+    "id": "TREND_08",
+    "category": "trend_xu_huong_nganh_moi",
+    "question": "Ngành Robot & TTNT HaUI mới hay lâu năm, điểm chuẩn có ổn định không?",
+    "expected_intent": "A2",
+    "ground_truth": "ngành tương đối mới, điểm ổn định cao",
+    "ground_truth_full": "Robot & TTNT tại HaUI: 2023 PT3=24.54 (tên cũ mã 7510209), 2024 PT3=25.01; 2025 chung=24.30 (mã mới 75102032). Điểm ổn định ở mức 24-25, là ngành cạnh tranh cao (chỉ tiêu 60 SV). Thành lập khá gần đây trong bối cảnh Cách mạng CN 4.0",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "ngành",
+      "tương",
+      "mới"
+    ]
+  },
+  {
+    "id": "STRAT_01",
+    "category": "strat_chon_nganh_ai",
+    "question": "Em muốn làm về AI sau này. Nên chọn ngành nào ở HaUI?",
+    "expected_intent": "D",
+    "ground_truth": "bảng gợi ý ngành AI",
+    "ground_truth_full": "Gợi ý theo định hướng: (1) Nghiên cứu AI học thuật → Khoa học máy tính (KHMT, 23.72); (2) AI ứng dụng phần mềm → CNTT (23.09) hoặc KTPM (21.75); (3) AI trên phần cứng/robot → Robot&TTNT (24.30); (4) AI trong sản xuất → ĐK&TĐH (26.27) hoặc KTSXTM (22.50). Điểm cao nhất: ĐK&TĐH, thấp nhất: KTPM",
+    "difficulty": "hard",
+    "eval_type": "semantic",
+    "key_facts": [
+      "23.72",
+      "23.09",
+      "21.75"
+    ]
+  },
+  {
+    "id": "STRAT_02",
+    "category": "strat_diem_thap_chon_nganh",
+    "question": "Em dự kiến tổng điểm THPT khoảng 21 điểm, KV3. Muốn vào HaUI. Nên chọn ngành gì?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng gợi ý",
+    "ground_truth_full": "ĐXT=21 (KV3=0). Có thể vào: nhóm Kinh tế (Kế toán 20.00, QTKD 20.25, Tài chính-NH 20.75, Kiểm toán 20.00, QTNL 21.25 – sát ngưỡng), nhóm Du lịch TA (18-18.60), CNKT môi trường (18.75), Dệt may (18-18.25), Ngôn ngữ Nhật (20.00), Ngôn ngữ học (20.00). Lưu ý: ĐC thay đổi hàng năm",
+    "difficulty": "hard",
+    "eval_type": "semantic",
+    "key_facts": [
+      "20.00",
+      "20.25",
+      "20.75"
+    ]
+  },
+  {
+    "id": "STRAT_03",
+    "category": "strat_chon_phuong_thuc",
+    "question": "Em được IELTS 7.0, TB học bạ A01 khoảng 8.5/8.0/8.5, KV2. Nên đăng ký PT2 hay PT3 để vào CNTT?",
+    "expected_intent": "D",
+    "ground_truth": "so sánh PT2 vs PT3",
+    "ground_truth_full": "PT3 (ước tính, cần có điểm thi thật): nếu thi được 25+ thì an toàn. PT2 (ước tính): KQHB: 8.5→6.55, 8.0→6.27, 8.5→6.55; ĐKQHT≈6.46; ĐQĐCC(IELTS7.0)=10.00; ĐXT base≈22.92; KV2=0.25; ĐXT≈23.17; vừa đủ ĐC CNTT (23.09). Nên đăng ký CẢ PT2 và PT3 để tối đa cơ hội; PT2 đăng ký sớm hơn (trước 5/7)",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "sánh"
+    ]
+  },
+  {
+    "id": "STRAT_04",
+    "category": "strat_chon_nganh_kinh_te",
+    "question": "Em thích kinh tế và tiếng Anh. Nên học Kế toán tiếng Anh hay Logistics ở HaUI?",
+    "expected_intent": "D",
+    "ground_truth": "so sánh Kế toán TA vs Logistics",
+    "ground_truth_full": "Kế toán TA (7340301TA, 40CT, 20.25, 1tr/TC): học phí cao hơn, chuyên nghiệp kế toán kiểm toán, phù hợp làm việc môi trường đa quốc gia; Logistics (7510605, 60CT, 22.76, 700k/TC): cạnh tranh hơn, cơ hội việc làm rộng trong vận chuyển-chuỗi cung ứng, cần tiếng Anh giao tiếp. ĐC Logistics cao hơn Kế toán TA. Tùy sở thích: kế toán-tài chính hay quản lý vận hành",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "sánh",
+      "toán",
+      "Logistics"
+    ]
+  },
+  {
+    "id": "STRAT_05",
+    "category": "strat_chon_nganh_ky_thuat",
+    "question": "Em thích xe hơi và công nghệ. Nên chọn CNKT ô tô hay Cơ điện tử ô tô?",
+    "expected_intent": "D",
+    "ground_truth": "so sánh ô tô vs cơ điện tử ô tô",
+    "ground_truth_full": "CNKT ô tô (7510205, 360CT, ĐC22.50): tổng quát động cơ-bảo trì-sửa chữa, dễ vào hơn; CĐT ô tô (75102033, 60CT, ĐC23.93): điện tử thông minh trên xe (ECU, ADAS, xe điện), khó vào hơn (+1.43đ). Nếu thích sửa chữa, bảo dưỡng → CNKT ô tô; Thích xe điện, hệ thống thông minh → CĐT ô tô",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "sánh",
+      "điện"
+    ]
+  },
+  {
+    "id": "STRAT_06",
+    "category": "strat_chi_phi_hoc_tap",
+    "question": "Em muốn chi phí học tập thấp nhất ở HaUI. Nên chọn ngành và chương trình gì?",
+    "expected_intent": "D",
+    "ground_truth": "chương trình đại trà K20",
+    "ground_truth_full": "Chọn chương trình đại trà (700k/TC) thay vì TA (1tr/TC). Nếu đã là K19 trở về: 550k/TC (còn thấp hơn). Ngành chỉ tiêu lớn + ĐC thấp để dễ vào: Kế toán đại trà, Dệt may, Môi trường. KTX tiêu chuẩn CS2 phòng 6 người: 280k/tháng là thấp nhất. Tổng chi phí thấp nhất: ~18-22tr/năm",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "chương",
+      "trình"
+    ]
+  },
+  {
+    "id": "STRAT_07",
+    "category": "strat_tim_nganh_phu_hop",
+    "question": "Em thích Hóa học, điểm B00 (Toán-Hóa-Sinh) khoảng 22 điểm, KV1. Nên đăng ký ngành nào ở HaUI?",
+    "expected_intent": "A2",
+    "ground_truth": "bảng gợi ý ngành hóa sinh",
+    "ground_truth_full": "ĐXT=22 KV1 < 22.5 → cộng thẳng: ĐXT=22+0.75=22.75. Tổ hợp B00 dùng được cho: CNKT Hóa học (ĐC20.25 ✓), Hóa dược (ĐC21.35 ✓), Công nghệ thực phẩm (ĐC20.60 ✓), CNKT môi trường (ĐC18.75 ✓). Tất cả đều đỗ với ĐXT 22.75",
+    "difficulty": "hard",
+    "eval_type": "semantic",
+    "key_facts": [
+      "22.5",
+      "0.75",
+      "22.75"
+    ]
+  },
+  {
+    "id": "STRAT_08",
+    "category": "strat_ket_hop_pt",
+    "question": "Em thi THPT dự kiến 23 điểm, KV3, có IELTS 6.0. Nên dùng PT2 hay PT3 vào ngành Marketing?",
+    "expected_intent": "D",
+    "ground_truth": "PT3 có khả năng đỗ, PT2 cần tính thêm",
+    "ground_truth_full": "PT3: ĐXT=23+0(KV3)=23.00; ĐC Marketing 2025=22.50 → ĐỖ bằng PT3. PT2: IELTS 6.0→ĐQĐCC=9.50; cần biết TB học bạ D01 để tính ĐKQHT; nếu TB trung bình 8.0-8.5 → ĐKQHT≈6.27-6.55; ĐXT base≈22-23 + ưu tiên; kết quả PT2 có thể tương đương. Khuyến nghị: đăng ký cả PT2 (trước 5/7) và đặt nguyện vọng PT3 trên Bộ GD",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ"
+    ]
+  },
+  {
+    "id": "EDGE_01",
+    "category": "edge_ma_nganh_nham",
+    "question": "Ngành hóa học HaUI có tổ hợp gì?",
+    "expected_intent": "A1",
+    "ground_truth": "A00, B00, C02, D07",
+    "ground_truth_full": "HaUI có ngành Công nghệ kỹ thuật hóa học (mã 7510401, 210CT, A00/B00/C02/D07), Hóa dược (7720203, 60CT, A00/B00/C02/D07), và Công nghệ kỹ thuật môi trường (7510406, 50CT, A00/B00/C02/D07). Không có ngành tên là 'Hóa học' thuần túy",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "A00",
+      "B00",
+      "C02"
+    ]
+  },
+  {
+    "id": "EDGE_02",
+    "category": "edge_nganh_chua_mo",
+    "question": "Điểm chuẩn ngành Trí tuệ nhân tạo HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "Robot và TTNT 24.30",
+    "ground_truth_full": "HaUI không có ngành tên 'Trí tuệ nhân tạo' riêng biệt, nhưng có ngành 'Robot và trí tuệ nhân tạo' (mã 75102032, 60CT, ĐC 2025=24.30). Ngoài ra KHMT và CNTT cũng có học phần AI",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "24.30",
+      "Robot",
+      "TTNT"
+    ]
+  },
+  {
+    "id": "EDGE_03",
+    "category": "edge_quy_doi_sai",
+    "question": "Em có điểm TOEFL iBT 65. Đây là loại chứng chỉ gì và quy đổi bao nhiêu trong PT2?",
+    "expected_intent": "B1",
+    "ground_truth": "9.50",
+    "ground_truth_full": "TOEFL iBT 65 thuộc nhóm 61-70 → ĐQĐCC = 9.50 điểm (tương đương IELTS 6.0). Điều kiện thỏa mãn để xét PT2 (yêu cầu TOEFL iBT ≥ 50)",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "9.50"
+    ]
+  },
+  {
+    "id": "EDGE_04",
+    "category": "edge_nganh_lien_ket",
+    "question": "Điểm chuẩn Ngôn ngữ Trung Quốc liên kết 2+2 HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "22.50",
+    "ground_truth_full": "Ngôn ngữ Trung Quốc LK 2+2 với ĐH Quảng Tây (7220204LK, 30CT, PT2+PT3): điểm chuẩn 2025 = 22.50 điểm. So với Ngôn ngữ TQ thường (23.00) thì LK 2+2 thấp hơn 0.5đ nhưng học phí và điều kiện khác",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.50"
+    ]
+  },
+  {
+    "id": "EDGE_05",
+    "category": "edge_tinh_sai_khu_vuc",
+    "question": "Em học THPT ở quận Ba Đình (nội thành Hà Nội). Được ưu tiên khu vực nào?",
+    "expected_intent": "A1",
+    "ground_truth": "KV3",
+    "ground_truth_full": "Quận Ba Đình là phường thuộc thành phố trực thuộc Trung ương (Hà Nội nội thành) → KV3 (0 điểm ưu tiên). Chỉ KV1, KV2-NT, KV2 mới được cộng điểm ưu tiên khu vực",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": []
+  },
+  {
+    "id": "EDGE_06",
+    "category": "edge_ngoai_pham_vi_tuyen_sinh",
+    "question": "Điểm chuẩn ngành Robot HaUI năm 2026 là bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "chưa công bố",
+    "ground_truth_full": "Điểm chuẩn 2026 CHƯA công bố (sẽ thông báo sau khi có kết quả thi TN THPT 2026, dự kiến tháng 7-8/2026). Tham khảo: 2025 chung=24.30; 2024 PT3=25.01. Theo dõi: tuyensinh.haui.edu.vn",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "chưa công bố"
+    ]
+  },
+  {
+    "id": "EDGE_07",
+    "category": "edge_so_sanh_nam",
+    "question": "Điểm chuẩn CNTT 2025 thấp hơn 2024 có phải vì chất lượng thí sinh thấp hơn?",
+    "expected_intent": "A2",
+    "ground_truth": "không phải, do thay đổi phương pháp",
+    "ground_truth_full": "KHÔNG. Điểm chuẩn 2025 (23.09) thấp hơn 2024 PT3 (25.22) là do THAY ĐỔI PHƯƠNG PHÁP XÉT TUYỂN: 2025 dùng điểm chung cho nhiều phương thức (PT2+PT3+PT5), không phân tách PT riêng lẻ như 2024. Không phản ánh chất lượng thí sinh; KHÔNG nên so sánh trực tiếp",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "phương pháp",
+      "không phải"
+    ]
+  },
+  {
+    "id": "EDGE_08",
+    "category": "edge_chuong_trinh_ky_su",
+    "question": "Sinh viên Kỹ thuật phần mềm muốn lấy bằng Kỹ sư. Phải học thêm gì?",
+    "expected_intent": "C",
+    "ground_truth": "dự tuyển chương trình Kỹ sư bậc 7",
+    "ground_truth_full": "Sau khi tốt nghiệp Cử nhân KTPM, có thể dự tuyển chương trình đào tạo chuyên sâu đặc thù bậc 7 (Kỹ sư). Lịch 2026: thông báo trước 01/5/2026; đăng ký 15/6-15/7/2026; khai giảng từ 03/8/2026; chỉ tiêu 120 SV; học phí 700k/TC (đại trà K3)",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "tuyển",
+      "chương",
+      "trình"
+    ]
+  },
+  {
+    "id": "EDGE_09",
+    "category": "edge_lo_phi",
+    "question": "Lệ phí đăng ký xét tuyển HaUI (PT2, PT4, PT5) là bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "50000",
+    "ground_truth_full": "Lệ phí đăng ký xét tuyển HaUI: 50.000 đồng/hồ sơ, nộp qua mã QR ngân hàng (BIDV hoặc Ngân hàng Lộc Phát) sau khi hoàn thành đăng ký online tại xettuyen.haui.edu.vn",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "50000"
+    ]
+  },
+  {
+    "id": "EDGE_10",
+    "category": "edge_khong_co_thong_tin",
+    "question": "Em học ngành Y tế công cộng ở HaUI được không?",
+    "expected_intent": "A1",
+    "ground_truth": "không có ngành này",
+    "ground_truth_full": "HaUI KHÔNG có ngành Y tế công cộng. Các ngành gần nhất liên quan đến sức khỏe/y tế tại HaUI: Công nghệ kỹ thuật điện tử y sinh (thiết bị y tế), Hóa dược (dược phẩm). Muốn học Y tế công cộng nên tìm trường khác như ĐH Y Hà Nội, ĐH Y tế Công cộng",
+    "difficulty": "easy",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "A1_21",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn ngành Marketing HaUI 2025 là bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "22.5",
+    "ground_truth_full": "Ngành Marketing (mã 7340115) năm 2025: điểm chuẩn chung 22.5 điểm (áp dụng PT2, PT3, PT4)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.5"
+    ]
+  },
+  {
+    "id": "A1_22",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Kế toán HaUI năm 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "20.0",
+    "ground_truth_full": "Ngành Kế toán (mã 7340301) năm 2025: điểm chuẩn chung 20.0 điểm. Đây là một trong những ngành có điểm chuẩn thấp nhất HaUI với chỉ tiêu lớn (600 SV)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "20.0"
+    ]
+  },
+  {
+    "id": "A1_23",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Tài chính Ngân hàng HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "20.75",
+    "ground_truth_full": "Ngành Tài chính – Ngân hàng (mã 7340201) năm 2025: điểm chuẩn chung 20.75 điểm",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "20.75"
+    ]
+  },
+  {
+    "id": "A1_24",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Ngôn ngữ Anh HaUI 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "21.35",
+    "ground_truth_full": "Ngành Ngôn ngữ Anh (mã 7220201) năm 2025: điểm chuẩn chung 21.35 điểm; chỉ dùng tổ hợp D01 (Toán-Văn-Anh); áp dụng PT2, PT3",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "21.35"
+    ]
+  },
+  {
+    "id": "A1_25",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Du lịch HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "21.85",
+    "ground_truth_full": "Ngành Du lịch (mã 7810101) năm 2025: điểm chuẩn chung 21.85 điểm; tổ hợp D01/D14/D15; 140 chỉ tiêu + 40 CT chương trình TA (ĐC 18.00)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "21.85"
+    ]
+  },
+  {
+    "id": "A1_26",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn CNKT điện điện tử HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "23.93",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật điện, điện tử (mã 7510301) năm 2025: điểm chuẩn chung 23.93 điểm; 420 chỉ tiêu",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "23.93"
+    ]
+  },
+  {
+    "id": "A1_27",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn CNKT điện tử viễn thông HaUI 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "22.75",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật điện tử – viễn thông (mã 7510302) năm 2025: điểm chuẩn chung 22.75 điểm; 480 chỉ tiêu (nhiều nhất nhóm cơ khí-điện)",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.75"
+    ]
+  },
+  {
+    "id": "A1_28",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Hệ thống thông tin 2025 HaUI là bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "21.1",
+    "ground_truth_full": "Ngành Hệ thống thông tin (mã 7480104) năm 2025: điểm chuẩn chung 21.10 điểm; 120 chỉ tiêu",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "21.1"
+    ]
+  },
+  {
+    "id": "A1_29",
+    "category": "A1_gioi_thieu",
+    "question": "Địa chỉ và mã trường HaUI là gì?",
+    "expected_intent": "A1",
+    "ground_truth": "DCN, 298 Cầu Diễn",
+    "ground_truth_full": "Mã trường: DCN. Địa chỉ cơ sở chính: Số 298, Đường Cầu Diễn, Phường Minh Khai, Quận Bắc Từ Liêm, Hà Nội. Website: haui.edu.vn / tuyensinh.haui.edu.vn",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "DCN",
+      "Diễn"
+    ]
+  },
+  {
+    "id": "A1_30",
+    "category": "A1_hoc_phi",
+    "question": "Học phí cao đẳng chính quy HaUI 2025-2026 mỗi tín chỉ bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "370000",
+    "ground_truth_full": "Học phí cao đẳng chính quy HaUI năm học 2025-2026: 370.000 đồng/tín chỉ",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "370000"
+    ]
+  },
+  {
+    "id": "B1_31",
+    "category": "B1_tinh_diem_thpt",
+    "question": "Tổng 20 điểm, KV2-NT, không có đối tượng. Tính điểm xét tuyển?",
+    "expected_intent": "B1",
+    "ground_truth": "20.50",
+    "ground_truth_full": "Tổng=20.0 < 22.5 → cộng thẳng; KV2-NT=0.50; không ĐT ưu tiên; ĐXT=20.0+0.50=20.50",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "20.50"
+    ]
+  },
+  {
+    "id": "B1_32",
+    "category": "B1_tinh_hoc_phi",
+    "question": "K20 chương trình tiếng Anh, học phần 4TC lý thuyết. Học phí bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "6000000",
+    "ground_truth_full": "HP = 4TC × hệ số 1.5 (LT) × 1.000.000đ (K20 TA) = 4 × 1.5 × 1.000.000 = 6.000.000 đồng",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "6000000"
+    ]
+  },
+  {
+    "id": "B1_33",
+    "category": "B1_quy_doi_hsa",
+    "question": "HSA 130 điểm trở lên quy đổi được bao nhiêu điểm?",
+    "expected_intent": "B1",
+    "ground_truth": "30.00",
+    "ground_truth_full": "HSA 130-150 → quy đổi = 30.00 điểm (điểm tối đa thang 30). Bảng quy đổi HaUI: từ 130 điểm trở lên đều được 30.00",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "30.00"
+    ]
+  },
+  {
+    "id": "C_16",
+    "category": "C_dieu_kien_pt1",
+    "question": "Học sinh hoàn thành dự bị đại học có điều kiện gì để xét tuyển thẳng PT1 vào HaUI?",
+    "expected_intent": "C",
+    "ground_truth": "TB môn tổ hợp ≥ 8.0",
+    "ground_truth_full": "PT1 dành cho học sinh hoàn thành dự bị đại học: điểm TB môn trong tổ hợp xét tuyển lớp 10+11+12 ≥ 8.0 (áp dụng cho các ngành: Công nghệ đa phương tiện, CNTT, Cơ điện tử, Ô tô, Robot & TTNT, Điều khiển tự động hóa, Hóa dược). Nộp hồ sơ trực tiếp tại trường trước 30/6",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "8.0"
+    ]
+  },
+  {
+    "id": "C_17",
+    "category": "C_dieu_kien_pt2",
+    "question": "TOPIK cần đạt cấp độ mấy để đăng ký PT2 ngành Ngôn ngữ Hàn Quốc HaUI?",
+    "expected_intent": "C",
+    "ground_truth": "TOPIK cấp độ 3 trở lên",
+    "ground_truth_full": "PT2 yêu cầu TOPIK cấp độ 3 trở lên (điểm quy đổi ĐQĐCC: TOPIK 3=9.00, TOPIK 4=9.50, TOPIK 5/6=10.00) kết hợp TB từng môn trong tổ hợp DD2 (Toán-Văn-Tiếng Hàn) ≥ 7.0. Chứng chỉ phải còn hiệu lực",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "TOPIK"
+    ]
+  },
+  {
+    "id": "C_18",
+    "category": "C_quy_trinh_dang_ky",
+    "question": "Đã xác nhận nguyện vọng trên hệ thống HaUI rồi, muốn thay đổi thì phải làm gì?",
+    "expected_intent": "C",
+    "ground_truth": "liên hệ trường trước 05/7/2025",
+    "ground_truth_full": "Sau khi xác nhận đăng ký, hệ thống tự động KHÓA hồ sơ. Muốn thay đổi phải: liên hệ trực tiếp trường trước ngày 05/7/2025 qua ĐT: 0834560255 / 0383371290 hoặc Messenger: facebook.com/tuyensinh.haui. Lưu ý: khi sửa phải xóa hết nguyện vọng trước, sau đó chỉnh sửa và chọn lại",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "liên",
+      "trường",
+      "trước"
+    ]
+  },
+  {
+    "id": "MULTI_21",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Toán 7, Văn 6.5, Anh 7 (tổng 20.5), KV2-NT. Có đỗ ngành Kế toán HaUI 2025 không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ Kế toán",
+    "ground_truth_full": "Tổng=20.5 < 22.5 → cộng thẳng; KV2-NT=0.50; ĐXT=20.5+0.50=21.00; ĐC Kế toán 2025=20.00; 21.00>20.00 → ĐỖ. Tổ hợp cần kiểm tra: D01 (Toán-Văn-Anh) ✓ có trong tổ hợp ngành Kế toán",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ",
+      "Kế"
+    ]
+  },
+  {
+    "id": "MULTI_22",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "HSA 85 điểm, KV3. Tính điểm và có đỗ CNTT HaUI 2025 không?",
+    "expected_intent": "B1",
+    "ground_truth": "trượt CNTT",
+    "ground_truth_full": "HSA85→21.75; KV3=0 điểm ưu tiên; ĐXT=21.75; ĐC CNTT 2025=23.09; 21.75 < 23.09 → TRƯỢT (thiếu 1.34 điểm). Có thể xét các ngành dễ vào hơn như KTPM(21.75-sát ngưỡng), HTTT(21.10), MMT(21.70)",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "không"
+    ]
+  },
+  {
+    "id": "MULTI_23",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Tổng 23 điểm, KV2, muốn vào Logistics 2025 có đỗ không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ Logistics",
+    "ground_truth_full": "Tổng=23 ≥ 22.5 → giảm dần; KV2=0.25; ĐĐT=[(30-23)/7.5]×0.25=(7/7.5)×0.25=0.9333×0.25=0.23; ĐXT=23+0.23=23.23; ĐC Logistics 2025=22.76; 23.23>22.76 → ĐỖ (không phải trượt!). Câu hỏi để test tính toán đúng giảm dần",
+    "difficulty": "hard",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ"
+    ]
+  },
+  {
+    "id": "EDGE_11",
+    "category": "edge_ten_nganh_nham",
+    "question": "Ngành Tự động hóa HaUI điểm chuẩn 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "26.27",
+    "ground_truth_full": "Tên đầy đủ là 'Công nghệ kỹ thuật điều khiển và tự động hóa' (mã 7510303). Điểm chuẩn 2025: 26.27 điểm – cao nhất HaUI. Thí sinh hay gọi tắt là 'Tự động hóa' hoặc 'ĐK&TĐH'",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "26.27"
+    ]
+  },
+  {
+    "id": "EDGE_12",
+    "category": "edge_quy_doi_dac_biet",
+    "question": "SAT 1050 điểm quy đổi bao nhiêu trong PT2 HaUI?",
+    "expected_intent": "B1",
+    "ground_truth": "9.00",
+    "ground_truth_full": "SAT 1000-1100 → ĐQĐCC = 9.00 điểm (bảng quy đổi HaUI). SAT ≥ 1000 đủ điều kiện tham gia PT2 (ngưỡng tối thiểu SAT ≥ 1000). SAT 1050 thuộc khoảng 1000-1100 → 9.00",
+    "difficulty": "medium",
+    "eval_type": "exact",
+    "key_facts": [
+      "9.00"
+    ]
+  },
+  {
+    "id": "STRAT_09",
+    "category": "strat_tim_nganh_phu_hop",
+    "question": "Em giỏi tiếng Nhật (JLPT N2), điểm D06 (Toán-Văn-Nhật) khoảng 22 điểm, KV2. Nên đăng ký ngành nào HaUI?",
+    "expected_intent": "D",
+    "ground_truth": "Ngôn ngữ Nhật là phù hợp nhất",
+    "ground_truth_full": "ĐXT= 22+0.25=22.25 (KV2, <22.5 cộng thẳng); Ngôn ngữ Nhật (7220209, 70CT, ĐC2025=20.00) nhận D06 ✓ → 22.25>20.00 ĐỖ. Với JLPT N2 cũng đủ xét PT2 (N3+ là điều kiện) → ĐQĐCC=10.00; Khuyến nghị: xét cả PT2 và PT3, ưu tiên Ngôn ngữ Nhật là lựa chọn hàng đầu",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "Ngôn",
+      "Nhật",
+      "nhất"
+    ]
+  },
+  {
+    "id": "COMPLEX_16",
+    "category": "complex_dieu_kien_lk22",
+    "question": "Em có TOPIK 4 muốn đăng ký PT2 vào Ngôn ngữ Trung Quốc LK 2+2. Có đủ tiêu chuẩn chứng chỉ không?",
+    "expected_intent": "C",
+    "ground_truth": "đủ điều kiện LK 2+2",
+    "ground_truth_full": "Ngôn ngữ TQ LK 2+2 yêu cầu CC quốc tế cao hơn thông thường: TOPIK ≥ cấp 4 (thay vì TOPIK 3 cho ngành thường); HSK ≥ cấp 4; JLPT ≥ N3. TOPIK 4 đáp ứng đúng ngưỡng tối thiểu → đủ điều kiện CC. Vẫn cần: TB từng môn trong tổ hợp D01/D04 ≥ 7.0 và tốt nghiệp THPT 2025. ĐQĐCC(TOPIK4)=9.50",
+    "difficulty": "hard",
+    "eval_type": "contains",
+    "key_facts": [
+      "điều",
+      "kiện"
+    ]
+  },
+  {
+    "id": "A1_31",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn ngành Cơ điện tử HaUI năm 2025 bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "25.17",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật cơ điện tử (mã 7510203) năm 2025: điểm chuẩn chung 25.17 điểm; 300 chỉ tiêu. Đây là ngành kỹ thuật cạnh tranh cao của HaUI",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "25.17"
+    ]
+  },
+  {
+    "id": "E_04",
+    "category": "E_chao_hoi",
+    "question": "Ơi cho hỏi, mình lo quá không biết có đỗ được không?",
+    "expected_intent": "E",
+    "ground_truth": "lời chào",
+    "ground_truth_full": "Phản hồi đồng cảm, khuyến khích, đề nghị hỗ trợ tính điểm xét tuyển và tư vấn ngành phù hợp",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "E_05",
+    "category": "E_chao_hoi",
+    "question": "Bot ơi, mình là phụ huynh muốn tìm hiểu về HaUI cho con.",
+    "expected_intent": "E",
+    "ground_truth": "lời chào",
+    "ground_truth_full": "Phản hồi thân thiện với phụ huynh, giới thiệu chatbot hỗ trợ tư vấn tuyển sinh HaUI, mời đặt câu hỏi cụ thể",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "F_06",
+    "category": "F_ngoai_pham_vi",
+    "question": "Bạn có thể dịch đoạn văn tiếng Anh này sang tiếng Việt giúp mình không?",
+    "expected_intent": "F",
+    "ground_truth": "từ chối, ngoài phạm vi",
+    "ground_truth_full": "Yêu cầu dịch thuật không thuộc phạm vi tư vấn tuyển sinh HaUI. Từ chối lịch sự và hướng về câu hỏi tuyển sinh",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "F_07",
+    "category": "F_ngoai_pham_vi",
+    "question": "Điểm chuẩn Học viện Kỹ thuật Mật mã 2025 là bao nhiêu?",
+    "expected_intent": "F",
+    "ground_truth": "từ chối lịch sự",
+    "ground_truth_full": "Chỉ tư vấn thông tin HaUI. Từ chối và gợi ý tra cứu trang web của trường đó",
+    "difficulty": "easy",
+    "eval_type": "semantic",
+    "key_facts": []
+  },
+  {
+    "id": "A1_32",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn Ngôn ngữ học HaUI 2025 là bao nhiêu?",
+    "expected_intent": "A1",
+    "ground_truth": "20.0",
+    "ground_truth_full": "Ngành Ngôn ngữ học (mã 7229020) năm 2025: điểm chuẩn chung 20.0 điểm; tổ hợp D01/D14; 50 chỉ tiêu; áp dụng PT2, PT3, PT4",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "20.0"
+    ]
+  },
+  {
+    "id": "A1_33",
+    "category": "A1_diem_chuan",
+    "question": "Điểm chuẩn ngành Công nghệ kỹ thuật ô tô HaUI năm 2025?",
+    "expected_intent": "A1",
+    "ground_truth": "22.5",
+    "ground_truth_full": "Ngành Công nghệ kỹ thuật ô tô (mã 7510205) năm 2025: điểm chuẩn chung 22.5 điểm; 360 chỉ tiêu; áp dụng PT2, PT3, PT5",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "22.5"
+    ]
+  },
+  {
+    "id": "A1_34",
+    "category": "A1_to_hop",
+    "question": "Ngành Kinh tế đầu tư HaUI xét tổ hợp nào?",
+    "expected_intent": "A1",
+    "ground_truth": "A01, D01, X25",
+    "ground_truth_full": "Ngành Kinh tế đầu tư (7310104): tổ hợp A01 (Toán-Lý-Anh), D01 (Toán-Văn-Anh), X25 (Toán-Anh-GDKTPL); 60 chỉ tiêu; áp dụng PT1/PT2/PT3/PT4",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "A01",
+      "D01",
+      "X25"
+    ]
+  },
+  {
+    "id": "A1_35",
+    "category": "A1_quy_trinh",
+    "question": "Website đăng ký xét tuyển HaUI PT2/PT4/PT5 là gì?",
+    "expected_intent": "A1",
+    "ground_truth": "xettuyen.haui.edu.vn",
+    "ground_truth_full": "Website đăng ký dự tuyển PT2, PT4, PT5: https://xettuyen.haui.edu.vn; mở từ 15/5 đến 05/7/2025 (2025) hoặc 15/5–20/6/2026 (2026)",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "xettuyen.haui.edu.vn"
+    ]
+  },
+  {
+    "id": "A1_36",
+    "category": "A1_quy_trinh",
+    "question": "Khi nhập học HaUI cần thanh toán qua ngân hàng nào?",
+    "expected_intent": "A1",
+    "ground_truth": "BIDV hoặc Ngân hàng Lộc Phát",
+    "ground_truth_full": "Thanh toán học phí khi nhập học qua QR Ngân hàng BIDV hoặc QR Ngân hàng Lộc Phát. Thẻ sinh viên K20 tích hợp thẻ ATM Vietinbank",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "BIDV"
+    ]
+  },
+  {
+    "id": "B1_34",
+    "category": "B1_quy_doi_tsa",
+    "question": "TSA 90 điểm quy đổi thang 30 bao nhiêu?",
+    "expected_intent": "B1",
+    "ground_truth": "30.00",
+    "ground_truth_full": "TSA 85.00 trở lên → quy đổi = 30.00 điểm (tối đa). TSA 90 thuộc khoảng 85.00-100.00 → 30.00",
+    "difficulty": "easy",
+    "eval_type": "exact",
+    "key_facts": [
+      "30.00"
+    ]
+  },
+  {
+    "id": "C_19",
+    "category": "C_thoi_han_pt1",
+    "question": "Hạn chót nộp hồ sơ xét tuyển thẳng (PT1) HaUI 2025 là ngày nào?",
+    "expected_intent": "C",
+    "ground_truth": "30/6/2025",
+    "ground_truth_full": "Hồ sơ xét tuyển thẳng (PT1) nộp trực tiếp tại trường đến hết 17h00 ngày 30/6/2025. Công bố kết quả: trước 17h00 ngày 15/7/2025",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "30/6/2025"
+    ]
+  },
+  {
+    "id": "C_20",
+    "category": "C_bao_luu_hoc_bong",
+    "question": "Sinh viên bảo lưu rồi quay lại học, học bổng HaUI có được tiếp tục không?",
+    "expected_intent": "C",
+    "ground_truth": "được tiếp tục nếu đủ điều kiện duy trì",
+    "ground_truth_full": "Được. SV bảo lưu khi quay lại học vẫn tiếp tục được xét HB HaUI nếu đáp ứng điều kiện duy trì (TBC ≥ 2.5, rèn luyện Tốt, ≥15TC). Thời gian xét được kéo dài thêm thời gian bảo lưu",
+    "difficulty": "medium",
+    "eval_type": "contains",
+    "key_facts": [
+      "bảo lưu",
+      "duy trì"
+    ]
+  },
+  {
+    "id": "A2_13",
+    "category": "A2_phuong_thuc",
+    "question": "Những ngành kinh tế HaUI có dùng phương thức PT5 (ĐGTD Bách Khoa) không?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách ngành kinh tế không có PT5",
+    "ground_truth_full": "Các ngành kinh tế HaUI (Kế toán, QTKD, Marketing, Tài chính-NH, Kiểm toán, QT nhân lực, QT văn phòng, KT đầu tư, Logistics, Phân tích DLKD) KHÔNG áp dụng PT5 (ĐGTD ĐHBK). Các ngành này chỉ dùng PT1/PT2/PT3/PT4 (ĐGNL ĐHQG HN). PT5 chỉ dùng cho khối kỹ thuật và CNTT",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "PT4",
+      "không",
+      "kinh tế"
+    ]
+  },
+  {
+    "id": "EDGE_13",
+    "category": "edge_ten_nganh_nham",
+    "question": "Điểm chuẩn ngành 'máy tính' HaUI 2025 là bao nhiêu?",
+    "expected_intent": "A2",
+    "ground_truth": "danh sách ngành liên quan máy tính",
+    "ground_truth_full": "Có 3 ngành liên quan 'máy tính' năm 2025: Khoa học máy tính (23.72), Công nghệ kỹ thuật máy tính (21.85), và CNTT (23.09) cũng liên quan. Cần xác định ngành cụ thể để tra điểm chính xác",
+    "difficulty": "medium",
+    "eval_type": "semantic",
+    "key_facts": [
+      "Khoa học máy tính",
+      "23.72",
+      "kỹ thuật máy tính",
+      "21.85"
+    ]
+  },
+  {
+    "id": "MULTI_24",
+    "category": "multi_tinh_diem_ket_luan",
+    "question": "Tổng 22.0 điểm, KV2-NT. Có đỗ Kế toán HaUI 2025 không?",
+    "expected_intent": "B1",
+    "ground_truth": "đỗ Kế toán",
+    "ground_truth_full": "Tổng=22.0 < 22.5 → cộng thẳng; KV2-NT=0.50; ĐXT=22.0+0.50=22.50; ĐC Kế toán 2025=20.00; 22.50>20.00 → ĐỖ",
+    "difficulty": "medium",
+    "eval_type": "decision",
+    "key_facts": [
+      "đỗ"
+    ]
+  },
+  {
+    "id": "A1_37",
+    "category": "A1_gioi_thieu",
+    "question": "HaUI tuyển sinh năm 2025 bao nhiêu mã ngành và bao nhiêu chỉ tiêu tổng?",
+    "expected_intent": "A1",
+    "ground_truth": "62 mã ngành, 7990 chỉ tiêu",
+    "ground_truth_full": "Năm 2025, HaUI tuyển sinh 62 mã ngành/chương trình đào tạo với tổng 7.990 chỉ tiêu đại học chính quy, theo 5 phương thức xét tuyển",
+    "difficulty": "easy",
+    "eval_type": "contains",
+    "key_facts": [
+      "62",
+      "7.990"
+    ]
   }
 ]

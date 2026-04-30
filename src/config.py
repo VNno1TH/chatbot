@@ -13,7 +13,7 @@ OLLAMA_EMBED_MODEL = os.getenv("OLLAMA_EMBED_MODEL", "bge-m3:latest")
 
 # ── Router ──
 ROUTER_MODEL = os.getenv("ROUTER_MODEL", OLLAMA_MODEL)
-ROUTER_TIMEOUT = int(os.getenv("ROUTER_TIMEOUT", "15"))
+ROUTER_TIMEOUT = int(os.getenv("ROUTER_TIMEOUT", "20"))
 
 # ── Reranker ──
 RERANKER_URL = os.getenv("RERANKER_URL", "http://localhost:8080")
@@ -52,3 +52,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "haui-chatbot-secret-key-2026")
 
 # ── Embedding dimensions ──
 EMBED_DIM = 1024  # BGE-M3 output dimension
+
+# ── Facebook Messenger ──
+FB_PAGE_TOKEN   = os.getenv('FB_PAGE_TOKEN', '')
+FB_VERIFY_TOKEN = os.getenv('FB_VERIFY_TOKEN', 'haui-fb-verify-2026')

@@ -1,0 +1,130 @@
+[
+  {
+    "ts": "2026-04-25T21:31:14",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 113.41,
+    "chunks": 5
+  },
+  {
+    "ts": "2026-04-25T21:31:22",
+    "intent": "E",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 0.0,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-25T21:36:09",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 13.3,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-25T21:36:33",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "Công nghệ thông tin",
+    "time": 13.48,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-28T01:10:33",
+    "intent": "B1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 2.48,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-28T01:10:41",
+    "intent": "E",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 0.0,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-28T01:12:05",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 51.62,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-28T01:17:19",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 52.89,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-28T01:18:57",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "Công nghệ thông tin",
+    "time": 44.96,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-29T16:53:55",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "Công nghệ thông tin",
+    "time": 28.57,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-29T16:59:31",
+    "intent": "E",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 0.0,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-29T21:44:35",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "Công nghệ thông tin",
+    "time": 82.77,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-29T21:54:17",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "Công nghệ thông tin",
+    "time": 12.46,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-29T21:54:33",
+    "intent": "E",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 0.0,
+    "chunks": 0
+  },
+  {
+    "ts": "2026-04-29T21:54:58",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 16.51,
+    "chunks": 7
+  },
+  {
+    "ts": "2026-04-29T21:55:58",
+    "intent": "A1",
+    "ma_nganh": "",
+    "ten_nganh": "",
+    "time": 19.69,
+    "chunks": 7
+  }
+]

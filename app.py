@@ -17,6 +17,7 @@ from src.config import (
 from src.api.auth import verify_admin, create_token, verify_token
 from src.rag.pipeline import handle_query, load_index, reload_index
 from src.rag.indexer import build_index
+from src.analytics import log_query, get_stats, log_feedback, get_feedback
 
 app = Flask(__name__, static_folder='static', static_url_path='')
 app.config['SECRET_KEY'] = SECRET_KEY
@@ -66,11 +67,25 @@ def chat():
 
     try:
         result = handle_query(user_message)
+
+        # ── Log analytics (fire-and-forget, never raises) ──
+        try:
+            entities = result.get('entities') or {}
+            log_query(
+                intent=result.get('intent', ''),
+                ma_nganh=entities.get('ma_nganh', ''),
+                ten_nganh=entities.get('ten_nganh', ''),
+                response_time=result.get('time', 0),
+                num_chunks=result.get('num_chunks', 0),
+            )
+        except Exception:
+            pass
+
         return jsonify({
-            'answer': result.get('answer', ''),
-            'intent': result.get('intent', ''),
-            'time': result.get('time', 0),
-            'num_chunks': result.get('num_chunks', 0)
+            'answer':     result.get('answer', ''),
+            'intent':     result.get('intent', ''),
+            'time':       result.get('time', 0),
+            'num_chunks': result.get('num_chunks', 0),
         })
     except Exception as e:
         if HAUI_DEBUG:
@@ -84,6 +99,29 @@ def chat():
 @app.route('/api/health', methods=['GET'])
 def health():
     return jsonify({'status': 'ok', 'timestamp': time.time()})
+
+
+# ══════════════════════════════════════════
+#  PUBLIC API — Feedback (no login required)
+# ══════════════════════════════════════════
+
+@app.route('/api/feedback', methods=['POST'])
+def feedback():
+    """Receive a thumbs-up / thumbs-down rating from the chat UI."""
+    data = request.get_json() or {}
+    feedback_type = data.get('type', '')   # 'up' | 'down'
+    if feedback_type not in ('up', 'down'):
+        return jsonify({'error': 'Invalid feedback type'}), 400
+    try:
+        log_feedback(
+            question=data.get('question', ''),
+            answer=data.get('answer', ''),
+            feedback_type=feedback_type,
+            comment=data.get('comment', ''),
+        )
+        return jsonify({'status': 'ok'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
 
 # ══════════════════════════════════════════
 #  ADMIN API — Login
@@ -109,7 +147,7 @@ def admin_login():
 @admin_required
 def admin_stats():
     """Get indexing stats."""
-    from rag_pipeline import _collection, _chunks
+    from src.rag.pipeline import _collection, _chunks
     stats = {
         'total_chunks': len(_chunks) if _chunks else 0,
         'chroma_docs': _collection.count() if _collection else 0,
@@ -186,21 +224,43 @@ def admin_delete(filename):
 
 
 # ══════════════════════════════════════════
+#  ADMIN API — Analytics & Feedback
+# ══════════════════════════════════════════
+
+@app.route('/api/admin/analytics', methods=['GET'])
+@admin_required
+def admin_analytics():
+    """Return aggregated chat analytics for Dashboard charts."""
+    return jsonify(get_stats())
+
+
+@app.route('/api/admin/feedback', methods=['GET'])
+@admin_required
+def admin_feedback_list():
+    """Return the latest feedback entries for Admin review."""
+    limit = int(request.args.get('limit', 50))
+    return jsonify(get_feedback(limit=limit))
+
+
+# ══════════════════════════════════════════
 #  STARTUP
 # ══════════════════════════════════════════
 
 def init_app():
     """Initialize on startup."""
     print("\n" + "=" * 60)
-    print("  🎓 HaUI RAG Chatbot v2.2")
+    print("  🎓 HaUI RAG Chatbot v3.0")
     print("=" * 60)
 
-    # Load index
+    # Register Facebook Messenger Blueprint
+    from src.bot.facebook import fb_bp
+    app.register_blueprint(fb_bp)
+
+    # Load RAG index
     load_index()
 
     # Start Telegram bot (only in reloader child process to avoid duplicate instances)
     if TELEGRAM_BOT_TOKEN:
-        # In debug mode, Flask spawns 2 processes. Only start bot in the child.
         is_reloader_child = os.environ.get('WERKZEUG_RUN_MAIN') == 'true'
         if is_reloader_child or not HAUI_DEBUG:
             from src.bot.telegram import start_telegram_bot_async
@@ -213,6 +273,9 @@ def init_app():
     print("  🔧 Admin: http://localhost:5000/admin")
     if TELEGRAM_BOT_TOKEN:
         print("  📱 Telegram bot: running")
+    from src.config import FB_PAGE_TOKEN
+    if FB_PAGE_TOKEN:
+        print("  📘 Facebook Webhook: /api/webhook/facebook")
     print("=" * 60 + "\n")
 
 

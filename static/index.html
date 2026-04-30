@@ -23,6 +23,7 @@
                 </div>
             </div>
             <div class="header-right">
+                <button class="header-btn" id="speakerBtn" onclick="toggleSpeaker()" title="Bật/tắt giọng nói">🔇 Âm thanh</button>
                 <a href="/admin" class="header-btn">🔧 Admin</a>
             </div>
         </div>
@@ -74,6 +75,7 @@
         <!-- Input Area -->
         <div class="input-area">
             <div class="input-wrapper">
+                <button class="voice-btn" id="voiceBtn" onclick="toggleRecording()" title="Nhấn để nói">🎤</button>
                 <textarea class="input-field" id="userInput" placeholder="Nhập câu hỏi về tuyển sinh HaUI..." rows="1"
                     onkeydown="handleKeyDown(event)"></textarea>
                 <button class="send-btn" id="sendBtn" onclick="sendMessage()">➤</button>

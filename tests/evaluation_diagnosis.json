@@ -1,0 +1,566 @@
+{
+  "_description": "BAO CAO CHAN DOAN RAG PIPELINE — doc file nay de biet sua o dau",
+  "timestamp": "2026-04-25T22:15:47.212653",
+  "model": "qwen2.5:14b",
+  "overall_health": {
+    "score": 74.4,
+    "grade": "B",
+    "intent_accuracy": 94.9,
+    "factual_accuracy": 65.3,
+    "total_tests": 196
+  },
+  "component_health": {
+    "ROUTER": {
+      "status": "NEEDS_FIX",
+      "error_count": 10,
+      "error_pct": 5.1
+    },
+    "RETRIEVER": {
+      "status": "NEEDS_FIX",
+      "error_count": 48,
+      "error_pct": 24.5
+    },
+    "GENERATOR": {
+      "status": "GOOD",
+      "error_count": 17,
+      "error_pct": 8.7
+    },
+    "STRUCTURED": {
+      "status": "NEEDS_FIX",
+      "error_count": 23,
+      "error_pct": 11.7
+    }
+  },
+  "issues": [
+    {
+      "component": "ROUTER",
+      "severity": "MEDIUM",
+      "count": 10,
+      "pct": 5.1,
+      "file": "src/rag/pipeline.py",
+      "functions": [
+        "fast_route()",
+        "llm_route()",
+        "FAST_PATTERNS",
+        "ROUTER_PROMPT"
+      ],
+      "detail": "10 intent phan loai sai",
+      "confusions": {
+        "A1->C": [
+          {
+            "id": "A1_12",
+            "question": "Chỉ tiêu ĐH chính quy HaUI dự kiến 2026 là bao nhiêu?",
+            "expected": "A1",
+            "predicted": "C"
+          },
+          {
+            "id": "MULTI_16",
+            "question": "Hiện tại là tháng 6 năm 2026, thí sinh còn có thể đăng ký PT2 không?",
+            "expected": "A1",
+            "predicted": "C"
+          }
+        ],
+        "A2->A1": [
+          {
+            "id": "A2_05",
+            "question": "Những ngành nào ở HaUI có thể xét tổ hợp A00 (Toán-Lý-Hóa)?",
+            "expected": "A2",
+            "predicted": "A1"
+          },
+          {
+            "id": "EDGE_13",
+            "question": "Điểm chuẩn ngành 'máy tính' HaUI 2025 là bao nhiêu?",
+            "expected": "A2",
+            "predicted": "A1"
+          }
+        ],
+        "B1->A2": [
+          {
+            "id": "MULTI_09",
+            "question": "Em điểm A01 là Toán 8.5, Lý 8.0, Anh 8.5 (tổng 25), KV3. Có đỗ vào các ngành nào của HaUI?",
+            "expected": "B1",
+            "predicted": "A2"
+          },
+          {
+            "id": "MULTI_10",
+            "question": "Em có điểm D01: Toán 7, Văn 7.5, Anh 7.5 (tổng 22), KV2. Có thể vào ngành kinh tế nào ở HaUI?",
+            "expected": "B1",
+            "predicted": "A2"
+          }
+        ],
+        "B1->C": [
+          {
+            "id": "MULTI_20",
+            "question": "Toán 8.0, Hóa 7.5, Anh 7.5 (tổng 23), KV2, tổ hợp A01. Nhưng ngành Công nghệ kỹ thuật hóa học chỉ dùng tổ hợp A00/B00/C02/D07. Có xét được không?",
+            "expected": "B1",
+            "predicted": "C"
+          }
+        ],
+        "C->A1": [
+          {
+            "id": "COMPLEX_10",
+            "question": "Em học THPT 2 năm ở KV2 (tỉnh), 1 năm ở KV3 (Hà Nội nội thành). Được hưởng ưu tiên khu vực nào?",
+            "expected": "C",
+            "predicted": "A1"
+          }
+        ],
+        "A2->B2": [
+          {
+            "id": "STRAT_02",
+            "question": "Em dự kiến tổng điểm THPT khoảng 21 điểm, KV3. Muốn vào HaUI. Nên chọn ngành gì?",
+            "expected": "A2",
+            "predicted": "B2"
+          },
+          {
+            "id": "STRAT_07",
+            "question": "Em thích Hóa học, điểm B00 (Toán-Hóa-Sinh) khoảng 22 điểm, KV1. Nên đăng ký ngành nào ở HaUI?",
+            "expected": "A2",
+            "predicted": "B2"
+          }
+        ]
+      }
+    },
+    {
+      "component": "RETRIEVER",
+      "severity": "HIGH",
+      "count": 48,
+      "pct": 24.5,
+      "file": "src/rag/pipeline.py",
+      "functions": [
+        "hybrid_search()",
+        "build_filter()",
+        "rerank()"
+      ],
+      "detail": "27 context sai chu de, 46 context thieu thong tin",
+      "affected_categories": {
+        "A2_ranking": 2,
+        "A2_chi_tieu": 1,
+        "A2_phuong_thuc": 1,
+        "A2_hoc_bong": 1,
+        "A2_nhom_nganh": 1,
+        "B1_quy_doi_hsa": 1,
+        "B1_quy_doi_tsa": 1,
+        "B1_quy_doi_hb": 1,
+        "C_dieu_kien_pt2": 2,
+        "C_hoc_bong_dau_vao": 1,
+        "C_hoc_bong_kkht_khong_du": 3,
+        "C_quy_trinh_nhap_hoc": 1,
+        "C_mien_giam_hoc_phi": 1,
+        "C_van_bang": 1,
+        "D_so_sanh_nganh": 4,
+        "D_so_sanh_hoc_phi": 1,
+        "D_so_sanh_phuong_thuc": 1,
+        "multi_hoc_bong_ket_luan": 1,
+        "multi_dieu_kien_hoc_bong": 1,
+        "complex_to_hop_khong_hop_le": 1,
+        "complex_hoc_bong_tu_choi": 1,
+        "complex_hoc_bong_ngn_thanh_binh": 1,
+        "complex_hoc_bong_du_tri": 1,
+        "complex_to_hop_tinh_huong": 1,
+        "trend_xu_huong_cntt": 1,
+        "trend_nganh_tang_nhieu": 1,
+        "trend_nganh_de_vao": 1,
+        "strat_chon_nganh_ai": 1,
+        "strat_chon_nganh_ky_thuat": 1,
+        "edge_nganh_chua_mo": 1,
+        "edge_tinh_sai_khu_vuc": 1,
+        "edge_ngoai_pham_vi_tuyen_sinh": 1,
+        "edge_so_sanh_nam": 1,
+        "edge_khong_co_thong_tin": 1,
+        "C_dieu_kien_pt1": 1,
+        "C_quy_trinh_dang_ky": 1,
+        "edge_quy_doi_dac_biet": 1,
+        "complex_dieu_kien_lk22": 1,
+        "A1_quy_trinh": 1,
+        "C_thoi_han_pt1": 1,
+        "A1_gioi_thieu": 1
+      }
+    },
+    {
+      "component": "GENERATOR",
+      "severity": "MEDIUM",
+      "count": 17,
+      "pct": 8.7,
+      "file": "src/rag/pipeline.py + src/rag/prompts.py",
+      "functions": [
+        "generate_response()",
+        "SYSTEM_PROMPT_TEMPLATE"
+      ],
+      "detail": "17 cau tra loi sai du intent va context dung",
+      "affected_categories": {
+        "A1_diem_chuan": 1,
+        "A1_hoc_phi": 4,
+        "A1_ktx": 2,
+        "A2_nhom_nganh": 1,
+        "B1_edge_tinh_diem": 1,
+        "C_dieu_kien_thi_tu_do": 1,
+        "complex_xet_diem_chuan_2026": 1,
+        "complex_diem_bien_gioi": 1,
+        "trend_xu_huong_tu_dong_hoa": 1,
+        "trend_hoc_phi_tang": 1,
+        "strat_chon_phuong_thuc": 1,
+        "strat_ket_hop_pt": 1,
+        "edge_lo_phi": 1
+      }
+    },
+    {
+      "component": "STRUCTURED",
+      "severity": "HIGH",
+      "count": 23,
+      "pct": 11.7,
+      "file": "src/rag/structured.py",
+      "functions": [
+        "try_deterministic_b1_answer()",
+        "try_deterministic_kb_answer()"
+      ],
+      "detail": "23 tinh toan deterministic sai",
+      "affected_categories": {
+        "B1_tinh_hoc_phi": 6,
+        "B1_tinh_diem_pt2": 3,
+        "B1_edge_tinh_diem": 1,
+        "multi_tinh_diem_ket_luan": 7,
+        "multi_hoc_phi_tong": 2,
+        "multi_tinh_toan_toan_dien": 1,
+        "complex_quy_doi_hsa_dac_biet": 1,
+        "complex_dung_sai": 1,
+        "complex_nhieu_buoc": 1
+      }
+    }
+  ],
+  "recommendations": [
+    {
+      "component": "RETRIEVER",
+      "action": "Context sai chu de -> kiem tra build_filter() co filter dung loai chunk khong",
+      "file": "src/rag/pipeline.py",
+      "function": "build_filter()",
+      "examples": [
+        "Top 5 ngành có điểm chuẩn cao nhất HaUI năm 2025?",
+        "Các phương thức tuyển sinh HaUI 2025 là gì?",
+        "Các ngành nào ở HaUI có chương trình đào tạo bằng tiếng Anh?"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "component": "RETRIEVER",
+      "action": "Context thieu thong tin -> bo sung chunks trong ChromaDB hoac tang top_k",
+      "file": "src/rag/pipeline.py",
+      "function": "hybrid_search() / TOP_K_CONFIG",
+      "examples": [
+        "Ngành nào có điểm chuẩn cao nhất HaUI 2025?",
+        "Top 5 ngành có điểm chuẩn cao nhất HaUI năm 2025?",
+        "Các ngành nào có chỉ tiêu lớn nhất ở HaUI 2025?"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "component": "GENERATOR",
+      "action": "LLM hallucinate (Fact=0%) -> siet prompt \"chi tra loi dua tren context\", giam temperature",
+      "file": "src/rag/prompts.py",
+      "function": "SYSTEM_PROMPT_TEMPLATE",
+      "examples": [
+        "dc cơ điện tử 2024 pt3?",
+        "Học phí K20 đại trà mỗi tín chỉ bao nhiêu?",
+        "Học phí ngành tiếng Anh (chương trình đào tạo bằng tiếng Anh) K20 bao nhiêu?"
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "component": "STRUCTURED",
+      "action": "Tinh toan B1 sai -> kiem tra cong thuc, bang quy doi, logic uu tien trong structured.py",
+      "file": "src/rag/structured.py",
+      "examples": [
+        {
+          "q": "K20 đại trà, học phần 3 tín chỉ lý thuyết. Tính học phí?",
+          "expected": "3150000",
+          "got": "📊 **Tính học phí học phần** (năm học 2025–2026):\n- Số tín chỉ: **3**\n- Loại học phần: Lý thuyết/tiểu"
+        },
+        {
+          "q": "K20 tiếng Anh, học phần 4 tín chỉ thực hành chuyên sâu. Học phí bao nhiêu?",
+          "expected": "10000000",
+          "got": "📊 **Tính học phí học phần** (năm học 2025–2026):\n- Số tín chỉ: **4**\n- Loại học phần: Thực hành/thí "
+        },
+        {
+          "q": "Học phần Giáo dục thể chất K20 2 tín chỉ. Học phí bao nhiêu?",
+          "expected": "1400000",
+          "got": "📊 **Tính học phí học phần** (năm học 2025–2026):\n- Số tín chỉ: **2**\n- Loại học phần: GDTC/QPAN → hệ"
+        },
+        {
+          "q": "K20 đại trà, học phần 3TC lý thuyết + 2TC thực hành thí nghiệm. Tổng học phí?",
+          "expected": "5250000",
+          "got": "📊 **Tính học phí học phần** (năm học 2025–2026):\n\n- **3 TC** Lý thuyết/tiểu luận/đồ án (×1.5): N_TCH"
+        },
+        {
+          "q": "K19, học phần Ngoại ngữ 3 tín chỉ. Học phí tính thế nào?",
+          "expected": "2475000",
+          "got": "📊 **Tính học phí học phần** (năm học 2025–2026):\n- Số tín chỉ: **3**\n- Loại học phần: Ngoại ngữ → hệ"
+        }
+      ],
+      "priority": "HIGH"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho A1 trong FAST_PATTERNS de khong bi nham sang C",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Chỉ tiêu ĐH chính quy HaUI dự kiến 2026 là bao nhiêu?",
+        "Hiện tại là tháng 6 năm 2026, thí sinh còn có thể đăng ký PT2 không?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho A2 trong FAST_PATTERNS de khong bi nham sang A1",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Những ngành nào ở HaUI có thể xét tổ hợp A00 (Toán-Lý-Hóa)?",
+        "Điểm chuẩn ngành 'máy tính' HaUI 2025 là bao nhiêu?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho B1 trong FAST_PATTERNS de khong bi nham sang A2",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Em điểm A01 là Toán 8.5, Lý 8.0, Anh 8.5 (tổng 25), KV3. Có đỗ vào các ngành nào của HaUI?",
+        "Em có điểm D01: Toán 7, Văn 7.5, Anh 7.5 (tổng 22), KV2. Có thể vào ngành kinh tế nào ở HaUI?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho B1 trong FAST_PATTERNS de khong bi nham sang C",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Toán 8.0, Hóa 7.5, Anh 7.5 (tổng 23), KV2, tổ hợp A01. Nhưng ngành Công nghệ kỹ thuật hóa học chỉ dùng tổ hợp A00/B00/C02/D07. Có xét được không?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho C trong FAST_PATTERNS de khong bi nham sang A1",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Em học THPT 2 năm ở KV2 (tỉnh), 1 năm ở KV3 (Hà Nội nội thành). Được hưởng ưu tiên khu vực nào?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "ROUTER",
+      "action": "Them pattern cho A2 trong FAST_PATTERNS de khong bi nham sang B2",
+      "file": "src/rag/pipeline.py",
+      "function": "fast_route()",
+      "examples": [
+        "Em dự kiến tổng điểm THPT khoảng 21 điểm, KV3. Muốn vào HaUI. Nên chọn ngành gì?",
+        "Em thích Hóa học, điểm B00 (Toán-Hóa-Sinh) khoảng 22 điểm, KV1. Nên đăng ký ngành nào ở HaUI?"
+      ],
+      "priority": "MEDIUM"
+    },
+    {
+      "component": "GENERATOR",
+      "action": "Tra loi thieu thong tin -> them chi dan \"tra loi day du\" trong prompt",
+      "file": "src/rag/prompts.py",
+      "function": "SYSTEM_PROMPT_TEMPLATE",
+      "examples": [
+        "Liệt kê các ngành Cơ khí HaUI và điểm chuẩn 2025?"
+      ],
+      "priority": "MEDIUM"
+    }
+  ],
+  "weak_categories": [
+    {
+      "category": "multi_xet_nhieu_nganh",
+      "avg_score": 23.2,
+      "count": 2,
+      "root_causes": {
+        "ROUTER": 2
+      },
+      "sample_questions": [
+        "Em điểm A01 là Toán 8.5, Lý 8.0, Anh 8.5 (tổng 25), KV3. Có đỗ vào các ngành nào của HaUI?",
+        "Em có điểm D01: Toán 7, Văn 7.5, Anh 7.5 (tổng 22), KV2. Có thể vào ngành kinh tế nào ở HaUI?"
+      ]
+    },
+    {
+      "category": "strat_chon_phuong_thuc",
+      "avg_score": 31.2,
+      "count": 1,
+      "root_causes": {
+        "GENERATOR": 1
+      },
+      "sample_questions": [
+        "Em được IELTS 7.0, TB học bạ A01 khoảng 8.5/8.0/8.5, KV2. Nên đăng ký PT2 hay PT3 để vào CNTT?"
+      ]
+    },
+    {
+      "category": "strat_ket_hop_pt",
+      "avg_score": 31.2,
+      "count": 1,
+      "root_causes": {
+        "GENERATOR": 1
+      },
+      "sample_questions": [
+        "Em thi THPT dự kiến 23 điểm, KV3, có IELTS 6.0. Nên dùng PT2 hay PT3 vào ngành Marketing?"
+      ]
+    },
+    {
+      "category": "strat_diem_thap_chon_nganh",
+      "avg_score": 34.0,
+      "count": 1,
+      "root_causes": {
+        "ROUTER": 1
+      },
+      "sample_questions": [
+        "Em dự kiến tổng điểm THPT khoảng 21 điểm, KV3. Muốn vào HaUI. Nên chọn ngành gì?"
+      ]
+    },
+    {
+      "category": "trend_nganh_tang_nhieu",
+      "avg_score": 35.2,
+      "count": 1,
+      "root_causes": {
+        "RETRIEVER": 1
+      },
+      "sample_questions": [
+        "Ngành nào tại HaUI có điểm chuẩn tăng nhiều nhất từ 2023 đến 2024?"
+      ]
+    },
+    {
+      "category": "trend_nganh_de_vao",
+      "avg_score": 38.8,
+      "count": 1,
+      "root_causes": {
+        "RETRIEVER": 1
+      },
+      "sample_questions": [
+        "Những ngành nào ở HaUI có điểm chuẩn thấp nhất năm 2025 để em cân nhắc?"
+      ]
+    },
+    {
+      "category": "B1_tinh_diem_pt2",
+      "avg_score": 42.7,
+      "count": 3,
+      "root_causes": {
+        "STRUCTURED": 3
+      },
+      "sample_questions": [
+        "PT2: điểm TB học bạ Toán/Văn/Anh lần lượt là 9.0/8.5/9.4, chứng chỉ IELTS 6.5, KV3. Tính ĐXT?",
+        "PT2: TB học bạ D01 Toán 8.3/Văn 8.5/Anh 9.2, IELTS 6.0, KV2-NT. Tính ĐXT?",
+        "PT2: điểm TB học bạ Toán 9.5/Văn 9.2/Anh 9.0, Giải Nhì HSG tỉnh môn Văn, KV2. Tính ĐXT PT2?"
+      ]
+    },
+    {
+      "category": "strat_chon_nganh_ai",
+      "avg_score": 44.2,
+      "count": 1,
+      "root_causes": {
+        "RETRIEVER": 1
+      },
+      "sample_questions": [
+        "Em muốn làm về AI sau này. Nên chọn ngành nào ở HaUI?"
+      ]
+    },
+    {
+      "category": "B1_edge_tinh_diem",
+      "avg_score": 46.2,
+      "count": 2,
+      "root_causes": {
+        "GENERATOR": 1,
+        "STRUCTURED": 1
+      },
+      "sample_questions": [
+        "Tổng điểm 3 môn là 22.5 điểm chính xác, KV2. Tính ĐXT?",
+        "Tổng 31 điểm 3 môn, KV1. Tính điểm xét tuyển?"
+      ]
+    },
+    {
+      "category": "complex_nhieu_buoc",
+      "avg_score": 46.8,
+      "count": 1,
+      "root_causes": {
+        "STRUCTURED": 1
+      },
+      "sample_questions": [
+        "Em được IELTS 7.5, TB học bạ Toán 9.5, Văn 8.8, Anh 9.8 (D01). KV1. Tính ĐXT PT2 và ngành nào đỗ được?"
+      ]
+    }
+  ],
+  "hard_question_analysis": {
+    "total_hard": 65,
+    "avg_score": 65.5,
+    "failures": [
+      {
+        "id": "B1_12",
+        "question": "Em thi ĐGNL được 120 điểm, quy đổi được bao nhiêu?",
+        "score": 46.2,
+        "root_cause": "RETRIEVER"
+      },
+      {
+        "id": "B1_19",
+        "question": "K20 đại trà, học phần 3TC lý thuyết + 2TC thực hành thí nghiệm. Tổng học phí?",
+        "score": 46.8,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "B1_23",
+        "question": "PT2: điểm TB học bạ Toán/Văn/Anh lần lượt là 9.0/8.5/9.4, chứng chỉ IELTS 6.5, KV3. Tính ĐXT?",
+        "score": 37.2,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "B1_24",
+        "question": "PT2: TB học bạ D01 Toán 8.3/Văn 8.5/Anh 9.2, IELTS 6.0, KV2-NT. Tính ĐXT?",
+        "score": 43.8,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "B1_25",
+        "question": "PT2: điểm TB học bạ Toán 9.5/Văn 9.2/Anh 9.0, Giải Nhì HSG tỉnh môn Văn, KV2. Tính ĐXT PT2?",
+        "score": 47.2,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "B1_29",
+        "question": "Tổng điểm 3 môn là 22.5 điểm chính xác, KV2. Tính ĐXT?",
+        "score": 48.2,
+        "root_cause": "GENERATOR"
+      },
+      {
+        "id": "B1_30",
+        "question": "Tổng 31 điểm 3 môn, KV1. Tính điểm xét tuyển?",
+        "score": 44.2,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "MULTI_01",
+        "question": "Em được HSA 95, KV1. Tính điểm rồi cho em biết có đỗ CNTT HaUI 2025 không?",
+        "score": 46.2,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "MULTI_03",
+        "question": "TSA 65.5, KV2. Tính điểm rồi xem có đỗ ngành Điều khiển tự động hóa không?",
+        "score": 43.2,
+        "root_cause": "STRUCTURED"
+      },
+      {
+        "id": "MULTI_06",
+        "question": "K20 đại trà, 1 kỳ học 30TC (20TC lý thuyết + 8TC TH thường + 2TC GDTC). Tính tổng học phí kỳ đó?",
+        "score": 47.2,
+        "root_cause": "STRUCTURED"
+      }
+    ]
+  },
+  "intent_confusion_matrix": {
+    "A1 -> C": 2,
+    "A2 -> A1": 2,
+    "B1 -> A2": 2,
+    "B1 -> C": 1,
+    "C -> A1": 1,
+    "A2 -> B2": 2
+  }
+}

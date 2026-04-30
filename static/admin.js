@@ -56,6 +56,8 @@ function showDashboard() {
     document.getElementById('loginOverlay').style.display = 'none';
     document.getElementById('adminDashboard').style.display = 'block';
     loadStats();
+    loadAnalytics();
+    loadFeedback();
 }
 
 async function apiCall(url, options = {}) {
@@ -194,4 +196,126 @@ if (uploadZone) {
             uploadFile(e.dataTransfer.files[0]);
         }
     });
+}
+
+// ── Chart instances (kept to destroy before re-render) ────────────────────────
+let _chartIntent = null;
+let _chartMajors = null;
+
+// ── Analytics ─────────────────────────────────────────────────────────────────
+async function loadAnalytics() {
+    try {
+        const res  = await apiCall('/api/admin/analytics');
+        const data = await res.json();
+
+        // Update stat cards
+        document.getElementById('statTotalQueries').textContent = data.total ?? '—';
+        document.getElementById('statAvgTime').textContent      = data.avg_time != null ? data.avg_time + 's' : '—';
+
+        if (!data.total) {
+            document.getElementById('analyticsEmpty').style.display = 'block';
+            return;
+        }
+        document.getElementById('analyticsEmpty').style.display = 'none';
+
+        // ── Pie chart: Intent distribution ──
+        const intentLabels = Object.keys(data.intents || {});
+        const intentValues = Object.values(data.intents || {});
+        const PALETTE = [
+            '#ef4444','#f97316','#eab308','#22c55e',
+            '#06b6d4','#6366f1','#a855f7','#ec4899','#14b8a6',
+        ];
+
+        if (_chartIntent) _chartIntent.destroy();
+        _chartIntent = new Chart(document.getElementById('chartIntent'), {
+            type: 'doughnut',
+            data: {
+                labels:   intentLabels,
+                datasets: [{ data: intentValues, backgroundColor: PALETTE, borderWidth: 2 }],
+            },
+            options: {
+                plugins: {
+                    legend: { position: 'bottom', labels: { font: { size: 11 } } },
+                },
+            },
+        });
+
+        // ── Horizontal bar chart: Top majors ──
+        const majorLabels = (data.top_majors || []).map(m => m.name);
+        const majorValues = (data.top_majors || []).map(m => m.count);
+
+        if (_chartMajors) _chartMajors.destroy();
+        _chartMajors = new Chart(document.getElementById('chartMajors'), {
+            type: 'bar',
+            data: {
+                labels:   majorLabels,
+                datasets: [{
+                    label:           'Số câu hỏi',
+                    data:            majorValues,
+                    backgroundColor: '#ef4444cc',
+                    borderRadius:    4,
+                }],
+            },
+            options: {
+                indexAxis: 'y',
+                plugins: { legend: { display: false } },
+                scales:  { x: { beginAtZero: true, ticks: { precision: 0 } } },
+            },
+        });
+
+    } catch (e) {
+        console.error('loadAnalytics error:', e);
+    }
+}
+
+// ── Feedback table ────────────────────────────────────────────────────────────
+async function loadFeedback() {
+    try {
+        const res   = await apiCall('/api/admin/feedback?limit=30');
+        const items = await res.json();
+
+        const wrap  = document.getElementById('feedbackTableWrap');
+        const empty = document.getElementById('feedbackEmpty');
+
+        if (!items.length) {
+            empty.style.display = 'block';
+            return;
+        }
+        empty.style.display = 'none';
+
+        const rows = items.map(fb => `
+            <tr style="${fb.type === 'down' ? 'background:rgba(239,68,68,.08)' : ''}">
+                <td>${fb.type === 'up' ? '👍' : '👎'}</td>
+                <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${escHtml(fb.question)}">${escHtml(fb.question)}</td>
+                <td style="max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${escHtml(fb.answer)}">${escHtml(fb.answer)}</td>
+                <td>${escHtml(fb.comment || '—')}</td>
+                <td style="white-space:nowrap;font-size:12px">${fb.ts}</td>
+            </tr>
+        `).join('');
+
+        wrap.innerHTML = `
+            <table style="width:100%;border-collapse:collapse;font-size:13px">
+                <thead>
+                    <tr style="border-bottom:1px solid var(--border-color);text-align:left">
+                        <th style="padding:8px 12px">Loại</th>
+                        <th style="padding:8px 12px">Câu hỏi</th>
+                        <th style="padding:8px 12px">Câu trả lời</th>
+                        <th style="padding:8px 12px">Bình luận</th>
+                        <th style="padding:8px 12px">Thời gian</th>
+                    </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+            </table>
+        `;
+    } catch (e) {
+        console.error('loadFeedback error:', e);
+    }
+}
+
+function escHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
 }
