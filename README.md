@@ -1,4 +1,4 @@
-# 🎓 HaUI RAG Chatbot
+# 🎓 HaUI RAG Chatbot v3.0
 
 Trợ lý ảo Tư vấn Tuyển sinh Đại học Công nghiệp Hà Nội (HaUI). 
 Hệ thống sử dụng kiến trúc **RAG (Retrieval-Augmented Generation)** nâng cao, kết hợp giữa Vector Search và Full-text Search (BM25), được thiết kế đặc biệt để tính toán điểm chuẩn chính xác, tư vấn ngành học, và giải đáp các thắc mắc về thủ tục tuyển sinh hoàn toàn bằng Tiếng Việt.
@@ -8,22 +8,22 @@ Hệ thống sử dụng kiến trúc **RAG (Retrieval-Augmented Generation)** n
 ## 🎯 Tính năng nổi bật
 
 - **Hybrid Search RAG**: Trích xuất dữ liệu kết hợp giữa Vector Search (BGE-M3 + ChromaDB) và BM25, hợp nhất bằng thuật toán RRF (Reciprocal Rank Fusion).
-- **Phân luồng thông minh (Router)**: Có khả năng tự động bóc tách các câu hỏi dạng tra cứu, small talk, hoặc các query nằm ngoài phạm vi tư vấn.
+- **Phân luồng thông minh (Router v3)**: Có khả năng tự động bóc tách các câu hỏi dạng tra cứu, small talk, hoặc các query nằm ngoài phạm vi tư vấn.
 - **Tính toán điểm chuẩn Deterministic**: Cài đặt sẵn logic tính điểm chính xác bằng code (quy đổi chứng chỉ tiếng Anh, chứng chỉ ĐGNL / ĐGTD, điểm xét tuyển PT2, PT3, ưu tiên khu vực) giúp giảm tải cho LLM và bảo đảm 100% độ chính xác.
 - **RAG_LITE Mode**: Tối ưu tốc độ trả lời (giảm từ 10s xuống còn 2-3s) đối với các câu hỏi đơn giản hoặc các phép tính toán được định tuyến cứng cài trong hệ thống.
 - **Giao diện Glassmorphism 3D**: Giao diện Premium Web UI kết hợp hiệu ứng Float 3D, hỗ trợ render Markdown bảng biểu tuyệt đẹp.
-- **Telegram Bot**: Tự động chạy ngầm song song với máy chủ Flask để hỗ trợ tra cứu trực tiếp qua Telegram.
+- **Telegram & Facebook Bot**: Tự động chạy ngầm song song với máy chủ Flask để hỗ trợ tra cứu trực tiếp qua Telegram và Facebook Messenger.
+- **Admin Analytics Dashboard**: Quản lý upload dữ liệu JSON/MD, theo dõi biểu đồ thống kê tương tác, và đánh giá phản hồi (thumbs up/down) ngay trên nền web.
 
 ---
 
 ## 🏗️ Kiến trúc thư mục (Clean Architecture)
 
-Sau phiên bản v2.2, toàn bộ codebase đã được tái cấu trúc triệt để nhằm đảm bảo tính dễ bảo trì và mở rộng:
+Sau phiên bản v3.0, toàn bộ codebase đã được tái cấu trúc triệt để nhằm đảm bảo tính dễ bảo trì và mở rộng:
 
 ```text
 chatbot_doan/
 ├── app.py                # Server Flask (Entry point)
-├── config.py             # (Nằm trong src/config.py)
 ├── .env                  # Tệp lưu biến môi trường (Secrets, Token)
 ├── requirements.txt      # Module Python phụ thuộc cần thiết
 ├── data/                 # Chứa dữ liệu Database cục bộ
@@ -34,10 +34,11 @@ chatbot_doan/
 │   ├── app.js            # Frontend Logic 
 │   ├── style.css         # UI Design
 │   └── admin.*           # Web Quản trị
-├── docs/                 # Tài liệu hướng dẫn RAG Technical
-├── tests/                # Evaluate Scripts (kiểm thử chất lượng RAGAS)
+├── docs/                 # Tài liệu hướng dẫn (Technical Guide, Báo cáo Đồ án)
+├── tests/                # Evaluate Scripts (kiểm thử chất lượng RAGAS, Dataset)
 └── src/                  # Mã nguồn lõi (Core Engine)
     ├── config.py         # App Config Path & Params
+    ├── analytics.py      # Logic thống kê Log & Analytics
     ├── api/
     │   └── auth.py       # Authentication Controller cho Admin
     ├── rag/              
@@ -47,7 +48,8 @@ chatbot_doan/
     │   ├── structured.py # Hàm tính điểm Regex (Deterministic Fallbacks)
     │   └── prompts.py    # Prompt cốt lõi, Rules và Instructions
     └── bot/
-        └── telegram.py   # Worker chạy Telegram API
+        ├── telegram.py   # Worker chạy Telegram API
+        └── facebook.py   # Worker chạy Facebook Messenger Webhook
 ```
 
 ---
@@ -93,8 +95,8 @@ Chạy ứng dụng bằng lệnh:
 python app.py
 ```
 
-- **Chat UI**: http://localhost:5000
-- **Admin Panel**: http://localhost:5000/admin (Dùng để kiểm soát / upload dữ liệu trực tiếp lên DB).
+- **Chat UI**: `http://localhost:5000`
+- **Admin Panel**: `http://localhost:5000/admin` (Dùng để kiểm soát / upload dữ liệu trực tiếp lên DB).
 
 ---
 
@@ -130,6 +132,7 @@ RETRIEVER_LLM_TIMEOUT=6
 # ── Debug ──
 HAUI_DEBUG=1
 
-# ── Telegram Bot ──
+# ── Chatbot API Integrations ──
 TELEGRAM_BOT_TOKEN=token_su_dung_trong_telegram_bot_father
+FB_PAGE_TOKEN=token_su_dung_trong_facebook_page
 ```
