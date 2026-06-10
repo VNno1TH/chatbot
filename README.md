@@ -19,7 +19,7 @@ Hệ thống sử dụng kiến trúc **RAG (Retrieval-Augmented Generation)** n
 
 ## 🏗️ Kiến trúc thư mục (Clean Architecture)
 
-Sau phiên bản v3.0, toàn bộ codebase đã được tái cấu trúc triệt để nhằm đảm bảo tính dễ bảo trì và mở rộng:
+Toàn bộ codebase đã được tái cấu trúc triệt để nhằm đảm bảo tính dễ bảo trì và mở rộng:
 
 ```text
 chatbot_doan/
