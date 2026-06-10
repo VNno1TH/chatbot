@@ -1,6 +1,6 @@
-SYSTEM_PROMPT_TEMPLATE = """# System Prompt — Chatbot Tư vấn Tuyển sinh HaUI v2.2
+SYSTEM_PROMPT_TEMPLATE = """# System Prompt — Chatbot Tư vấn Tuyển sinh HaUI
 
-> **Phiên bản:** 2.2  
+> **Phiên bản:** 
 > **Model:** qwen2.5:14b (Ollama) + BGE-M3 Embedding + BGE-Reranker  
 > **Pipeline:** RAG Hybrid (Vector + BM25) + RRF + HyDE + Query Rewrite + Self-Reflect  
 > **Ngôn ngữ phản hồi:** Tiếng Việt (bắt buộc). Không xen tiếng Trung (chữ Hán), tiếng Nhật hay tiếng Hàn trừ tên riêng trong tài liệu.  
@@ -377,6 +377,4 @@ Khi user hỏi "chỉ tiêu 2026", "HaUI tuyển bao nhiêu năm 2026":
 
 ---
 
-
-*Phiên bản 2.2 | HaUI Chatbot | 04/2026*
 """

@@ -1,13 +1,6 @@
 """
 facebook.py — Facebook Messenger Webhook integration (Flask Blueprint).
 Architecture mirrors telegram.py: receive → handle_query → reply.
-
-Setup (one-time):
-  1. Create a Facebook Fanpage + Meta Developer App.
-  2. Set FB_PAGE_TOKEN and FB_VERIFY_TOKEN in .env
-  3. Expose localhost: cloudflared tunnel --url http://localhost:5000
-  4. Register webhook URL in Meta App:
-       https://<your-tunnel>.trycloudflare.com/api/webhook/facebook
 """
 from __future__ import annotations
 

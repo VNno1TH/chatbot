@@ -1220,5 +1220,3 @@ Trước khi deploy, kiểm tra các test case sau:
 - [ ] "Ngành môi trường HaUI" → retrieve đúng cong_nghe_ky_thuat_moi_truong.md
 
 ---
-
-*Tài liệu kỹ thuật HaUI RAG Chatbot v2.2 | 04/2026*
