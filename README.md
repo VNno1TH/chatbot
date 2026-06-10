@@ -8,7 +8,7 @@ Hệ thống sử dụng kiến trúc **RAG (Retrieval-Augmented Generation)** n
 ## 🎯 Tính năng nổi bật
 
 - **Hybrid Search RAG**: Trích xuất dữ liệu kết hợp giữa Vector Search (BGE-M3 + ChromaDB) và BM25, hợp nhất bằng thuật toán RRF (Reciprocal Rank Fusion).
-- **Phân luồng thông minh (Router v3)**: Có khả năng tự động bóc tách các câu hỏi dạng tra cứu, small talk, hoặc các query nằm ngoài phạm vi tư vấn.
+- **Phân luồng thông minh**: Có khả năng tự động bóc tách các câu hỏi dạng tra cứu, small talk, hoặc các query nằm ngoài phạm vi tư vấn.
 - **Tính toán điểm chuẩn Deterministic**: Cài đặt sẵn logic tính điểm chính xác bằng code (quy đổi chứng chỉ tiếng Anh, chứng chỉ ĐGNL / ĐGTD, điểm xét tuyển PT2, PT3, ưu tiên khu vực) giúp giảm tải cho LLM và bảo đảm 100% độ chính xác.
 - **RAG_LITE Mode**: Tối ưu tốc độ trả lời (giảm từ 10s xuống còn 2-3s) đối với các câu hỏi đơn giản hoặc các phép tính toán được định tuyến cứng cài trong hệ thống.
 - **Giao diện Glassmorphism 3D**: Giao diện Premium Web UI kết hợp hiệu ứng Float 3D, hỗ trợ render Markdown bảng biểu tuyệt đẹp.
@@ -119,11 +119,11 @@ OLLAMA_EMBED_MODEL=bge-m3:latest
 RERANKER_URL=http://localhost:8080
 USE_REMOTE_RERANKER=1
 
-# ── Router v3 ──
+# ── Router ──
 ROUTER_MODEL=qwen2.5:14b
 ROUTER_TIMEOUT=20
 
-# ── Retriever v5 ──
+# ── Retriever ──
 HYDE_ENABLED=1
 QUERY_REWRITE_ENABLED=1
 SELF_REFLECT_ENABLED=1
